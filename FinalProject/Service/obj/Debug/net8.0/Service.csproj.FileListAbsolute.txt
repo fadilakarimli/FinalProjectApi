@@ -17,3 +17,4 @@ C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\Service\obj\Debug\net8.0\refi
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\Service\obj\Debug\net8.0\Service.pdb
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\Service\obj\Debug\net8.0\Service.genruntimeconfig.cache
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\Service\obj\Debug\net8.0\ref\Service.dll
+C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\Service\obj\Debug\net8.0\Service.sourcelink.json

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Slider;
 using Service.Services.Interfaces;
@@ -15,35 +16,68 @@ namespace Service.Services
     {
         private readonly ISliderRepository _sliderRepository;
         private readonly IMapper _mapper;
-        public SliderService(ISliderRepository sliderRepository, IMapper mapper)
+        private readonly IFileService _fileService;
+        public SliderService(ISliderRepository sliderRepository, IMapper mapper, IFileService fileService)
         {
             _sliderRepository = sliderRepository;
             _mapper = mapper;
+            _fileService = fileService;
         }
 
         public async Task CreateAsync(SliderCreateDto model)
         {
-            var slider = _mapper.Map<Slider>(model);
+            var imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
+            var slider = _mapper.Map<Slider>(model); 
+            slider.Img = imagePath;
             await _sliderRepository.CreateAsync(slider);
         }
-        public Task DeleteAsync(int id)
+
+
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var slider = await _sliderRepository.GetWithExpressionAsync(x => x.Id == id);
+            if (slider == null) throw new Exception("Slider not found");
+            _fileService.Delete(slider.Img, "UploadFiles");
+            await _sliderRepository.DeleteAsync(slider);
         }
 
-        public Task EditAsync(int id, SliderEditDto model)
+        public async Task EditAsync(int id, SliderEditDto model)
         {
-            throw new NotImplementedException();
+            var slider = await _sliderRepository.GetByIdWithIncludesAsync(id);
+            if (slider == null)
+                throw new Exception($"Slider with ID {id} not found");
+
+            if (model.Image != null)
+            {
+                if (!string.IsNullOrEmpty(slider.Img))
+                    _fileService.Delete(slider.Img, "UploadFiles");
+
+                var imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
+                slider.Img = imagePath;
+            }
+
+            _mapper.Map(model, slider);
+
+            await _sliderRepository.EditAsync(slider);
         }
 
-        public Task<IEnumerable<SliderDto>> GetAllAsync()
+
+
+        public async Task<IEnumerable<SliderDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var sliders = await _sliderRepository.GetAllAsync();
+            var sliderDtos = _mapper.Map<IEnumerable<SliderDto>>(sliders);
+            return sliderDtos;
         }
 
-        public Task<SliderDto> GetByIdAsync(int id)
+        public async Task<SliderDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var slider = await _sliderRepository.GetByIdAsync(id);
+            if (slider == null) return null;
+            return _mapper.Map<SliderDto>(slider);
         }
+
+
+
     }
 }

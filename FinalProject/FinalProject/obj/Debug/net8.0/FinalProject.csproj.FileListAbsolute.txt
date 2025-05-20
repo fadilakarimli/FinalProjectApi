@@ -148,3 +148,5 @@ C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\obj\Debug\net8.0
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.pdb
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.genruntimeconfig.cache
 C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\obj\Debug\net8.0\ref\FinalProject.dll
+C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Asus\Desktop\FinalProjectApi\FinalProject\FinalProject\obj\Debug\net8.0\FinalProject.sourcelink.json

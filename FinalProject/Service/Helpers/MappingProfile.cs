@@ -14,6 +14,10 @@ namespace Service.Helpers
         public MappingProfile()
         {
             CreateMap<SliderCreateDto, Slider>();
+            CreateMap<Slider, SliderDto>().ReverseMap();
+
+            CreateMap<SliderEditDto, Slider>()
+           .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

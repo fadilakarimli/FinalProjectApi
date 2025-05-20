@@ -59,6 +59,10 @@ namespace Repository.Repositories
             }
             return await query.ToListAsync();
         }
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
 
         public async Task<T> GetByIdWithIncludesAsync(int id, params Expression<Func<T, object>>[] includes)
         {

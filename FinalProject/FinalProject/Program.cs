@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.Data;
+using Service;
 using Service.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddRepositoryLayer();
-//builder.Services.AddServiceLayer();
+builder.Services.AddServiceLayer();
 
 var app = builder.Build();
 

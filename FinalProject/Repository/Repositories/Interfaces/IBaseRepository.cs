@@ -13,6 +13,7 @@ namespace Repository.Repositories.Interfaces
         Task CreateAsync(T entity);
         Task DeleteAsync(T entity);
         Task EditAsync(T entity);
+        Task<T> GetByIdAsync(int id);
         Task<T> GetByIdWithIncludesAsync(int id, params Expression<Func<T, object>>[] includes);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetWithExpressionAsync(Expression<Func<T, bool>> predicate);
