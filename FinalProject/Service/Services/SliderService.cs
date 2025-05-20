@@ -55,9 +55,7 @@ namespace Service.Services
                 var imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
                 slider.Img = imagePath;
             }
-
             _mapper.Map(model, slider);
-
             await _sliderRepository.EditAsync(slider);
         }
 

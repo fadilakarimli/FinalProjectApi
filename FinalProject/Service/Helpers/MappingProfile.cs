@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.DTOs.Slider;
+using Service.DTOs.SliderInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,11 @@ namespace Service.Helpers
 
             CreateMap<SliderEditDto, Slider>()
            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            //slider info
+
+            CreateMap<SliderInfoCreateDto, SliderInfo>();
+            CreateMap<SliderInfo, SliderInfoDto>(); 
+            CreateMap<SliderInfoEditDto, SliderInfo>();
         }
     }
 }

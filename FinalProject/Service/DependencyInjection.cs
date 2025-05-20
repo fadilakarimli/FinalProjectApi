@@ -14,6 +14,7 @@ namespace Service
         public static IServiceCollection AddServiceLayer(this IServiceCollection services)
         {
             services.AddScoped<ISliderService, SliderService>();
+            services.AddScoped<ISliderInfoService, SliderInfoService>();
             services.AddScoped<IFileService, FileService>();
             return services;
         }
