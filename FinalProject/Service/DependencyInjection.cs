@@ -16,6 +16,8 @@ namespace Service
             services.AddScoped<ISliderService, SliderService>();
             services.AddScoped<ISliderInfoService, SliderInfoService>();
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<ITrandingDestinationService, TrandingDestinationService>();
+            services.AddScoped<IBrandService, BrandService>();
             return services;
         }
 

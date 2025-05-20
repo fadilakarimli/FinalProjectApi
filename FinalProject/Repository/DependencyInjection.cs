@@ -17,6 +17,8 @@ namespace Repository
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<ISliderInfoRepository, SliderInfoRepository>();
             services.AddScoped<ISliderRepository, SliderRepository>();
+            services.AddScoped<ITrandingDestinationRepository, TrandingDestinationRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
             return services;
         }
 

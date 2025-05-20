@@ -13,6 +13,8 @@ namespace Repository.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderInfo> SlidersInfo { get; set; }
+        public DbSet<TrandingDestination> TrandingDestinations { get; set; }
+        public DbSet<Brand> Brand { get; set; }
 
     }
 }
