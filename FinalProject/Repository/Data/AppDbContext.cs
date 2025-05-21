@@ -16,6 +16,9 @@ namespace Repository.Data
         public DbSet<TrandingDestination> TrandingDestinations { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<DestinationFeature> DestinationFeatures { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogImage> BlogImages { get; set; }
 
     }
 }

@@ -13,13 +13,13 @@ namespace Repository
     {
         public static IServiceCollection AddRepositoryLayer(this IServiceCollection services)
         {
-
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<ISliderInfoRepository, SliderInfoRepository>();
             services.AddScoped<ISliderRepository, SliderRepository>();
             services.AddScoped<ITrandingDestinationRepository, TrandingDestinationRepository>();
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
+            services.AddScoped<IDestinationFeatureRepository, DestinationFeatureRepository>();
             return services;
         }
 

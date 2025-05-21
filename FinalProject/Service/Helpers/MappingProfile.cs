@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.DTOs.Brand;
+using Service.DTOs.DestinationFeature;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
 using Service.DTOs.TeamMember;
@@ -38,6 +39,13 @@ namespace Service.Helpers
             CreateMap<TeamMemberCreateDto, TeamMember>();
             CreateMap<TeamMember, TeamMemberDto>().ReverseMap();
             CreateMap<TeamMemberEditDto, TeamMember>();
+            //destinationfeature
+            CreateMap<DestinationFeatureCreateDto, DestinationFeature>();
+            CreateMap<DestinationFeature, DestinationFeatureDto>().ReverseMap();
+
+
+
+
 
 
         }
