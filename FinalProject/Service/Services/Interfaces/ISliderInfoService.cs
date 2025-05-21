@@ -9,10 +9,10 @@ namespace Service.Services.Interfaces
 {
     public interface ISliderInfoService
     {
-        //Task CreateAsync(SliderInfoCreateDto model);
-        //Task<List<SliderInfoDto>> GetAllAsync();
-        //Task<SliderInfoDto> GetByIdAsync(int id);
-        //Task EditAsync(int id, SliderInfoEditDto dto);
-        //Task DeleteAsync(int id);
+        Task CreateAsync(SliderInfoCreateDto model);
+        Task EditAsync(int id, SliderInfoEditDto model);
+        Task DeleteAsync(int id);
+        Task<SliderInfoDto> GetByIdAsync(int id);
+        Task<IEnumerable<SliderInfoDto>> GetAllAsync();
     }
 }

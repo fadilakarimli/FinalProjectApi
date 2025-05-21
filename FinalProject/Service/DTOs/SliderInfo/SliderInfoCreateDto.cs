@@ -10,6 +10,5 @@ namespace Service.DTOs.SliderInfo
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public int SliderId { get; set; }
     }
 }

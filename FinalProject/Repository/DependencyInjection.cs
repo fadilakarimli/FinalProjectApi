@@ -20,8 +20,9 @@ namespace Repository
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
             services.AddScoped<IDestinationFeatureRepository, DestinationFeatureRepository>();
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IBlogImageRepository, BlogImageRepository>();
             return services;
         }
-
     }
 }

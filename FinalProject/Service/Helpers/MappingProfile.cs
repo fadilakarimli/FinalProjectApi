@@ -19,14 +19,13 @@ namespace Service.Helpers
         public MappingProfile()
         {
             //Slider
+            CreateMap<Slider, SliderDto>();
             CreateMap<SliderCreateDto, Slider>();
-            CreateMap<Slider, SliderDto>().ReverseMap();
-            CreateMap<SliderEditDto, Slider>()
-           .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            CreateMap<SliderEditDto, Slider>();
             //slider info
+            CreateMap<SliderInfo, SliderInfoDto>().ReverseMap();
             CreateMap<SliderInfoCreateDto, SliderInfo>();
-            CreateMap<SliderInfo, SliderInfoDto>(); 
-            CreateMap<SliderInfoEditDto, SliderInfo>();
+            CreateMap<SliderInfoEditDto, SliderInfo>().ReverseMap();
             //trandingdestinaions
             CreateMap<TrandingDestination, TrandingDestinationDto>().ReverseMap();
             CreateMap<TrandingDestinationCreateDto, TrandingDestination>();
