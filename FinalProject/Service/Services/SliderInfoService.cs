@@ -13,55 +13,55 @@ namespace Service.Services
 {
     public class SliderInfoService : ISliderInfoService
     {
-        private readonly ISliderInfoRepository _sliderInfoRepo;
-        private readonly IMapper _mapper;
+        //private readonly ISliderInfoRepository _sliderInfoRepo;
+        //private readonly IMapper _mapper;
 
-        public SliderInfoService(ISliderInfoRepository sliderInfoRepo, IMapper mapper)
-        {
-            _sliderInfoRepo = sliderInfoRepo;
-            _mapper = mapper;
-        }
+        //public SliderInfoService(ISliderInfoRepository sliderInfoRepo, IMapper mapper)
+        //{
+        //    _sliderInfoRepo = sliderInfoRepo;
+        //    _mapper = mapper;
+        //}
 
-        public async Task CreateAsync(SliderInfoCreateDto dto)
-        {
-            SliderInfo entity = _mapper.Map<SliderInfo>(dto);
+        //public async Task CreateAsync(SliderInfoCreateDto dto)
+        //{
+        //    SliderInfo entity = _mapper.Map<SliderInfo>(dto);
 
-            await _sliderInfoRepo.CreateAsync(entity);
-        }
+        //    await _sliderInfoRepo.CreateAsync(entity);
+        //}
 
-        public async Task<List<SliderInfoDto>> GetAllAsync()
-        {
-            var entities = await _sliderInfoRepo.GetAllWithIcludesAsync(x => x.Slider);
+        //public async Task<List<SliderInfoDto>> GetAllAsync()
+        //{
+        //    var entities = await _sliderInfoRepo.GetAllWithIcludesAsync(x => x.Slider);
 
-            return _mapper.Map<List<SliderInfoDto>>(entities);
-        }
+        //    return _mapper.Map<List<SliderInfoDto>>(entities);
+        //}
 
-        public async Task<SliderInfoDto> GetByIdAsync(int id)
-        {
-            var entity = await _sliderInfoRepo.GetByIdWithIncludesAsync(id, x => x.Slider);
-            if (entity == null) throw new Exception("SliderInfo tapılmadı");
-            return _mapper.Map<SliderInfoDto>(entity);
-        }
+        //public async Task<SliderInfoDto> GetByIdAsync(int id)
+        //{
+        //    var entity = await _sliderInfoRepo.GetByIdWithIncludesAsync(id, x => x.Slider);
+        //    if (entity == null) throw new Exception("SliderInfo tapılmadı");
+        //    return _mapper.Map<SliderInfoDto>(entity);
+        //}
 
-        public async Task EditAsync(int id, SliderInfoEditDto dto)
-        {
-            var entity = await _sliderInfoRepo.GetByIdAsync(id);
-            if (entity == null) throw new Exception("SliderInfo tapılmadı");
+        //public async Task EditAsync(int id, SliderInfoEditDto dto)
+        //{
+        //    var entity = await _sliderInfoRepo.GetByIdAsync(id);
+        //    if (entity == null) throw new Exception("SliderInfo tapılmadı");
 
-            entity.Title = dto.Title;
-            entity.Description = dto.Description;
-            entity.SliderId = dto.SliderId;
+        //    entity.Title = dto.Title;
+        //    entity.Description = dto.Description;
+        //    entity.SliderId = dto.SliderId;
 
-            await _sliderInfoRepo.EditAsync(entity);
-        }
+        //    await _sliderInfoRepo.EditAsync(entity);
+        //}
 
-        public async Task DeleteAsync(int id)
-        {
-            var entity = await _sliderInfoRepo.GetByIdAsync(id);
-            if (entity == null) throw new Exception("SliderInfo tapılmadı");
+        //public async Task DeleteAsync(int id)
+        //{
+        //    var entity = await _sliderInfoRepo.GetByIdAsync(id);
+        //    if (entity == null) throw new Exception("SliderInfo tapılmadı");
 
-            await _sliderInfoRepo.DeleteAsync(entity);
-        }
+        //    await _sliderInfoRepo.DeleteAsync(entity);
+        //}
 
     }
 }

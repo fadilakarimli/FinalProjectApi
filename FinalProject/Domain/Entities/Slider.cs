@@ -10,6 +10,5 @@ namespace Domain.Entities
     public class Slider : BaseEntity
     {
         public string Img { get; set; } 
-        public ICollection<SliderInfo> SliderInfos { get; set; }
     }
 }
