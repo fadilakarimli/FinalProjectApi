@@ -29,7 +29,7 @@ namespace FinalProject.Controllers.Admin
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById([FromRoute]int id)
         {
             try
             {
@@ -43,11 +43,11 @@ namespace FinalProject.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Edit(int id, [FromForm] BrandEditDto dto)
+        public async Task<IActionResult> Edit([FromRoute] int id, [FromForm] BrandEditDto request)
         {
             try
             {
-                await _brandService.EditAsync(id, dto);
+                await _brandService.EditAsync(id, request);
                 return Ok();
             }
             catch (Exception ex)
@@ -56,8 +56,8 @@ namespace FinalProject.Controllers.Admin
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery]int id)
         {
             try
             {

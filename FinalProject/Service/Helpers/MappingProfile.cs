@@ -3,6 +3,7 @@ using Domain.Entities;
 using Service.DTOs.Brand;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
+using Service.DTOs.TeamMember;
 using Service.DTOs.TrandingDestination;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,10 @@ namespace Service.Helpers
             CreateMap<Brand, BrandDto>().ReverseMap();
             CreateMap<BrandCreateDto, Brand>();
             CreateMap<BrandEditDto, Brand>();
+            //team
+            CreateMap<TeamMemberCreateDto, TeamMember>();
+            CreateMap<TeamMember, TeamMemberDto>().ReverseMap();
+            CreateMap<TeamMemberEditDto, TeamMember>();
 
 
         }

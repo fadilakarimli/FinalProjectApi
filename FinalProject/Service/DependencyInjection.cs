@@ -18,6 +18,7 @@ namespace Service
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<ITrandingDestinationService, TrandingDestinationService>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<ITeamMemberService, TeamMemberService>();
             return services;
         }
 

@@ -15,6 +15,7 @@ namespace Repository.Data
         public DbSet<SliderInfo> SlidersInfo { get; set; }
         public DbSet<TrandingDestination> TrandingDestinations { get; set; }
         public DbSet<Brand> Brand { get; set; }
+        public DbSet<TeamMember> TeamMembers { get; set; }
 
     }
 }

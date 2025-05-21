@@ -9,7 +9,6 @@ namespace Domain.Entities
 {
     public class Brand : BaseEntity
     {
-        public string Title { get; set; }
         public string Image { get; set; }
     }
 }

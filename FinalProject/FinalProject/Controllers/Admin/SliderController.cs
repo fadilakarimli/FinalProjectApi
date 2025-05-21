@@ -53,7 +53,7 @@ namespace FinalProject.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Edit(int id, [FromForm] SliderEditDto model)
+        public async Task<IActionResult> Edit([FromRoute]int id, [FromForm] SliderEditDto model)
         {
             try
             {

@@ -9,7 +9,6 @@ namespace Service.DTOs.Brand
 {
     public class BrandEditDto
     {
-        public string Title { get; set; }
         public IFormFile Image { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace Repository
             services.AddScoped<ISliderRepository, SliderRepository>();
             services.AddScoped<ITrandingDestinationRepository, TrandingDestinationRepository>();
             services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
             return services;
         }
 
