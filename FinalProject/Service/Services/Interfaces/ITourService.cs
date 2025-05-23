@@ -1,0 +1,19 @@
+﻿using Service.DTOs.Slider;
+using Service.DTOs.Tour;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Service.Services.Interfaces
+{
+    public interface ITourService
+    {
+        Task<IEnumerable<TourDto>> GetAllAsync();
+        Task<TourDto>GetByIdAsync(int id);
+        Task CreateAsync(TourCreateDto model);
+        Task EditAsync(int id, TourEditDto model);
+        Task DeleteAsync(int id);
+    }
+}

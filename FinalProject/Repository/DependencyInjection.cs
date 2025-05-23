@@ -24,6 +24,7 @@ namespace Repository
             services.AddScoped<INewsletterRepository, NewletterRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<ITourRepository, TourRepository>();
             return services;
         }
     }

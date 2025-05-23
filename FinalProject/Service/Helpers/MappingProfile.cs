@@ -9,6 +9,7 @@ using Service.DTOs.NewLetter;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
 using Service.DTOs.TeamMember;
+using Service.DTOs.Tour;
 using Service.DTOs.TrandingDestination;
 using System;
 using System.Collections.Generic;
@@ -58,11 +59,22 @@ namespace Service.Helpers
             CreateMap<CountryCreateDto, Country>();
             CreateMap<CountryEditDto, Country>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
-
+            //city
             CreateMap<CityCreateDto, City>();
             CreateMap<CityEditDto, City>();
             CreateMap<City, CityDto>()
                      .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name));
+            //tour
+            CreateMap<TourCreateDto, Tour>()
+           .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<TourEditDto, Tour>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore()); 
+            CreateMap<Tour, TourEditDto>()
+                .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
+            CreateMap<Tour, TourDto>()
+           .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+           .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image)); // bunu əlavə et
+
 
         }
     }

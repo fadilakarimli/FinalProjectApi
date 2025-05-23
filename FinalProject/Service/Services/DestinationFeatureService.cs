@@ -42,9 +42,19 @@ namespace Service.Services
             await _destinationFeatureRepository.DeleteAsync(slider);
         }
 
-        public Task EditAsync(int id, DestinationFeatureEditDto dto)
+        public async Task EditAsync(int id, DestinationFeatureEditDto dto)
         {
-            throw new NotImplementedException();
+            var entity = await _destinationFeatureRepository.GetByIdAsync(id);
+            if (entity == null) throw new Exception("Destination Feature tapılmadı");
+
+            if (dto.IconImage != null)
+            {
+                _fileService.Delete(entity.IconImage, "UploadFiles");
+                string newImagePath = await _fileService.UploadFilesAsync(dto.IconImage, "UploadFiles");
+                entity.IconImage = newImagePath;
+            }
+
+            await _destinationFeatureRepository.EditAsync(entity);
         }
 
         public async Task<IEnumerable<DestinationFeatureDto>> GetAllAsync()

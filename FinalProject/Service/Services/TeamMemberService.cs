@@ -57,7 +57,6 @@ namespace Service.Services
                 var imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
                 member.Image = imagePath;
             }
-            _mapper.Map(model, member);
             await _teamMemberRepo.EditAsync(member);
         }
 

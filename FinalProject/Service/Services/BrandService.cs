@@ -53,9 +53,9 @@ namespace Service.Services
                 string newImagePath = await _fileService.UploadFilesAsync(dto.Image, "UploadFiles");
                 brand.Image = newImagePath;
             }
-            _mapper.Map(dto, brand);
             await _brandRepo.EditAsync(brand);
         }
+
         public async Task<IEnumerable<BrandDto>> GetAllAsync()
         {
             var brands = await _brandRepo.GetAllAsync();

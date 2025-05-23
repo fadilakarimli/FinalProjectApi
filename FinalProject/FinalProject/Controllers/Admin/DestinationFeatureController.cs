@@ -52,5 +52,20 @@ namespace FinalProject.Controllers.Admin
             }
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Edit([FromRoute] int id, [FromForm] DestinationFeatureEditDto dto)
+        {
+            try
+            {
+                await _destinationService.EditAsync(id, dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }
