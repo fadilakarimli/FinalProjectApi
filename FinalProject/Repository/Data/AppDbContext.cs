@@ -22,6 +22,8 @@ namespace Repository.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Tour> Tours { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<TourActivity> TourActivities { get; set; }
         //public DbSet<Instagram> Instagrams { get; set; }
 
     }
