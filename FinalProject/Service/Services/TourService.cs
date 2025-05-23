@@ -27,8 +27,15 @@ namespace Service.Services
         public async Task CreateAsync(TourCreateDto model)
         {
             string fileName = await _fileService.UploadFilesAsync(model.ImageFile, "UploadFiles");
+
             var tour = _mapper.Map<Tour>(model);
             tour.Image = fileName;
+
+            tour.TourActivities = model.ActivityIds.Select(id => new TourActivity
+            {
+                ActivityId = id
+            }).ToList();
+
             await _repo.CreateAsync(tour);
         }
 
@@ -57,7 +64,7 @@ namespace Service.Services
 
         public async Task<IEnumerable<TourDto>> GetAllAsync()
         {
-            var tours = await _repo.GetAllWithIcludesAsync(x => x.City);
+            var tours = await _repo.GetAllTourWithActivityAsync();
             return _mapper.Map<List<TourDto>>(tours);
         }
         public async Task<TourDto> GetByIdAsync(int id)

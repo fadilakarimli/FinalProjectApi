@@ -25,6 +25,7 @@ namespace Service
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ITourService, TourService>();
+            services.AddScoped<IActivityService, ActivityService>();
             return services;
         }
     }

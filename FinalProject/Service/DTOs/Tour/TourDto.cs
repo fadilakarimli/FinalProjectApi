@@ -17,5 +17,6 @@ namespace Service.DTOs.Tour
         public string ImageUrl { get; set; }
         public int CityId { get; set; }
         public string CityName { get; set; }
+        public List<string> ActivityNames { get; set; } // yeni
     }
 }

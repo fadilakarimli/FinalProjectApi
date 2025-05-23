@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Repositories.Interfaces;
 using System;
@@ -11,8 +12,17 @@ namespace Repository.Repositories
 {
     public class TourRepository : BaseRepository<Tour>, ITourRepository
     {
-        public TourRepository(AppDbContext context) : base(context)
+        public TourRepository(AppDbContext context) : base(context) { }
+
+
+        public async Task<IEnumerable<Tour>> GetAllTourWithActivityAsync()
         {
+            return await _context.Tours
+                .Include(t => t.City)
+                .Include(t => t.TourActivities)
+                    .ThenInclude(ta => ta.Activity)
+                .ToListAsync();
         }
+
     }
 }

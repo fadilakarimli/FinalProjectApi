@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Service.DTOs.Activity;
 using Service.DTOs.Blog;
 using Service.DTOs.Brand;
 using Service.DTOs.City;
@@ -11,11 +12,6 @@ using Service.DTOs.SliderInfo;
 using Service.DTOs.TeamMember;
 using Service.DTOs.Tour;
 using Service.DTOs.TrandingDestination;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Helpers
 {
@@ -73,7 +69,13 @@ namespace Service.Helpers
                 .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
             CreateMap<Tour, TourDto>()
            .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-           .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image)); // bunu əlavə et
+           .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
+           .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+            src.TourActivities.Select(ta => ta.Activity.Name).ToList()));
+            // Activity
+            CreateMap<Activity, ActivityDto>();
+            CreateMap<ActivityCreateDto, Activity>();
+            CreateMap<ActivityEditDto, Activity>().ReverseMap();
 
 
         }

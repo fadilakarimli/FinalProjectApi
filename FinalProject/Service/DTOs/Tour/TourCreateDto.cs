@@ -16,5 +16,6 @@ namespace Service.DTOs.Tour
         public decimal? OldPrice { get; set; }
         public int CityId { get; set; }
         public IFormFile ImageFile { get; set; }
+        public List<int> ActivityIds { get; set; } // yeni
     }
 }
