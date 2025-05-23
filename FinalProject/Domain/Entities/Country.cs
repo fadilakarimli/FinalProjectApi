@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class BlogImage :BaseEntity
+    public class Country : BaseEntity
     {
-        public string ImagePath { get; set; }
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
+        public string Name { get; set; }
+        public ICollection<City> Cities { get; set; }
     }
-
 }

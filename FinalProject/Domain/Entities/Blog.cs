@@ -14,7 +14,7 @@ namespace Domain.Entities
         public string? Content { get; set; }
         public string Author { get; set; }
         public int CommentCount { get; set; }
-        public ICollection<BlogImage> BlogImages { get; set; }
+        public string Image { get; set; }
     }
 
 }

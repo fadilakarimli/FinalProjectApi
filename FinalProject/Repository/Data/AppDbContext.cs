@@ -18,7 +18,10 @@ namespace Repository.Data
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<DestinationFeature> DestinationFeatures { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-        public DbSet<BlogImage> BlogImages { get; set; }
+        public DbSet<NewLetter> NewLetters { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        //public DbSet<Instagram> Instagrams { get; set; }
 
     }
 }

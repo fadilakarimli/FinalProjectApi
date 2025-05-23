@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,11 @@ namespace Service.DTOs.Blog
 {
     public class BlogEditDto
     {
+        public string Title { get; set; }
+        public string ShortDescription { get; set; }
+        public string? Content { get; set; }
+        public string Author { get; set; }
+        public int CommentCount { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

@@ -27,7 +27,6 @@ namespace Service.Services
         public async Task CreateAsync(SliderCreateDto model)
         {
             string fileName = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-
             var slider = _mapper.Map<Slider>(model);
             slider.Img = fileName;
             await _sliderRepository.CreateAsync(slider);

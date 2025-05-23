@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 namespace Service.Services
 {
@@ -18,7 +20,6 @@ namespace Service.Services
                 File.Delete(filePath);
             }
         }
-
         public async Task<string> UploadFilesAsync(IFormFile file, string folder)
         {
             string fileName = Guid.NewGuid().ToString() + file.FileName;

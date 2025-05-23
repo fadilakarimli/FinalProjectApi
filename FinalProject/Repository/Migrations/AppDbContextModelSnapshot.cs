@@ -43,6 +43,10 @@ namespace Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ShortDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,31 +58,6 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("Domain.Entities.BlogImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BlogId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("BlogImages");
                 });
 
             modelBuilder.Entity("Domain.Entities.Brand", b =>
@@ -99,6 +78,51 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brand");
+                });
+
+            modelBuilder.Entity("Domain.Entities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("Domain.Entities.DestinationFeature", b =>
@@ -129,6 +153,26 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DestinationFeatures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.NewLetter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NewLetters");
                 });
 
             modelBuilder.Entity("Domain.Entities.Slider", b =>
@@ -227,20 +271,20 @@ namespace Repository.Migrations
                     b.ToTable("TrandingDestinations");
                 });
 
-            modelBuilder.Entity("Domain.Entities.BlogImage", b =>
+            modelBuilder.Entity("Domain.Entities.City", b =>
                 {
-                    b.HasOne("Domain.Entities.Blog", "Blog")
-                        .WithMany("BlogImages")
-                        .HasForeignKey("BlogId")
+                    b.HasOne("Domain.Entities.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Blog");
+                    b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Blog", b =>
+            modelBuilder.Entity("Domain.Entities.Country", b =>
                 {
-                    b.Navigation("BlogImages");
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }

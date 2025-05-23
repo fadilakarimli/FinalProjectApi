@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "k7xtqIkiSO+601nxhYzmDFS8+J1z+r0Wt7XbgTImx0c=",
+  "Hash": "ftaA9U1VOz8qvJRAnR7j6fmNu6ZfjnlxMBIuuIwGqJA=",
   "Source": "FinalProject",
   "BasePath": "_content/FinalProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FinalProject\\wwwroot",
+      "Source": "FinalProject",
+      "ContentRoot": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\",
+      "BasePath": "_content/FinalProject",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

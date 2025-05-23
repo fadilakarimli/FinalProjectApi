@@ -20,6 +20,10 @@ namespace Service
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IDestinationFeatureService, DestinationFeatureService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<INewsLetterService, NewsLetterService>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ICityService, CityService>();
             return services;
         }
     }

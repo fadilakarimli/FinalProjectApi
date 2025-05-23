@@ -21,7 +21,9 @@ namespace Repository
             services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
             services.AddScoped<IDestinationFeatureRepository, DestinationFeatureRepository>();
             services.AddScoped<IBlogRepository, BlogRepository>();
-            services.AddScoped<IBlogImageRepository, BlogImageRepository>();
+            services.AddScoped<INewsletterRepository, NewletterRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
             return services;
         }
     }

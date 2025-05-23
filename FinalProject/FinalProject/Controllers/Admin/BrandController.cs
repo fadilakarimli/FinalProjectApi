@@ -13,7 +13,6 @@ namespace FinalProject.Controllers.Admin
             _brandService = brandService;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] BrandCreateDto dto)
         {

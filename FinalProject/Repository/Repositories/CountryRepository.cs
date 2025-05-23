@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class BlogImageRepository : BaseRepository<BlogImage>, IBlogImageRepository
+    public class CountryRepository : BaseRepository<Country>, ICountryRepository
     {
-        public BlogImageRepository(AppDbContext context) : base(context)
+        public CountryRepository(AppDbContext context) : base(context)
         {
         }
     }

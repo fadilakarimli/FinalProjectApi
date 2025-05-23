@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories.Interfaces
 {
-    public interface IBlogImageRepository : IBaseRepository<BlogImage>
+    public interface INewsletterRepository : IBaseRepository<NewLetter>
     {
+        Task AddEmailAsync(string email);
     }
 }
