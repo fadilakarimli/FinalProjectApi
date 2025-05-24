@@ -1,4 +1,8 @@
-﻿using Service.DTOs.Instagram;
+﻿using AutoMapper;
+using Domain.Entities;
+using Repository.Repositories.Interfaces;
+using Service.DTOs.Brand;
+using Service.DTOs.Instagram;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,29 +14,59 @@ namespace Service.Services
 {
     public class InstagramService : IInstagramService
     {
-        public Task CreateAsync(InstagramCreateDto model)
+        private readonly IInstagramRepository _instagramRepository;
+        private readonly ICloudinaryManager _cloudinaryManager;
+        private readonly IMapper _mapper;
+        public InstagramService(IInstagramRepository instagramRepository, ICloudinaryManager cloudinaryManager
+                                , IMapper mapper)
         {
-            throw new NotImplementedException();
+            _instagramRepository = instagramRepository;
+            _cloudinaryManager = cloudinaryManager;
+            _mapper = mapper;
+        }
+        public async Task CreateAsync(InstagramCreateDto model)
+        {
+            var imagePath = await _cloudinaryManager.FileCreateAsync(model.Image);
+            Instagram instagram = _mapper.Map<Instagram>(model);
+            instagram.Image = imagePath;
+            await _instagramRepository.CreateAsync(instagram);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var insta = await _instagramRepository.GetWithExpressionAsync(x => x.Id == id);
+            if (insta == null) throw new Exception("Instagram tapılmadı");
+            await _cloudinaryManager.FileDeleteAsync(insta.Image);
+            await _instagramRepository.DeleteAsync(insta);
+        }
+        public async Task EditAsync(int id, InstagramEditDto model)
+        {
+            var insta = await _instagramRepository.GetByIdAsync(id);
+            if (insta == null) throw new Exception("Instagram tapılmadı");
+
+            if (model.Image != null)
+            {
+                string newImageUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
+                if (!string.IsNullOrEmpty(insta.Image))
+                {
+                    await _cloudinaryManager.FileDeleteAsync(insta.Image);
+                }
+                insta.Image = newImageUrl;
+            }
+            await _instagramRepository.EditAsync(insta);
         }
 
-        public Task EditAsync(int id, InstagramEditDto request)
+        public async Task<IEnumerable<InstagramDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var insta = await _instagramRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<InstagramDto>>(insta);
         }
 
-        public Task<IEnumerable<InstagramDto>> GetAllAsync()
+        public async Task<InstagramDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<InstagramDto> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+            var insta = await _instagramRepository.GetWithExpressionAsync(x => x.Id == id);
+            if (insta == null) throw new Exception("Insta tapılmadı");
+            return _mapper.Map<InstagramDto>(insta);
         }
     }
 }

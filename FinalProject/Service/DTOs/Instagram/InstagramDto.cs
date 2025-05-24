@@ -10,7 +10,7 @@ namespace Service.DTOs.Instagram
     public class InstagramDto
     {
         public int Id { get; set; }
-        public IFormFile Image { get; set; }
+        public string Image { get; set; }
 
     }
 }

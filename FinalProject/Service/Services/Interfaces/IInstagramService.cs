@@ -13,7 +13,7 @@ namespace Service.Services.Interfaces
         Task CreateAsync(InstagramCreateDto model);
         Task<IEnumerable<InstagramDto>> GetAllAsync();
         Task<InstagramDto> GetByIdAsync(int id);
-        Task EditAsync(int id, InstagramEditDto request);
+        Task EditAsync(int id, InstagramEditDto model);
         Task DeleteAsync(int id);
     }
 }

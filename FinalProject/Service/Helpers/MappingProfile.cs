@@ -7,6 +7,7 @@ using Service.DTOs.Brand;
 using Service.DTOs.City;
 using Service.DTOs.Country;
 using Service.DTOs.DestinationFeature;
+using Service.DTOs.Instagram;
 using Service.DTOs.NewLetter;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
@@ -55,7 +56,7 @@ namespace Service.Helpers
             CreateMap<Country, CountryDto>();
             CreateMap<CountryCreateDto, Country>();
             CreateMap<CountryEditDto, Country>()
-                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+                     .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
             //city
             CreateMap<CityCreateDto, City>();
             CreateMap<CityEditDto, City>();
@@ -63,17 +64,17 @@ namespace Service.Helpers
                      .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name));
             //tour
             CreateMap<TourCreateDto, Tour>()
-           .ForMember(dest => dest.Image, opt => opt.Ignore());
+                      .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<TourEditDto, Tour>()
-                .ForMember(dest => dest.Image, opt => opt.Ignore()); 
+                      .ForMember(dest => dest.Image, opt => opt.Ignore()); 
             CreateMap<Tour, TourEditDto>()
-                .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
+                      .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
             CreateMap<Tour, TourDto>()
-       .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-       .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-           src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
-       .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
-           src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()));
+                     .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+                     .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+                      src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+                     .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+                      src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()));
 
             // Activity
             CreateMap<Activity, ActivityDto>();
@@ -83,6 +84,14 @@ namespace Service.Helpers
             CreateMap<Amenity, AmenityDto>();
             CreateMap<AmenityCreateDto, Amenity>();
             CreateMap<AmenityEditDto, Amenity>().ReverseMap();
+            //instagram
+            CreateMap<Instagram, InstagramDto>(); 
+            CreateMap<InstagramEditDto, Instagram>() 
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<InstagramCreateDto, Instagram>();
+
+
+
         }
     }
 }

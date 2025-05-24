@@ -24,7 +24,7 @@ namespace Service
             services.AddScoped<IAmenityService, AmenityService>();
             services.AddScoped<ICloudinaryManager, CloudinaryManager>();
             services.AddScoped<IEmailService, EmailService>();
-            
+            services.AddScoped<IInstagramService, InstagramService>();
             return services;
         }
     }

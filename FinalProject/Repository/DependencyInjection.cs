@@ -27,6 +27,7 @@ namespace Repository
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddScoped<IActivityRepository, ActivityRepository>();
             services.AddScoped<IAmenityRepository, AmenityRepository>();
+            services.AddScoped<IInstagramRepository, InstagramRepository>();
             return services;
         }
     }

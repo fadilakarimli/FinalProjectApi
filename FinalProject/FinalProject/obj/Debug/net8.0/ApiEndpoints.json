@@ -633,6 +633,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
+    "Method": "Create",
+    "RelativePath": "api/admin/Instagram/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
+    "Method": "Delete",
+    "RelativePath": "api/admin/Instagram/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
+    "Method": "Edit",
+    "RelativePath": "api/admin/Instagram/Edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
+    "Method": "GetAll",
+    "RelativePath": "api/admin/Instagram/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
+    "Method": "GetById",
+    "RelativePath": "api/admin/Instagram/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FinalProject.Controllers.Admin.NewsLetterController",
     "Method": "AddEmail",
     "RelativePath": "api/admin/NewsLetter/AddEmail",
