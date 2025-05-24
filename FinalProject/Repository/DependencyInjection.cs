@@ -26,6 +26,7 @@ namespace Repository
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IAmenityRepository, AmenityRepository>();
             return services;
         }
     }

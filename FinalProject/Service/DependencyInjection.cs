@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Service.Services;
 using Service.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service
 {
@@ -26,6 +21,7 @@ namespace Service
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ITourService, TourService>();
             services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<IAmenityService, AmenityService>();
             return services;
         }
     }

@@ -16,9 +16,9 @@ namespace Service.Services
             _activityRepo = activityRepo;
             _mapper = mapper;
         }
-        public async Task CreateAsync(ActivityCreateDto dto)
+        public async Task CreateAsync(ActivityCreateDto model)
         {
-            var activity = _mapper.Map<Activity>(dto);
+            var activity = _mapper.Map<Activity>(model);
             await _activityRepo.CreateAsync(activity);
         }
         public async Task DeleteAsync(int id)

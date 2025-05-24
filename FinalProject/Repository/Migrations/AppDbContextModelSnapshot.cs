@@ -42,6 +42,26 @@ namespace Repository.Migrations
                     b.ToTable("Activities");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Amenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Amenities");
+                });
+
             modelBuilder.Entity("Domain.Entities.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -335,6 +355,32 @@ namespace Repository.Migrations
                     b.ToTable("TourActivities");
                 });
 
+            modelBuilder.Entity("Domain.Entities.TourAmenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AmenityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AmenityId");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("TourAmenities");
+                });
+
             modelBuilder.Entity("Domain.Entities.TrandingDestination", b =>
                 {
                     b.Property<int>("Id")
@@ -400,9 +446,33 @@ namespace Repository.Migrations
                     b.Navigation("Tour");
                 });
 
+            modelBuilder.Entity("Domain.Entities.TourAmenity", b =>
+                {
+                    b.HasOne("Domain.Entities.Amenity", "Amenity")
+                        .WithMany("TourAmenities")
+                        .HasForeignKey("AmenityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Tour", "Tour")
+                        .WithMany("TourAmenities")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("Domain.Entities.Activity", b =>
                 {
                     b.Navigation("TourActivities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Amenity", b =>
+                {
+                    b.Navigation("TourAmenities");
                 });
 
             modelBuilder.Entity("Domain.Entities.City", b =>
@@ -418,6 +488,8 @@ namespace Repository.Migrations
             modelBuilder.Entity("Domain.Entities.Tour", b =>
                 {
                     b.Navigation("TourActivities");
+
+                    b.Navigation("TourAmenities");
                 });
 #pragma warning restore 612, 618
         }

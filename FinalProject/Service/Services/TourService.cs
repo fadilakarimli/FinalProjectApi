@@ -36,8 +36,14 @@ namespace Service.Services
                 ActivityId = id
             }).ToList();
 
+            tour.TourAmenities = model.AmenityIds.Select(id => new TourAmenity
+            {
+                AmenityId = id
+            }).ToList();
+
             await _repo.CreateAsync(tour);
         }
+
 
         public async Task DeleteAsync(int id)
         {

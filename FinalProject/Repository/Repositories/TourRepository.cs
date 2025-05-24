@@ -14,15 +14,15 @@ namespace Repository.Repositories
     {
         public TourRepository(AppDbContext context) : base(context) { }
 
-
         public async Task<IEnumerable<Tour>> GetAllTourWithActivityAsync()
         {
             return await _context.Tours
-                .Include(t => t.City)
-                .Include(t => t.TourActivities)
-                    .ThenInclude(ta => ta.Activity)
-                .ToListAsync();
+              .Include(t => t.City)
+              .Include(t => t.TourActivities)
+              .ThenInclude(ta => ta.Activity)
+              .Include(t => t.TourAmenities)
+              .ThenInclude(ta => ta.Amenity) 
+              .ToListAsync();
         }
-
     }
 }

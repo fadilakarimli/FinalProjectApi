@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.DTOs.Activity;
+using Service.DTOs.Amenity;
 using Service.DTOs.Blog;
 using Service.DTOs.Brand;
 using Service.DTOs.City;
@@ -68,16 +69,20 @@ namespace Service.Helpers
             CreateMap<Tour, TourEditDto>()
                 .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
             CreateMap<Tour, TourDto>()
-           .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-           .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
-           .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-            src.TourActivities.Select(ta => ta.Activity.Name).ToList()));
+       .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+       .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+           src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+       .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+           src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()));
+
             // Activity
             CreateMap<Activity, ActivityDto>();
             CreateMap<ActivityCreateDto, Activity>();
             CreateMap<ActivityEditDto, Activity>().ReverseMap();
-
-
+            //amenity
+            CreateMap<Amenity, AmenityDto>();
+            CreateMap<AmenityCreateDto, Amenity>();
+            CreateMap<AmenityEditDto, Amenity>().ReverseMap();
         }
     }
 }

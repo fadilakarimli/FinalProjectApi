@@ -18,5 +18,6 @@ namespace Service.DTOs.Tour
         public int CityId { get; set; }
         public string CityName { get; set; }
         public List<string> ActivityNames { get; set; } // yeni
+        public List<string> Amenities { get; set; }
     }
 }
