@@ -18,11 +18,15 @@ namespace Service.Services
         private readonly ITourRepository _repo;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
-        public TourService(ITourRepository repo, IMapper mapper, IFileService fileService)
+        private readonly IEmailService _emailService;
+        private readonly INewsLetterService _newsletterService;
+        public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService, INewsLetterService newsletterService)
         {
             _mapper = mapper;
             _repo = repo;
             _fileService = fileService;
+            _emailService = emailService;
+            _newsletterService = newsletterService;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
@@ -42,9 +46,12 @@ namespace Service.Services
             }).ToList();
 
             await _repo.CreateAsync(tour);
+            var emails = await _newsletterService.GetAllAsync();
+            foreach (var item in emails)
+            {
+                 _emailService.SendEmail(item.Email , "Travil Website" , tour.Name);
+            }
         }
-
-
         public async Task DeleteAsync(int id)
         {
             var tour = await _repo.GetByIdAsync(id);

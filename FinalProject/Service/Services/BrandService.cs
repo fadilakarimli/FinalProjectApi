@@ -16,20 +16,20 @@ namespace Service.Services
         private readonly IBrandRepository _brandRepo;
         private readonly IMapper _mapper;
         private readonly IFileService _fileService;
-        public BrandService(IBrandRepository brandRepo ,IMapper mapper, IFileService fileService)
+        private readonly ICloudinaryManager _cloudinaryManager;
+        public BrandService(IBrandRepository brandRepo, IMapper mapper, IFileService fileService, ICloudinaryManager cloudinaryManager)
         {
             _brandRepo = brandRepo;
-            _mapper = mapper;   
+            _mapper = mapper;
             _fileService = fileService;
+            _cloudinaryManager = cloudinaryManager;
         }
 
         public async Task CreateAsync(BrandCreateDto model)
         {
-            string imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-
+            var imagePath = await _cloudinaryManager.FileCreateAsync(model.Image);
             Brand brand = _mapper.Map<Brand>(model);
             brand.Image = imagePath;
-
             await _brandRepo.CreateAsync(brand);
         }
 
@@ -38,10 +38,10 @@ namespace Service.Services
         {
             var brand = await _brandRepo.GetWithExpressionAsync(x=>x.Id ==id);
             if (brand == null) throw new Exception("Brand tapılmadı");
-            _fileService.Delete(brand.Image, "UploadFiles");
+            await _cloudinaryManager.FileDeleteAsync(brand.Image);
             await _brandRepo.DeleteAsync(brand);
         }
-
+                
         public async Task EditAsync(int id, BrandEditDto dto)
         {
             var brand = await _brandRepo.GetByIdAsync(id);

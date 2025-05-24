@@ -22,6 +22,9 @@ namespace Service
             services.AddScoped<ITourService, TourService>();
             services.AddScoped<IActivityService, ActivityService>();
             services.AddScoped<IAmenityService, AmenityService>();
+            services.AddScoped<ICloudinaryManager, CloudinaryManager>();
+            services.AddScoped<IEmailService, EmailService>();
+            
             return services;
         }
     }

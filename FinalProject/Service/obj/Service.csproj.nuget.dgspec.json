@@ -236,6 +236,10 @@
               "target": "Package",
               "version": "[14.0.0, )"
             },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.27.5, )"
+            },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
@@ -259,6 +263,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.16, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
