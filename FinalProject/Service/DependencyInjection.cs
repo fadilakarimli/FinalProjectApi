@@ -25,6 +25,8 @@ namespace Service
             services.AddScoped<ICloudinaryManager, CloudinaryManager>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IInstagramService, InstagramService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IEmailConfirmationService, EmailConfirmationService>();
             return services;
         }
     }

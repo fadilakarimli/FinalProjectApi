@@ -1,1 +1,1 @@
-{"ContentRoots":["C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\"],"Root":{"Children":null,"Asset":null,"Patterns":[{"ContentRootIndex":0,"Pattern":"**","Depth":0}]}}
+{"ContentRoots":["C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\"],"Root":{"Children":{"confirm":{"Children":{"emailconfrim.html":{"Children":null,"Asset":{"ContentRootIndex":0,"SubPath":"confirm/emailconfrim.html"},"Patterns":null}},"Asset":null,"Patterns":null}},"Asset":null,"Patterns":[{"ContentRootIndex":0,"Pattern":"**","Depth":0}]}}

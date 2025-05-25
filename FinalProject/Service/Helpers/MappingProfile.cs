@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Service.DTOs.Account;
 using Service.DTOs.Activity;
 using Service.DTOs.Amenity;
 using Service.DTOs.Blog;
@@ -89,6 +90,9 @@ namespace Service.Helpers
             CreateMap<InstagramEditDto, Instagram>() 
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<InstagramCreateDto, Instagram>();
+            //register
+            CreateMap<RegisterDto, AppUser>();
+
 
 
 
