@@ -17,26 +17,28 @@ namespace Service.Services
     {
         private readonly IBlogRepository _blogRepo;
         private readonly IMapper _mapper;
-        private readonly IFileService _fileService;
-        public BlogService(IBlogRepository blogRepo , IMapper mapper, IFileService fileService)
+        //private readonly IFileService _fileService;
+        private readonly ICloudinaryManager _cloudinaryManager;
+        public BlogService(IBlogRepository blogRepo , IMapper mapper, IFileService fileService, ICloudinaryManager cloudinaryManager)
         {
             _blogRepo = blogRepo;
             _mapper = mapper;
-            _fileService = fileService;
+           // _fileService = fileService;
+            _cloudinaryManager = cloudinaryManager;
         }
         public async Task CreateAsync(BlogCreateDto model)
         {
-            string fileName = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
+            string fileUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
             var blog = _mapper.Map<Blog>(model);
-            blog.Image = fileName;
+            blog.Image = fileUrl;
             await _blogRepo.CreateAsync(blog);
         }
-
         public async Task DeleteAsync(int id)
         {
             var blog = await _blogRepo.GetByIdAsync(id);
             if (blog is null) throw new Exception("Blog tapılmadı");
-            _fileService.Delete(blog.Image, "UploadFiles");
+
+            await _cloudinaryManager.FileDeleteAsync(blog.Image);
             await _blogRepo.DeleteAsync(blog);
         }
 
@@ -47,13 +49,16 @@ namespace Service.Services
 
             if (model.Image != null)
             {
-                _fileService.Delete(existBlog.Image, "UploadFiles");
-                string newFileName = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-                existBlog.Image = newFileName;
+                await _cloudinaryManager.FileDeleteAsync(existBlog.Image);
+                string newFileUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
+                existBlog.Image = newFileUrl;
             }
+
             _mapper.Map(model, existBlog);
+
             await _blogRepo.EditAsync(existBlog);
         }
+
 
         public async Task<IEnumerable<BlogDto>> GetAllAsync()
         {

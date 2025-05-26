@@ -19,28 +19,34 @@ namespace Service.Services
         private readonly IDestinationFeatureRepository _destinationFeatureRepository;
         private readonly IMapper _mapper;
         private readonly IFileService _fileService;
-        public DestinationFeatureService(IDestinationFeatureRepository destinationFeatureRepository, IMapper mapper, IFileService fileService)
+        private readonly ICloudinaryManager _cloudinaryManager;
+        public DestinationFeatureService(IDestinationFeatureRepository destinationFeatureRepository, IMapper mapper, IFileService fileService
+                                       , ICloudinaryManager cloudinaryManager)
         {
             _destinationFeatureRepository = destinationFeatureRepository;
             _mapper = mapper;
             _fileService = fileService;
+            _cloudinaryManager = cloudinaryManager;
         }
 
         public async Task CreateAsync(DestinationFeatureCreateDto model)
         {
-            var imagePath = await _fileService.UploadFilesAsync(model.IconImage, "UploadFiles");
-            var slider = _mapper.Map<DestinationFeature>(model);
-            slider.IconImage = imagePath;
-            await _destinationFeatureRepository.CreateAsync(slider);
+            var imagePath = await _cloudinaryManager.FileCreateAsync(model.IconImage);
+            var entity = _mapper.Map<DestinationFeature>(model);
+            entity.IconImage = imagePath;
+            await _destinationFeatureRepository.CreateAsync(entity);
         }
+
 
         public async Task DeleteAsync(int id)
         {
-            var slider = await _destinationFeatureRepository.GetWithExpressionAsync(x => x.Id == id);
-            if (slider == null) throw new Exception("Destination not found");
-            _fileService.Delete(slider.IconImage, "UploadFiles");
-            await _destinationFeatureRepository.DeleteAsync(slider);
+            var entity = await _destinationFeatureRepository.GetWithExpressionAsync(x => x.Id == id);
+            if (entity == null) throw new Exception("Destination not found");
+
+            await _cloudinaryManager.FileDeleteAsync(entity.IconImage);
+            await _destinationFeatureRepository.DeleteAsync(entity);
         }
+
 
         public async Task EditAsync(int id, DestinationFeatureEditDto dto)
         {
@@ -49,26 +55,28 @@ namespace Service.Services
 
             if (dto.IconImage != null)
             {
-                _fileService.Delete(entity.IconImage, "UploadFiles");
-                string newImagePath = await _fileService.UploadFilesAsync(dto.IconImage, "UploadFiles");
+                await _cloudinaryManager.FileDeleteAsync(entity.IconImage);
+                string newImagePath = await _cloudinaryManager.FileCreateAsync(dto.IconImage);
                 entity.IconImage = newImagePath;
             }
+
+            _mapper.Map(dto, entity);
 
             await _destinationFeatureRepository.EditAsync(entity);
         }
 
         public async Task<IEnumerable<DestinationFeatureDto>> GetAllAsync()
         {
-            var destination = await _destinationFeatureRepository.GetAllAsync();
-            var destinationDtos = _mapper.Map<IEnumerable<DestinationFeatureDto>>(destination);
-            return destinationDtos;
+            var entities = await _destinationFeatureRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<DestinationFeatureDto>>(entities);
         }
 
-        public async  Task<DestinationFeatureDto> GetByIdAsync(int id)
+
+        public async Task<DestinationFeatureDto> GetByIdAsync(int id)
         {
-            var destination = await _destinationFeatureRepository.GetByIdAsync(id);
-            if (destination == null) return null;
-            return _mapper.Map<DestinationFeatureDto>(destination);
+            var entity = await _destinationFeatureRepository.GetByIdAsync(id);
+            if (entity == null) return null;
+            return _mapper.Map<DestinationFeatureDto>(entity);
         }
     }
 }

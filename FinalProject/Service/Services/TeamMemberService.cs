@@ -19,58 +19,63 @@ namespace Service.Services
         private readonly ITeamMemberRepository _teamMemberRepo;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
+        private readonly ICloudinaryManager _cloudinaryManager;
         public TeamMemberService(ITeamMemberRepository teamMemberRepo
                                 ,IMapper mapper
-                                ,IFileService fileService)
+                                ,IFileService fileService , ICloudinaryManager cloudinaryManager)
         {
             _mapper = mapper;
             _teamMemberRepo = teamMemberRepo;
             _fileService = fileService;
+            _cloudinaryManager  = cloudinaryManager;
         }
         public async Task CreateAsync(TeamMemberCreateDto model)
         {
-            var teamMember = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
+            var imageUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
             var member = _mapper.Map<TeamMember>(model);
-            member.Image = teamMember;
+            member.Image = imageUrl;
             await _teamMemberRepo.CreateAsync(member);
         }
 
         public async Task DeleteAsync(int id)
         {
             var member = await _teamMemberRepo.GetWithExpressionAsync(x => x.Id == id);
-            if (member == null) throw new Exception("Slider not found");
-            _fileService.Delete(member.Image, "UploadFiles");
+            if (member == null) throw new Exception("Team member not found");
+
+            if (!string.IsNullOrEmpty(member.Image))
+                await _cloudinaryManager.FileDeleteAsync(member.Image);
+
             await _teamMemberRepo.DeleteAsync(member);
         }
+
 
         public async Task EditAsync(int id, TeamMemberEditDto model)
         {
             var member = await _teamMemberRepo.GetByIdWithIncludesAsync(id);
             if (member == null)
-                throw new Exception($"Slider with ID {id} not found");
+                throw new Exception($"Team member with ID {id} not found");
 
             if (model.Image != null)
             {
                 if (!string.IsNullOrEmpty(member.Image))
-                    _fileService.Delete(member.Image, "UploadFiles");
+                    await _cloudinaryManager.FileDeleteAsync(member.Image);
 
-                var imagePath = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-                member.Image = imagePath;
+                var imageUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
+                member.Image = imageUrl;
             }
+
             await _teamMemberRepo.EditAsync(member);
         }
-
         public async Task<IEnumerable<TeamMemberDto>> GetAllAsync()
         {
-            var member = await _teamMemberRepo.GetAllAsync();
-            var memberDtos = _mapper.Map<IEnumerable<TeamMemberDto>>(member);
-            return memberDtos;
+            var members = await _teamMemberRepo.GetAllAsync();
+            return _mapper.Map<IEnumerable<TeamMemberDto>>(members);
         }
 
         public async Task<TeamMemberDto> GetByIdAsync(int id)
         {
             var entity = await _teamMemberRepo.GetByIdAsync(id);
-            if (entity == null) throw new Exception("TeamMember tapılmadı");
+            if (entity == null) throw new Exception("Team member not found");
             return _mapper.Map<TeamMemberDto>(entity);
         }
     }

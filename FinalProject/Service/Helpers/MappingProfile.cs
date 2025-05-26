@@ -41,15 +41,19 @@ namespace Service.Helpers
             //team
             CreateMap<TeamMemberCreateDto, TeamMember>();
             CreateMap<TeamMember, TeamMemberDto>().ReverseMap();
-            CreateMap<TeamMemberEditDto, TeamMember>();
+            CreateMap<TeamMemberEditDto, TeamMember>()
+                  .ForMember(dest => dest.Image, opt => opt.Ignore());
             //destinationfeature
             CreateMap<DestinationFeatureCreateDto, DestinationFeature>();
             CreateMap<DestinationFeature, DestinationFeatureDto>().ReverseMap();
-            CreateMap<DestinationFeatureEditDto, DestinationFeature>();
+            CreateMap<DestinationFeatureEditDto, DestinationFeature>()
+                 .ForMember(dest => dest.IconImage, opt => opt.Ignore());
             //blog
             CreateMap<BlogCreateDto, Blog>();
             CreateMap<Blog, BlogDto>().ReverseMap();
-            CreateMap<BlogEditDto, Blog>();
+            CreateMap<BlogEditDto, Blog>()
+           .ForMember(dest => dest.Image, opt => opt.Ignore());
+
             //newletter
             CreateMap<NewLetter, NewLetterDto>();
 

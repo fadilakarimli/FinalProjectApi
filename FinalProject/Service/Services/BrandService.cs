@@ -41,20 +41,27 @@ namespace Service.Services
             await _cloudinaryManager.FileDeleteAsync(brand.Image);
             await _brandRepo.DeleteAsync(brand);
         }
-                
+
         public async Task EditAsync(int id, BrandEditDto dto)
         {
             var brand = await _brandRepo.GetByIdAsync(id);
-            if (brand == null) throw new Exception("Brand tapılmadı");
+            if (brand == null)
+                throw new Exception("Brand tapılmadı");
 
             if (dto.Image != null)
             {
-                _fileService.Delete(brand.Image, "UploadFiles");
-                string newImagePath = await _fileService.UploadFilesAsync(dto.Image, "UploadFiles");
+                if (!string.IsNullOrEmpty(brand.Image))
+                {
+                    bool deleted = await _cloudinaryManager.FileDeleteAsync(brand.Image);
+                }
+
+                string newImagePath = await _cloudinaryManager.FileCreateAsync(dto.Image);
                 brand.Image = newImagePath;
             }
+
             await _brandRepo.EditAsync(brand);
         }
+
 
         public async Task<IEnumerable<BrandDto>> GetAllAsync()
         {

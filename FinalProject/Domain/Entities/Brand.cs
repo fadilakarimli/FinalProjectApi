@@ -12,3 +12,4 @@ namespace Domain.Entities
         public string Image { get; set; }
     }
 }
+ 
