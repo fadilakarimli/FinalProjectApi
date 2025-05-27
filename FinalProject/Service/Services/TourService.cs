@@ -20,20 +20,24 @@ namespace Service.Services
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly INewsLetterService _newsletterService;
-        public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService, INewsLetterService newsletterService)
+        private readonly ICloudinaryManager _cloudinaryManager;
+
+        public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService,
+            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager)
         {
             _mapper = mapper;
             _repo = repo;
             _fileService = fileService;
             _emailService = emailService;
             _newsletterService = newsletterService;
+            _cloudinaryManager = cloudinaryManager;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
-            string fileName = await _fileService.UploadFilesAsync(model.ImageFile, "UploadFiles");
+            string fileUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
 
             var tour = _mapper.Map<Tour>(model);
-            tour.Image = fileName;
+            tour.Image = fileUrl;
 
             tour.TourActivities = model.ActivityIds.Select(id => new TourActivity
             {
@@ -46,31 +50,35 @@ namespace Service.Services
             }).ToList();
 
             await _repo.CreateAsync(tour);
+
             var emails = await _newsletterService.GetAllAsync();
             foreach (var item in emails)
             {
-                 _emailService.SendEmail(item.Email , "Travil Website" , tour.Name);
+                _emailService.SendEmail(item.Email, "Travil Website", tour.Name);
             }
         }
+
         public async Task DeleteAsync(int id)
         {
             var tour = await _repo.GetByIdAsync(id);
             if (tour is null) throw new Exception("Tour tapılmadı");
-            _fileService.Delete(tour.Image, "UploadFiles");
+
+            await _cloudinaryManager.FileDeleteAsync(tour.Image);
             await _repo.DeleteAsync(tour);
         }
 
         public async Task EditAsync(int id, TourEditDto model)
         {
             var existTour = await _repo.GetByIdAsync(id);
-            if (existTour is null) throw new Exception("Slider tapılmadı");
+            if (existTour is null) throw new Exception("Tour tapılmadı");
 
             if (model.ImageFile != null)
             {
-                _fileService.Delete(existTour.Image, "UploadFiles");
-                string newFileName = await _fileService.UploadFilesAsync(model.ImageFile, "UploadFiles");
-                existTour.Image = newFileName;
+                await _cloudinaryManager.FileDeleteAsync(existTour.Image);
+                string newImageUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
+                existTour.Image = newImageUrl;
             }
+
             _mapper.Map(model, existTour);
             await _repo.EditAsync(existTour);
         }

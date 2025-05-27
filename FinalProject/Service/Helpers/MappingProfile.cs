@@ -33,7 +33,9 @@ namespace Service.Helpers
             //trandingdestinaions
             CreateMap<TrandingDestination, TrandingDestinationDto>().ReverseMap();
             CreateMap<TrandingDestinationCreateDto, TrandingDestination>();
-            CreateMap<TrandingDestinationEditDto, TrandingDestination>();
+            CreateMap<TrandingDestinationEditDto, TrandingDestination>()
+                     .ForMember(dest => dest.Image, opt => opt.Ignore());
+
             //brand
             CreateMap<Brand, BrandDto>().ReverseMap();
             CreateMap<BrandCreateDto, Brand>();
@@ -75,11 +77,15 @@ namespace Service.Helpers
             CreateMap<Tour, TourEditDto>()
                       .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
             CreateMap<Tour, TourDto>()
-                     .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-                     .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-                      src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
-                     .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
-                      src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()));
+      .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+      .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+           src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+      .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+           src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
+      .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image));
+
+
+
 
             // Activity
             CreateMap<Activity, ActivityDto>();

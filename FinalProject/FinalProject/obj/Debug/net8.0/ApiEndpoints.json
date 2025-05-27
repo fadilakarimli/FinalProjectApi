@@ -1256,7 +1256,7 @@
   {
     "ContainingType": "FinalProject.Controllers.Admin.TrandingDestinationController",
     "Method": "Delete",
-    "RelativePath": "api/admin/TrandingDestination/Delete/{id}",
+    "RelativePath": "api/admin/TrandingDestination/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1264,7 +1264,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

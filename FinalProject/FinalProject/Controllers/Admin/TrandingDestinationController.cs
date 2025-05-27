@@ -68,8 +68,8 @@ namespace FinalProject.Controllers.Admin
                 return StatusCode(404, ex.Message);
             }
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] int id)
         {
             try
             {
