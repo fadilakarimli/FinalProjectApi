@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository.Repositories.Interfaces;
+using Service.DTOs.Brand;
 using Service.DTOs.Slider;
 using Service.Services.Interfaces;
 using System;
@@ -17,42 +18,48 @@ namespace Service.Services
         private readonly ISliderRepository _sliderRepository;
         private readonly IMapper _mapper;
         private readonly IFileService _fileService;
-        public SliderService(ISliderRepository sliderRepository, IMapper mapper, IFileService fileService)
+        private readonly ICloudinaryManager _cloudinaryManager;
+        public SliderService(ISliderRepository sliderRepository, IMapper mapper, IFileService fileService,
+                            ICloudinaryManager cloudinaryManager)
         {
             _sliderRepository = sliderRepository;
             _mapper = mapper;
             _fileService = fileService;
+            _cloudinaryManager = cloudinaryManager;
         }
 
         public async Task CreateAsync(SliderCreateDto model)
         {
-            string fileName = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-            var slider = _mapper.Map<Slider>(model);
-            slider.Img = fileName;
+            var imagePath = await _cloudinaryManager.FileCreateAsync(model.Image);
+            Slider slider = _mapper.Map<Slider>(model);
+            slider.Img = imagePath;
             await _sliderRepository.CreateAsync(slider);
         }
-
         public async Task DeleteAsync(int id)
         {
-            var slider = await _sliderRepository.GetByIdAsync(id);
-            if (slider is null) throw new Exception("Slider tapılmadı");
-            _fileService.Delete(slider.Img, "UploadFiles");
+            var slider = await _sliderRepository.GetWithExpressionAsync(x => x.Id == id);
+            if (slider == null) throw new Exception("Slider tapılmadı");
+            await _cloudinaryManager.FileDeleteAsync(slider.Img);
             await _sliderRepository.DeleteAsync(slider);
         }
 
+
         public async Task EditAsync(int id, SliderEditDto model)
         {
-            var existSlider = await _sliderRepository.GetByIdAsync(id);
-            if (existSlider is null) throw new Exception("Slider tapılmadı");
+            var slider = await _sliderRepository.GetByIdAsync(id);
+            if (slider == null)
+                throw new Exception("Brand tapılmadı");
 
             if (model.Image != null)
             {
-                _fileService.Delete(existSlider.Img, "UploadFiles");
-                string newFileName = await _fileService.UploadFilesAsync(model.Image, "UploadFiles");
-                existSlider.Img = newFileName;
+                if (!string.IsNullOrEmpty(slider.Img))
+                {
+                    bool deleted = await _cloudinaryManager.FileDeleteAsync(slider.Img);
+                }
+                string newImagePath = await _cloudinaryManager.FileCreateAsync(model.Image);
+                slider.Img = newImagePath;
             }
-            _mapper.Map(model, existSlider); 
-            await _sliderRepository.EditAsync(existSlider);
+            await _sliderRepository.EditAsync(slider);
         }
 
         public async Task<IEnumerable<SliderDto>> GetAllAsync()

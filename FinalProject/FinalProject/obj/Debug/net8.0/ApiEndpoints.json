@@ -835,7 +835,7 @@
   {
     "ContainingType": "FinalProject.Controllers.Admin.SliderController",
     "Method": "Delete",
-    "RelativePath": "api/admin/Slider/Delete/{id}",
+    "RelativePath": "api/admin/Slider/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -843,7 +843,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1157,11 +1157,6 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
       },
       {
         "Name": "Name",

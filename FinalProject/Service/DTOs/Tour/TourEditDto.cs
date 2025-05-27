@@ -9,7 +9,6 @@ namespace Service.DTOs.Tour
 {
     public class TourEditDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Duration { get; set; }
         public int CountryCount { get; set; }

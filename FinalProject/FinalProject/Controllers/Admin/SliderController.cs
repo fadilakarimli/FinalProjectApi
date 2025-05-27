@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.Slider;
+using Service.Services;
 using Service.Services.Interfaces;
 
 namespace FinalProject.Controllers.Admin
@@ -17,7 +18,7 @@ namespace FinalProject.Controllers.Admin
         public async Task<IActionResult> Create([FromForm] SliderCreateDto request)
         {
             await _sliderService.CreateAsync(request);
-            return CreatedAtAction(nameof(Create), "Created Succesfully");
+            return Ok();
         }
 
 
@@ -28,8 +29,8 @@ namespace FinalProject.Controllers.Admin
             return Ok(educations);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] int id)
         {
             try
             {

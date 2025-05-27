@@ -25,7 +25,8 @@ namespace Service.Helpers
             //Slider
             CreateMap<Slider, SliderDto>();
             CreateMap<SliderCreateDto, Slider>();
-            CreateMap<SliderEditDto, Slider>();
+            CreateMap<SliderEditDto, Slider>()
+                     .ForMember(dest => dest.Img, opt => opt.Ignore());
             //slider info
             CreateMap<SliderInfo, SliderInfoDto>().ReverseMap();
             CreateMap<SliderInfoCreateDto, SliderInfo>();
