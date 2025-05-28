@@ -18,6 +18,6 @@ namespace Domain.Entities
         public int CityId { get; set; }
         public City City { get; set; }
         public ICollection<TourActivity> TourActivities { get; set; }
-        public ICollection<TourAmenity> TourAmenities { get; set; }
+        public ICollection<TourAmenity> TourAmenities { get; set; } 
     }
 }

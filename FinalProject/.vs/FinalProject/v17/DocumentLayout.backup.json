@@ -3,6 +3,46 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\toureditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\toureditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\tourservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\tourservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE55BAF3-4FEE-474D-8E18-7E598F069233}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\repository\\repositories\\tourrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE55BAF3-4FEE-474D-8E18-7E598F069233}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\tourrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\teammembercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\teammembercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0A0A4B8-22B5-4664-B3DA-D60F53FA322F}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\domain\\entities\\tour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0A0A4B8-22B5-4664-B3DA-D60F53FA322F}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\tour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\teammemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\teammemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,10 +91,6 @@
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\cloudinarymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\sliderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\sliderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -77,18 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\interfaces\\isliderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\isliderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\toureditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\toureditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE55BAF3-4FEE-474D-8E18-7E598F069233}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\repository\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -114,258 +138,76 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ISpecialOfferModelRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:12:47.08Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ISpecialOfferModelService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
-              "RelativeToolTip": "Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:16:53.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SpecialOfferModelService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SpecialOfferModelService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\SpecialOfferModelService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SpecialOfferModelService.cs",
-              "RelativeToolTip": "Service\\Services\\SpecialOfferModelService.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAuwD4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:17:08.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Service\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DependencyInjection.cs",
-              "RelativeToolTip": "Service\\DependencyInjection.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:24:58.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "SpecialOfferModelController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAkwDYAAAAAAAAAAAAAAA==",
+              "Title": "TourRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\TourRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\TourRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\TourRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\TourRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:25:47.849Z",
+              "WhenOpened": "2025-05-28T20:39:31.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SpecialOfferModel.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\SpecialOfferModel.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\SpecialOfferModel.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\SpecialOfferModel.cs",
-              "RelativeToolTip": "Domain\\Entities\\SpecialOfferModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Title": "TourController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TourController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\TourController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TourController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\TourController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:14:56.109Z",
+              "WhenOpened": "2025-05-28T20:27:28.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AmenityController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AmenityController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\AmenityController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AmenityController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\AmenityController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA0wCgAAABDAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TourCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourCreateDto.cs",
+              "RelativeDocumentMoniker": "Service\\DTOs\\Tour\\TourCreateDto.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourCreateDto.cs",
+              "RelativeToolTip": "Service\\DTOs\\Tour\\TourCreateDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:25:19.182Z",
+              "WhenOpened": "2025-05-28T17:15:15.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\BaseController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\BaseController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\BaseController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\BaseController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:25:18.547Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CityController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\CityController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\CityController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\CityController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\CityController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:25:17.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IBrandRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
-              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:25:13.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SliderInfoService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderInfoService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\SliderInfoService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderInfoService.cs",
-              "RelativeToolTip": "Service\\Services\\SliderInfoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:23:39.395Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CloudinaryManager.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\CloudinaryManager.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\CloudinaryManager.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\CloudinaryManager.cs",
-              "RelativeToolTip": "Service\\Services\\CloudinaryManager.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAIwHMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:23:27.291Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SliderService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\SliderService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderService.cs",
-              "RelativeToolTip": "Service\\Services\\SliderService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:19:17.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "InstagramService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\InstagramService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\InstagramService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\InstagramService.cs",
-              "RelativeToolTip": "Service\\Services\\InstagramService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:19:14.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SpecialOfferEditDto.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
-              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
-              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:14:48.612Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Service\\Helpers\\MappingProfile.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs",
               "RelativeToolTip": "Service\\Helpers\\MappingProfile.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAqwG8AAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAqwFUAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T17:15:39.946Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SpecialOfferDto.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
-              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
-              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "TourService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TourService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\TourService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TourService.cs",
+              "RelativeToolTip": "Service\\Services\\TourService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:14:15.25Z",
+              "WhenOpened": "2025-05-28T20:27:45.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SpecialOfferCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
-              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
-              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:14:34.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ISliderService.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISliderService.cs",
-              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\ISliderService.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISliderService.cs",
-              "RelativeToolTip": "Service\\Services\\Interfaces\\ISliderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:17:18.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 1,
               "Title": "TourEditDto.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourEditDto.cs",
               "RelativeDocumentMoniker": "Service\\DTOs\\Tour\\TourEditDto.cs",
@@ -378,7 +220,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 6,
+              "Title": "TeamMemberController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TeamMemberController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\TeamMemberController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TeamMemberController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\TeamMemberController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T20:39:10.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TeamMemberService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TeamMemberService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\TeamMemberService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TeamMemberService.cs",
+              "RelativeToolTip": "Service\\Services\\TeamMemberService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T20:27:44.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Tour.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\Tour.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Tour.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\Tour.cs",
+              "RelativeToolTip": "Domain\\Entities\\Tour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T19:58:44.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ISpecialOfferModelService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\ISpecialOfferModelService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:16:53.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "TourDto.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourDto.cs",
               "RelativeDocumentMoniker": "Service\\DTOs\\Tour\\TourDto.cs",
@@ -391,20 +284,212 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "TourCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourCreateDto.cs",
-              "RelativeDocumentMoniker": "Service\\DTOs\\Tour\\TourCreateDto.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourCreateDto.cs",
-              "RelativeToolTip": "Service\\DTOs\\Tour\\TourCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAxAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "ISpecialOfferModelRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\ISpecialOfferModelRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:15:15.539Z",
+              "WhenOpened": "2025-05-28T17:12:47.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SpecialOfferModelService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SpecialOfferModelService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\SpecialOfferModelService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SpecialOfferModelService.cs",
+              "RelativeToolTip": "Service\\Services\\SpecialOfferModelService.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAuwD4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:17:08.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Service\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DependencyInjection.cs",
+              "RelativeToolTip": "Service\\DependencyInjection.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:24:58.092Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SpecialOfferModelController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\SpecialOfferModelController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwDYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:25:47.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SpecialOfferModel.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\SpecialOfferModel.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\SpecialOfferModel.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Domain\\Entities\\SpecialOfferModel.cs",
+              "RelativeToolTip": "Domain\\Entities\\SpecialOfferModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:14:56.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AmenityController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AmenityController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\AmenityController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AmenityController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\AmenityController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA0wCgAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:25:19.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\BaseController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\BaseController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\BaseController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\BaseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:25:18.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CityController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\CityController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\CityController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\CityController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\CityController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:25:17.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IBrandRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IBrandRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:25:13.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SliderInfoService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderInfoService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\SliderInfoService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderInfoService.cs",
+              "RelativeToolTip": "Service\\Services\\SliderInfoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:23:39.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CloudinaryManager.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\CloudinaryManager.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\CloudinaryManager.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\CloudinaryManager.cs",
+              "RelativeToolTip": "Service\\Services\\CloudinaryManager.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAIwHMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:23:27.291Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 22,
+              "Title": "SliderService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\SliderService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\SliderService.cs",
+              "RelativeToolTip": "Service\\Services\\SliderService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:19:17.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "InstagramService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\InstagramService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\InstagramService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\InstagramService.cs",
+              "RelativeToolTip": "Service\\Services\\InstagramService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:19:14.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SpecialOfferEditDto.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
+              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
+              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferEditDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:14:48.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "SpecialOfferDto.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
+              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
+              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:14:15.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SpecialOfferCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
+              "RelativeDocumentMoniker": "Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
+              "RelativeToolTip": "Service\\DTOs\\SpecialOffer\\SpecialOfferCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:14:34.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ISliderService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISliderService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\ISliderService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\ISliderService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\ISliderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:17:18.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Repository\\DependencyInjection.cs",
@@ -412,12 +497,11 @@
               "RelativeToolTip": "Repository\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:13:35.878Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T17:13:35.878Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "SliderRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\SliderRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\SliderRepository.cs",
@@ -425,12 +509,11 @@
               "RelativeToolTip": "Repository\\Repositories\\SliderRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:13:19.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T17:13:19.423Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "ICityRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ICityRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\ICityRepository.cs",
@@ -438,12 +521,11 @@
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\ICityRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:13:04.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T17:13:04.787Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "SpecialOfferModelRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\SpecialOfferModelRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\SpecialOfferModelRepository.cs",
@@ -451,8 +533,7 @@
               "RelativeToolTip": "Repository\\Repositories\\SpecialOfferModelRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T17:12:58.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T17:12:58.612Z"
             }
           ]
         }
