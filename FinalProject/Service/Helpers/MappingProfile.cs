@@ -12,6 +12,7 @@ using Service.DTOs.Instagram;
 using Service.DTOs.NewLetter;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
+using Service.DTOs.SpecialOffer;
 using Service.DTOs.TeamMember;
 using Service.DTOs.Tour;
 using Service.DTOs.TrandingDestination;
@@ -78,17 +79,13 @@ namespace Service.Helpers
             CreateMap<Tour, TourEditDto>()
                       .ForMember(dest => dest.ExistingImageUrl, opt => opt.MapFrom(src => src.Image));
             CreateMap<Tour, TourDto>()
-      .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-      .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+           .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+           .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
            src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
-      .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+          .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
            src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
-      .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image));
-
-
-
-
-            // Activity
+          .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image));
+             // Activity
             CreateMap<Activity, ActivityDto>();
             CreateMap<ActivityCreateDto, Activity>();
             CreateMap<ActivityEditDto, Activity>().ReverseMap();
@@ -103,6 +100,18 @@ namespace Service.Helpers
             CreateMap<InstagramCreateDto, Instagram>();
             //register
             CreateMap<RegisterDto, AppUser>();
+            //specialoffer
+            CreateMap<SpecialOfferModel, SpecialOfferDto>();
+
+            CreateMap<SpecialOfferCreateDto, SpecialOfferModel>()
+                .ForMember(dest => dest.BackgroundImageUrl, opt => opt.Ignore())
+                .ForMember(dest => dest.DiscountImageUrl, opt => opt.Ignore())
+                .ForMember(dest => dest.BagImageUrl, opt => opt.Ignore());
+
+            CreateMap<SpecialOfferEditDto, SpecialOfferModel>()
+                .ForMember(dest => dest.BackgroundImageUrl, opt => opt.Ignore())
+                .ForMember(dest => dest.DiscountImageUrl, opt => opt.Ignore())
+                .ForMember(dest => dest.BagImageUrl, opt => opt.Ignore());
 
 
 

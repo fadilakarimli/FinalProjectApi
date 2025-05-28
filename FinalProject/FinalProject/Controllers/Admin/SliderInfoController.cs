@@ -60,8 +60,8 @@ namespace FinalProject.Controllers.Admin
 
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery]int id)
         {
             try
             {

@@ -914,7 +914,7 @@
   {
     "ContainingType": "FinalProject.Controllers.Admin.SliderInfoController",
     "Method": "Delete",
-    "RelativePath": "api/admin/SliderInfo/Delete/{id}",
+    "RelativePath": "api/admin/SliderInfo/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -922,7 +922,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -962,6 +962,125 @@
     "ContainingType": "FinalProject.Controllers.Admin.SliderInfoController",
     "Method": "GetById",
     "RelativePath": "api/admin/SliderInfo/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.SpecialOfferModelController",
+    "Method": "Create",
+    "RelativePath": "api/admin/SpecialOfferModel/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TitleSmall",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TitleMain",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BackgroundImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DiscountImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "BagImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.SpecialOfferModelController",
+    "Method": "Delete",
+    "RelativePath": "api/admin/SpecialOfferModel/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.SpecialOfferModelController",
+    "Method": "Edit",
+    "RelativePath": "api/admin/SpecialOfferModel/Edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "TitleSmall",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TitleMain",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BackgroundImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DiscountImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "BagImageUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.SpecialOfferModelController",
+    "Method": "GetAll",
+    "RelativePath": "api/admin/SpecialOfferModel/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.SpecialOfferModelController",
+    "Method": "GetById",
+    "RelativePath": "api/admin/SpecialOfferModel/GetById/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

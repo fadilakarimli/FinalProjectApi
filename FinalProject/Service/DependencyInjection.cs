@@ -27,6 +27,7 @@ namespace Service
             services.AddScoped<IInstagramService, InstagramService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IEmailConfirmationService, EmailConfirmationService>();
+            services.AddScoped<ISpecialOfferModelService, SpecialOfferModelService>();
             return services;
         }
     }

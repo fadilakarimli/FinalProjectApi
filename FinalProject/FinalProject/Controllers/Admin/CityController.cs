@@ -20,7 +20,7 @@ namespace FinalProject.Controllers.Admin
             return CreatedAtAction(nameof(Create), "Created Successfully");
         }
 
-        [HttpGet]
+        [HttpGet]   
         public async Task<IActionResult> GetAll()
         {
             var datas = await _service.GetAllAsync();

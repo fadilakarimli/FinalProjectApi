@@ -28,6 +28,7 @@ namespace Repository.Data
         public DbSet<Amenity> Amenities { get; set; }
         public DbSet<TourAmenity> TourAmenities { get; set; }
         public DbSet<Instagram> Instagrams { get; set; }
+        public DbSet<SpecialOfferModel> SpecialOfferModels { get; set; }
 
     }
 }
