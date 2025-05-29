@@ -28,6 +28,7 @@ namespace Service
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IEmailConfirmationService, EmailConfirmationService>();
             services.AddScoped<ISpecialOfferModelService, SpecialOfferModelService>();
+            services.AddScoped<IExperienceService, ExperienceService>();
             return services;
         }
     }

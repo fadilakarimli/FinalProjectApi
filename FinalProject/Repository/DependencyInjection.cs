@@ -29,6 +29,7 @@ namespace Repository
             services.AddScoped<IAmenityRepository, AmenityRepository>();
             services.AddScoped<IInstagramRepository, InstagramRepository>();
             services.AddScoped<ISpecialOfferModelRepository, SpecialOfferModelRepository>();
+            services.AddScoped<IExperienceRepository, ExperienceRepository>();
             return services;
         }
     }

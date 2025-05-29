@@ -10,5 +10,7 @@ namespace Repository.Repositories.Interfaces
     public interface ITourRepository : IBaseRepository<Tour>
     {
         Task<IEnumerable<Tour>> GetAllTourWithActivityAsync();
+        Task<Tour> GetByIdWithIncludesAsync(int id);
+
     }
 }

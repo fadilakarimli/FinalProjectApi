@@ -264,6 +264,31 @@ namespace Repository.Migrations
                     b.ToTable("DestinationFeatures");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Experience", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Experiences");
+                });
+
             modelBuilder.Entity("Domain.Entities.Instagram", b =>
                 {
                     b.Property<int>("Id")
@@ -302,6 +327,38 @@ namespace Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("NewLetters");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Plan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TourId");
+
+                    b.ToTable("Plans");
                 });
 
             modelBuilder.Entity("Domain.Entities.Slider", b =>
@@ -428,6 +485,10 @@ namespace Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Desc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Duration")
                         .IsRequired()
@@ -674,6 +735,28 @@ namespace Repository.Migrations
                     b.Navigation("Country");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Experience", b =>
+                {
+                    b.HasOne("Domain.Entities.Tour", "Tour")
+                        .WithMany("Experiences")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Plan", b =>
+                {
+                    b.HasOne("Domain.Entities.Tour", "Tour")
+                        .WithMany("Plans")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("Domain.Entities.Tour", b =>
                 {
                     b.HasOne("Domain.Entities.City", "City")
@@ -796,6 +879,10 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Domain.Entities.Tour", b =>
                 {
+                    b.Navigation("Experiences");
+
+                    b.Navigation("Plans");
+
                     b.Navigation("TourActivities");
 
                     b.Navigation("TourAmenities");

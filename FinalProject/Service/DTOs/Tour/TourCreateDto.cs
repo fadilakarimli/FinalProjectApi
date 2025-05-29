@@ -12,12 +12,13 @@ namespace Service.DTOs.Tour
         public string Name { get; set; }
         public string Duration { get; set; }
         public int CountryCount { get; set; }
+        public string Desc { get; set; }
         public decimal Price { get; set; }
         public decimal? OldPrice { get; set; }
         public int CityId { get; set; }
         public IFormFile ImageFile { get; set; }
-        public List<int> ActivityIds { get; set; } // yeni
+        public List<int> ActivityIds { get; set; }
         public List<int> AmenityIds { get; set; }
-
+        public List<int> ExperienceIds { get; set; } 
     }
 }

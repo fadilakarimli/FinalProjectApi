@@ -18,12 +18,13 @@ namespace Service.Services
         private readonly ITourRepository _repo;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
+        private readonly IExperienceRepository _experienceRepository;
         private readonly IEmailService _emailService;
         private readonly INewsLetterService _newsletterService;
         private readonly ICloudinaryManager _cloudinaryManager;
 
         public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService,
-            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager)
+            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository)
         {
             _mapper = mapper;
             _repo = repo;
@@ -31,6 +32,7 @@ namespace Service.Services
             _emailService = emailService;
             _newsletterService = newsletterService;
             _cloudinaryManager = cloudinaryManager;
+            _experienceRepository = experienceRepository;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
@@ -49,6 +51,14 @@ namespace Service.Services
                 AmenityId = id
             }).ToList();
 
+            if (model.ExperienceIds != null && model.ExperienceIds.Any())
+            {
+                var experiences = await _experienceRepository
+                    .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
+
+                tour.Experiences = experiences.ToList();
+            }
+
             await _repo.CreateAsync(tour);
 
             var emails = await _newsletterService.GetAllAsync();
@@ -57,6 +67,7 @@ namespace Service.Services
                 _emailService.SendEmail(item.Email, "Travil Website", tour.Name);
             }
         }
+
 
         public async Task DeleteAsync(int id)
         {
@@ -69,7 +80,9 @@ namespace Service.Services
 
         public async Task EditAsync(int id, TourEditDto model)
         {
-            var existTour = await _repo.GetByIdAsync(id);
+            // Burada GetByIdWithIncludesAsync metodunu çağırırsınız
+            var existTour = await _repo.GetByIdWithIncludesAsync(id);
+
             if (existTour is null) throw new Exception("Tour tapılmadı");
 
             if (model.ImageFile != null)
@@ -80,8 +93,37 @@ namespace Service.Services
             }
 
             _mapper.Map(model, existTour);
+
+            existTour.TourActivities.Clear();
+            existTour.TourActivities = model.ActivityIds.Select(id => new TourActivity
+            {
+                ActivityId = id,
+                TourId = existTour.Id
+            }).ToList();
+
+            existTour.TourAmenities.Clear();
+            existTour.TourAmenities = model.AmenityIds.Select(id => new TourAmenity
+            {
+                AmenityId = id,
+                TourId = existTour.Id
+            }).ToList();
+
+            if (model.ExperienceIds != null && model.ExperienceIds.Any())
+            {
+                var experiences = await _experienceRepository
+                    .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
+
+                existTour.Experiences = experiences.ToList();
+            }
+            else
+            {
+                existTour.Experiences.Clear();
+            }
+
             await _repo.EditAsync(existTour);
         }
+
+
 
         public async Task<IEnumerable<TourDto>> GetAllAsync()
         {
@@ -90,9 +132,12 @@ namespace Service.Services
         }
         public async Task<TourDto> GetByIdAsync(int id)
         {
-            var tour = await _repo.GetByIdAsync(id);
+            var tour = await _repo.GetByIdWithIncludesAsync(id); 
+
             if (tour == null) return null;
+
             return _mapper.Map<TourDto>(tour);
         }
+
     }
 }
