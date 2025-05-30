@@ -30,6 +30,7 @@ namespace Repository
             services.AddScoped<IInstagramRepository, InstagramRepository>();
             services.AddScoped<ISpecialOfferModelRepository, SpecialOfferModelRepository>();
             services.AddScoped<IExperienceRepository, ExperienceRepository>();
+            services.AddScoped<IPlanRepository, PlanRepository>();
             return services;
         }
     }

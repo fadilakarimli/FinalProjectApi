@@ -29,6 +29,7 @@ namespace Service
             services.AddScoped<IEmailConfirmationService, EmailConfirmationService>();
             services.AddScoped<ISpecialOfferModelService, SpecialOfferModelService>();
             services.AddScoped<IExperienceService, ExperienceService>();
+            services.AddScoped<IPlanService, PlanService>();
             return services;
         }
     }

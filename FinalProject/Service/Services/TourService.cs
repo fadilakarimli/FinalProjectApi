@@ -22,9 +22,10 @@ namespace Service.Services
         private readonly IEmailService _emailService;
         private readonly INewsLetterService _newsletterService;
         private readonly ICloudinaryManager _cloudinaryManager;
+        private readonly IPlanRepository _planRepository;
 
         public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService,
-            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository)
+            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository, IPlanRepository planRepository)
         {
             _mapper = mapper;
             _repo = repo;
@@ -33,40 +34,59 @@ namespace Service.Services
             _newsletterService = newsletterService;
             _cloudinaryManager = cloudinaryManager;
             _experienceRepository = experienceRepository;
+            _planRepository = planRepository;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
-            string fileUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
+            string fileUrl = null;
+
+            if (model.ImageFile != null)
+                fileUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
 
             var tour = _mapper.Map<Tour>(model);
-            tour.Image = fileUrl;
 
-            tour.TourActivities = model.ActivityIds.Select(id => new TourActivity
+            if (fileUrl != null)
+                tour.Image = fileUrl;
+
+            tour.TourActivities = model.ActivityIds?.Select(id => new TourActivity
             {
                 ActivityId = id
-            }).ToList();
+            }).ToList() ?? new List<TourActivity>();
 
-            tour.TourAmenities = model.AmenityIds.Select(id => new TourAmenity
+            tour.TourAmenities = model.AmenityIds?.Select(id => new TourAmenity
             {
                 AmenityId = id
-            }).ToList();
+            }).ToList() ?? new List<TourAmenity>();
 
             if (model.ExperienceIds != null && model.ExperienceIds.Any())
             {
                 var experiences = await _experienceRepository
                     .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
-
                 tour.Experiences = experiences.ToList();
             }
 
-            await _repo.CreateAsync(tour);
-
-            var emails = await _newsletterService.GetAllAsync();
-            foreach (var item in emails)
+            if (model.Plans != null && model.Plans.Any())
             {
-                _emailService.SendEmail(item.Email, "Travil Website", tour.Name);
+                var plans = model.Plans
+                    .Select(p => _mapper.Map<Plan>(p))
+                    .ToList();
+
+                foreach (var plan in plans)
+                {
+                    plan.Tour = tour;  // Ən vacib: planlara touru bağla
+                }
+
+                tour.Plans = plans;
             }
+
+
+            await _repo.CreateAsync(tour);
         }
+
+
+
+
+
 
 
         public async Task DeleteAsync(int id)
@@ -80,7 +100,6 @@ namespace Service.Services
 
         public async Task EditAsync(int id, TourEditDto model)
         {
-            // Burada GetByIdWithIncludesAsync metodunu çağırırsınız
             var existTour = await _repo.GetByIdWithIncludesAsync(id);
 
             if (existTour is null) throw new Exception("Tour tapılmadı");

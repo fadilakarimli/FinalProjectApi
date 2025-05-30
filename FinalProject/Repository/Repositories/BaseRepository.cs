@@ -78,5 +78,7 @@ namespace Repository.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(predicate);
         }
+      
+
     }
 }

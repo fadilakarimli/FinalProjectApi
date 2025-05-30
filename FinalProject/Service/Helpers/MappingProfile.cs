@@ -11,6 +11,7 @@ using Service.DTOs.DestinationFeature;
 using Service.DTOs.Experience;
 using Service.DTOs.Instagram;
 using Service.DTOs.NewLetter;
+using Service.DTOs.Plan;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
 using Service.DTOs.SpecialOffer;
@@ -72,22 +73,23 @@ namespace Service.Helpers
             CreateMap<CityEditDto, City>();
             CreateMap<City, CityDto>()
                      .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name));
-            //tour
-            CreateMap<TourCreateDto, Tour>()
-                      .ForMember(dest => dest.Image, opt => opt.Ignore());
-            CreateMap<TourEditDto, Tour>()
-                      .ForMember(dest => dest.Image, opt => opt.Ignore());
-            CreateMap<Tour, TourEditDto>();
-                     
-            CreateMap<Tour, TourDto>()
-      .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-      .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-          src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
-      .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
-          src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
-      .ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
-          src.Experiences.Select(e => e.Name).ToList()))
-      .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image));
+        //    //tour
+        //    CreateMap<TourCreateDto, Tour>()
+        //              .ForMember(dest => dest.Image, opt => opt.Ignore());
+        //    CreateMap<TourEditDto, Tour>()
+        //              .ForMember(dest => dest.Image, opt => opt.Ignore());
+        //    CreateMap<Tour, TourEditDto>();
+        //    CreateMap<Tour, TourDto>()
+        //.ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+        //.ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+        //    src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+        //.ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+        //    src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
+        //.ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
+        //    src.Experiences.Select(e => e.Name).ToList()))
+        //.ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
+        //.ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans map edildi
+
 
             // Activity
             CreateMap<Activity, ActivityDto>();
@@ -123,6 +125,30 @@ namespace Service.Helpers
 
             CreateMap<ExperienceCreateDto, Experience>();
             CreateMap<ExperienceEditDto, Experience>().ReverseMap();
+
+            CreateMap<TourCreateDto, Tour>()
+            .ForMember(dest => dest.Image, opt => opt.Ignore());
+
+            CreateMap<TourEditDto, Tour>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+
+            CreateMap<Tour, TourEditDto>();
+
+            CreateMap<Tour, TourDto>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+                .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+                    src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+                .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+                    src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
+                .ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
+                    src.Experiences.Select(e => e.Name).ToList()))
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
+                .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans mapping
+
+            // Plan mappings
+            CreateMap<Plan, PlanDto>();
+            CreateMap<PlanCreateDto, Plan>();
+            CreateMap<PlanEditDto, Plan>();
 
 
 

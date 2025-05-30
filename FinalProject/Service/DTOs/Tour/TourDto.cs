@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service.DTOs.Plan;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,6 @@ namespace Service.DTOs.Tour
         public List<string> ActivityNames { get; set; } 
         public List<string> Amenities { get; set; }
         public List<string> ExperienceNames { get; set; }
+        public List<PlanDto> Plans { get; set; }
     }
 }

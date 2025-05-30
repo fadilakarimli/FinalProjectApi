@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Service.DTOs.Plan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Service.DTOs.Tour
         public IFormFile ImageFile { get; set; }
         public List<int> ActivityIds { get; set; }
         public List<int> AmenityIds { get; set; }
-        public List<int> ExperienceIds { get; set; } 
+        public List<int> ExperienceIds { get; set; }
+        public List<PlanCreateDto> Plans { get; set; }
     }
 }

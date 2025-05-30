@@ -19,5 +19,6 @@ namespace Repository.Repositories.Interfaces
         Task<T> GetWithExpressionAsync(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> GetAllWithExpressionAsync(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> GetAllWithIcludesAsync(params Expression<Func<T, object>>[] includes);
+
     }
 }
