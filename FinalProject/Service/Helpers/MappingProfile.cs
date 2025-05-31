@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Service.DTOs.AboutAgency;
 using Service.DTOs.Account;
 using Service.DTOs.Activity;
 using Service.DTOs.Amenity;
@@ -125,7 +126,7 @@ namespace Service.Helpers
 
             CreateMap<ExperienceCreateDto, Experience>();
             CreateMap<ExperienceEditDto, Experience>().ReverseMap();
-
+            //tour
             CreateMap<TourCreateDto, Tour>()
             .ForMember(dest => dest.Image, opt => opt.Ignore());
 
@@ -145,14 +146,18 @@ namespace Service.Helpers
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
                 .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans mapping
 
-            // Plan mappings
+            // Plan 
             CreateMap<Plan, PlanDto>();
             CreateMap<PlanCreateDto, Plan>();
             CreateMap<PlanEditDto, Plan>();
+            //about agency
+            CreateMap<AboutAgencyCreateDto, AboutAgency>()
+               .ForMember(dest => dest.Image, opt => opt.Ignore());
 
+            CreateMap<AboutAgencyEditDto, AboutAgency>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
 
-
-
+            CreateMap<AboutAgency, AboutAgencyDto>();
         }
     }
 }

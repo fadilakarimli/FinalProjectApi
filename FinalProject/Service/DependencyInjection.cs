@@ -30,6 +30,7 @@ namespace Service
             services.AddScoped<ISpecialOfferModelService, SpecialOfferModelService>();
             services.AddScoped<IExperienceService, ExperienceService>();
             services.AddScoped<IPlanService, PlanService>();
+            services.AddScoped<IAboutAgencyService, AboutAgencyService>();
             return services;
         }
     }

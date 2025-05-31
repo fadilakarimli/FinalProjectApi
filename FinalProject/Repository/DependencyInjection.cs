@@ -31,6 +31,7 @@ namespace Repository
             services.AddScoped<ISpecialOfferModelRepository, SpecialOfferModelRepository>();
             services.AddScoped<IExperienceRepository, ExperienceRepository>();
             services.AddScoped<IPlanRepository, PlanRepository>();
+            services.AddScoped<IAboutAgencyRepository, AboutAgencyRepository>();
             return services;
         }
     }

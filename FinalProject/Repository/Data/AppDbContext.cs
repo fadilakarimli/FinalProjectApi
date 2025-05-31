@@ -31,5 +31,7 @@ namespace Repository.Data
         public DbSet<SpecialOfferModel> SpecialOfferModels { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Plan> Plans { get; set; }
+        public DbSet<AboutAgency> AboutAgencies { get; set; }
+
     }
 }
