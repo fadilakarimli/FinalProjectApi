@@ -31,6 +31,7 @@ namespace Service
             services.AddScoped<IExperienceService, ExperienceService>();
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IAboutAgencyService, AboutAgencyService>();
+            services.AddScoped<ISendEmailService, SendEmailService>();
             return services;
         }
     }

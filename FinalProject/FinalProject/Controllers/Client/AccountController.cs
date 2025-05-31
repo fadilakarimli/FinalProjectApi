@@ -30,9 +30,10 @@ namespace FinalProject.Controllers.Client
         [HttpGet]
         public async Task<IActionResult> VerifyEmail(string verifyEmail, string token)
         {
-            if (VerifyEmail == null || token == null) return BadRequest("Something went wrong");
+            if (verifyEmail == null || token == null) return BadRequest("Something went wrong");
             var response = await _accountService.VerifyEmail(verifyEmail, token);
             return Ok(response);
         }
+
     }
 }
