@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Repository.Repositories.Interfaces;
 using Service.Services;
 using Service.Services.Interfaces;
 
@@ -32,6 +33,12 @@ namespace Service
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IAboutAgencyService, AboutAgencyService>();
             services.AddScoped<ISendEmailService, SendEmailService>();
+            services.AddScoped<ITourBannerService, TourBannerService>();
+            services.AddScoped<ITourDetailBannerService, TourDetailBannerService>();
+            services.AddScoped<IDestinationBannerService, DestinationBannerService>();
+            services.AddScoped<IAboutBannerService, AboutBannerService>();
+            services.AddScoped<IChooseUsAboutService, ChooseUsAboutService>();
+            services.AddScoped<IAboutDestinationService, AboutDestinationService>();
             return services;
         }
     }

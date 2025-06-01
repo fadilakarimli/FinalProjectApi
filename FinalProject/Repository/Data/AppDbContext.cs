@@ -32,6 +32,12 @@ namespace Repository.Data
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<AboutAgency> AboutAgencies { get; set; }
+        public DbSet<TourBanner> TourBanners { get; set; }
+        public DbSet<TourDetailBanner> TourDetailBanners { get; set; }
+        public DbSet<DestinationBanner> DestinationBanners { get; set; }
+        public DbSet<AboutBanner> AboutBanners { get; set; }
+        public DbSet<ChooseUsAbout> ChooseUsAbouts { get; set; }
+        public DbSet<AboutDestination> AboutDestinations { get; set; }
 
     }
 }

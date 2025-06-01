@@ -32,6 +32,12 @@ namespace Repository
             services.AddScoped<IExperienceRepository, ExperienceRepository>();
             services.AddScoped<IPlanRepository, PlanRepository>();
             services.AddScoped<IAboutAgencyRepository, AboutAgencyRepository>();
+            services.AddScoped<ITourBannerRepository, TourBannerRepository>();
+            services.AddScoped<ITourDetailBannerRepository, TourDetailBannerRepository>();
+            services.AddScoped<IDestinationBannerRepository, DestinationBannerRepository>();
+            services.AddScoped<IAboutBannerRepository, AboutBannerRepository>();
+            services.AddScoped<IChooseUsAboutRepository, ChooseUsAboutRepository>();
+            services.AddScoped<IAboutDestinationRepository, AboutDestinationRepository>();
             return services;
         }
     }

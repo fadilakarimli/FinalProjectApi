@@ -1,13 +1,17 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.DTOs.AboutAgency;
+using Service.DTOs.AboutBanner;
+using Service.DTOs.AboutDestination;
 using Service.DTOs.Account;
 using Service.DTOs.Activity;
 using Service.DTOs.Amenity;
 using Service.DTOs.Blog;
 using Service.DTOs.Brand;
+using Service.DTOs.ChooseUsAbout;
 using Service.DTOs.City;
 using Service.DTOs.Country;
+using Service.DTOs.DestinationBanner;
 using Service.DTOs.DestinationFeature;
 using Service.DTOs.Experience;
 using Service.DTOs.Instagram;
@@ -18,6 +22,8 @@ using Service.DTOs.SliderInfo;
 using Service.DTOs.SpecialOffer;
 using Service.DTOs.TeamMember;
 using Service.DTOs.Tour;
+using Service.DTOs.TourBanner;
+using Service.DTOs.TourDetailBanner;
 using Service.DTOs.TrandingDestination;
 
 namespace Service.Helpers
@@ -153,11 +159,43 @@ namespace Service.Helpers
             //about agency
             CreateMap<AboutAgencyCreateDto, AboutAgency>()
                .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             CreateMap<AboutAgencyEditDto, AboutAgency>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             CreateMap<AboutAgency, AboutAgencyDto>();
+            //tourbanner
+            CreateMap<TourBanner, TourBannerDto>();
+            CreateMap<TourBannerCreateDto, TourBanner>();
+            CreateMap<TourBannerEditDto, TourBanner>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+
+            //tourdetailbanner
+            CreateMap<TourDetailBannerCreateDto, TourDetailBanner>();
+            CreateMap<TourDetailBannerEditDto, TourDetailBanner>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<TourDetailBanner, TourDetailBannerDto>();
+            //destination 
+            CreateMap<DestinationBannerCreateDto, DestinationBanner>();
+            CreateMap<DestinationBannerEditDto, DestinationBanner>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<DestinationBanner, DestinationBannerDto>();
+
+            //aboutbanner
+            CreateMap<AboutBannerCreateDto, AboutBanner>();
+            CreateMap<AboutBannerEditDto, AboutBanner>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<AboutBanner, AboutBannerDto>();
+
+            //chooseusabout
+            CreateMap<ChooseUsAboutCreateDto, ChooseUsAbout>();
+            CreateMap<ChooseUsAboutEditDto, ChooseUsAbout>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<ChooseUsAbout, ChooseUsAboutDto>();
+
+            //aboutdestination
+            CreateMap<AboutDestinationCreateDto, AboutDestination>();
+            CreateMap<AboutDestinationEditDto, AboutDestination>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<AboutDestination, AboutDestinationDto>();
         }
     }
 }
