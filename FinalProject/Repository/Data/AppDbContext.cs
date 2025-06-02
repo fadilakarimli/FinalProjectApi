@@ -38,6 +38,10 @@ namespace Repository.Data
         public DbSet<AboutBanner> AboutBanners { get; set; }
         public DbSet<ChooseUsAbout> ChooseUsAbouts { get; set; }
         public DbSet<AboutDestination> AboutDestinations { get; set; }
+        public DbSet<AboutTravil> AboutTravils { get; set; }
+        public DbSet<AboutTeamMember> AboutTeamMembers { get; set; }
+        public DbSet<AboutApp> AboutApps { get; set; }
+        public DbSet<AboutBlog> AboutBlogs { get; set; }
 
     }
 }

@@ -29,7 +29,6 @@ namespace Service.Services
         private readonly JWTSetting _jwt;
         private readonly IEmailConfirmationService _emailConfirmationService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
         private readonly SymmetricSecurityKey _securityKey;
         private readonly IConfiguration _configuration;
 
@@ -116,7 +115,8 @@ namespace Service.Services
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var request = _httpContextAccessor.HttpContext.Request;
             string baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
-            string url = $"{baseUrl}/api/Client/Account/VerifyEmail?verifyEmail={HttpUtility.UrlEncode(user.Email)}&token={HttpUtility.UrlEncode(token)}";
+            //string url = $"{baseUrl}/api/Client/Account/VerifyEmail?verifyEmail={HttpUtility.UrlEncode(user.Email)}&token={HttpUtility.UrlEncode(token)}";
+            string url = $"https://localhost:7145/api/Account/VerifyEmail?verifyEmail={HttpUtility.UrlEncode(user.Email)}&token={HttpUtility.UrlEncode(token)}";
             var template = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "confirm", "emailconfrim.html"));
             template = template.Replace("{{link}}", url);
             _emailConfirmationService.Send(user.Email, "Email confirmation", template);

@@ -38,6 +38,10 @@ namespace Repository
             services.AddScoped<IAboutBannerRepository, AboutBannerRepository>();
             services.AddScoped<IChooseUsAboutRepository, ChooseUsAboutRepository>();
             services.AddScoped<IAboutDestinationRepository, AboutDestinationRepository>();
+            services.AddScoped<IAboutTravilRepository, AboutTravilRepository>();
+            services.AddScoped<IAboutTeamMemberRepository, AboutTeamMemberRepository>();
+            services.AddScoped<IAboutAppRepository, AboutAppRepository>();
+            services.AddScoped<IAboutBlogRepository, AboutBlogRepository>();
             return services;
         }
     }

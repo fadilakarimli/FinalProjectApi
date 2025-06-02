@@ -39,7 +39,11 @@ namespace Service
             services.AddScoped<IAboutBannerService, AboutBannerService>();
             services.AddScoped<IChooseUsAboutService, ChooseUsAboutService>();
             services.AddScoped<IAboutDestinationService, AboutDestinationService>();
+            services.AddScoped<IAboutTravilService, AboutTravilService>();
+            services.AddScoped<IAboutTeamMemberService, AboutTeamMemberService>();
+            services.AddScoped<IAboutAppService, AboutAppService>();
+            services.AddScoped<IAboutBlogService, AboutBlogService>();
             return services;
         }
-    }
+    }   
 }

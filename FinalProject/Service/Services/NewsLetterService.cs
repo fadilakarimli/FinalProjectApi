@@ -3,11 +3,6 @@ using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.NewLetter;
 using Service.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services
 {

@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.DTOs.AboutAgency;
+using Service.DTOs.AboutApp;
 using Service.DTOs.AboutBanner;
+using Service.DTOs.AboutBlog;
 using Service.DTOs.AboutDestination;
+using Service.DTOs.AboutTeamMember;
+using Service.DTOs.AboutTravil;
 using Service.DTOs.Account;
 using Service.DTOs.Activity;
 using Service.DTOs.Amenity;
@@ -46,7 +50,6 @@ namespace Service.Helpers
             CreateMap<TrandingDestinationCreateDto, TrandingDestination>();
             CreateMap<TrandingDestinationEditDto, TrandingDestination>()
                      .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             //brand
             CreateMap<Brand, BrandDto>().ReverseMap();
             CreateMap<BrandCreateDto, Brand>();
@@ -96,8 +99,6 @@ namespace Service.Helpers
         //    src.Experiences.Select(e => e.Name).ToList()))
         //.ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
         //.ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans map edildi
-
-
             // Activity
             CreateMap<Activity, ActivityDto>();
             CreateMap<ActivityCreateDto, Activity>();
@@ -126,21 +127,16 @@ namespace Service.Helpers
                 .ForMember(dest => dest.DiscountImageUrl, opt => opt.Ignore())
                 .ForMember(dest => dest.BagImageUrl, opt => opt.Ignore());
             //experience
-
             CreateMap<Experience, ExperienceDto>()
             .ForMember(dest => dest.TourName, opt => opt.MapFrom(src => src.Tour.Name));
-
             CreateMap<ExperienceCreateDto, Experience>();
             CreateMap<ExperienceEditDto, Experience>().ReverseMap();
             //tour
             CreateMap<TourCreateDto, Tour>()
             .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             CreateMap<TourEditDto, Tour>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             CreateMap<Tour, TourEditDto>();
-
             CreateMap<Tour, TourDto>()
                 .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
                 .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
@@ -151,7 +147,6 @@ namespace Service.Helpers
                     src.Experiences.Select(e => e.Name).ToList()))
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
                 .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans mapping
-
             // Plan 
             CreateMap<Plan, PlanDto>();
             CreateMap<PlanCreateDto, Plan>();
@@ -167,7 +162,6 @@ namespace Service.Helpers
             CreateMap<TourBannerCreateDto, TourBanner>();
             CreateMap<TourBannerEditDto, TourBanner>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
-
             //tourdetailbanner
             CreateMap<TourDetailBannerCreateDto, TourDetailBanner>();
             CreateMap<TourDetailBannerEditDto, TourDetailBanner>()
@@ -178,24 +172,48 @@ namespace Service.Helpers
             CreateMap<DestinationBannerEditDto, DestinationBanner>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<DestinationBanner, DestinationBannerDto>();
-
             //aboutbanner
             CreateMap<AboutBannerCreateDto, AboutBanner>();
             CreateMap<AboutBannerEditDto, AboutBanner>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<AboutBanner, AboutBannerDto>();
-
             //chooseusabout
             CreateMap<ChooseUsAboutCreateDto, ChooseUsAbout>();
             CreateMap<ChooseUsAboutEditDto, ChooseUsAbout>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<ChooseUsAbout, ChooseUsAboutDto>();
-
             //aboutdestination
             CreateMap<AboutDestinationCreateDto, AboutDestination>();
             CreateMap<AboutDestinationEditDto, AboutDestination>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<AboutDestination, AboutDestinationDto>();
+            //abouttravil
+            CreateMap<AboutTravilCreateDto, AboutTravil>();
+            CreateMap<AboutTravilEditDto, AboutTravil>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<AboutTravil, AboutTravilDto>();
+            //aboutteammember
+            CreateMap<AboutTeamMemberCreateDto, AboutTeamMember>();
+            CreateMap<AboutTeamMemberEditDto, AboutTeamMember>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<AboutTeamMember, AboutTeamMemberDto>();
+            //aboutapp
+            CreateMap<AboutAppCreateDto, AboutApp>();
+            CreateMap<AboutAppEditDto, AboutApp>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore())
+                .ForMember(dest => dest.AppleImage, opt => opt.Ignore())
+                .ForMember(dest => dest.PlayStoreImage, opt => opt.Ignore())
+                .ForMember(dest => dest.BackgroundImage, opt => opt.Ignore());
+            CreateMap<AboutApp, AboutAppDto>();
+            //aboutblog
+            CreateMap<AboutBlogCreateDto, AboutBlog>();
+            CreateMap<AboutBannerEditDto, AboutBlog>()
+                .ForMember(dest => dest.Image, opt => opt.Ignore());
+            CreateMap<AboutBlog, AboutBlogDto>();
+
+
+
+
         }
     }
 }
