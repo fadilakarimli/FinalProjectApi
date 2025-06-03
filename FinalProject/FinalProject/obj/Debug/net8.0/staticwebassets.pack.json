@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\confirm\\emailconfrim.html"
     },
     {
+      "Id": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\confirm\\resetpassword.html",
+      "PackagePath": "staticwebassets\\confirm\\resetpassword.html"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FinalProject.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

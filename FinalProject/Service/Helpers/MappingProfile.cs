@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Service.DTOs.AboutAgency;
 using Service.DTOs.AboutApp;
 using Service.DTOs.AboutBanner;
@@ -216,6 +217,10 @@ namespace Service.Helpers
             CreateMap<SettingCreateDto, Setting>();
             CreateMap<SettingEditDto, Setting>();
             CreateMap<Setting, SettingDto>();
+
+            //account
+            CreateMap<AppUser, UserDto>();
+            CreateMap<IdentityRole, RoleDto>();
 
 
 

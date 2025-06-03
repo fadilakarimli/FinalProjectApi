@@ -17,6 +17,15 @@ namespace Service.Services.Interfaces
         Task<LoginResponse> LoginAsync(LoginDto model);
         Task<string> VerifyEmail(string VerifyEmail, string token);
         string CreateToken(AppUser user, IList<string> roles);
-        //Task<IdentityResult> ConfirmEmailAsync(string userId, string token);    
+        Task ForgetPassword(string usernameOrEmail);
+        Task ConfirmForgetPassword(string token, string userId, string newPassword);
+        Task<IEnumerable<UserDto>> GetAllUsersAsync();
+        Task<IEnumerable<RoleDto>> GetAllRolesByUserIdAsync(string userId);
+        Task<IEnumerable<RoleDto>> GetAllRoles();
+        Task CreateRole(string roleName);
+        Task DeleteRole(string roleName);
+        Task AddRoleToUser(string roleName, string userId);
+        Task DeleteRoleToUser(string roleName, string userId);
+
     }
 }

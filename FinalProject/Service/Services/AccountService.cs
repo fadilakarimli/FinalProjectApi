@@ -2,9 +2,11 @@
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Repository.Data;
 using Service.DTOs.Account;
 using Service.Helpers;
 using Service.Helpers.Enums;
@@ -31,10 +33,13 @@ namespace Service.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly SymmetricSecurityKey _securityKey;
         private readonly IConfiguration _configuration;
+        private readonly AppDbContext _context;
+
 
         public AccountService(UserManager<AppUser> userManager, IMapper mapper, RoleManager<IdentityRole> roleManager,
                                                                 IOptions<JWTSetting> options, IHttpContextAccessor httpContextAccessor
-                                                                ,IEmailConfirmationService emailConfirmationService, IConfiguration configuration)
+                                                                ,IEmailConfirmationService emailConfirmationService, IConfiguration configuration
+                                                                 ,AppDbContext context)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -44,6 +49,70 @@ namespace Service.Services
             _emailConfirmationService = emailConfirmationService;
             _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]));
             _configuration = configuration;
+            _context = context;
+        }
+
+        public async Task ForgetPassword(string usernameOrEmail)
+        {
+            var findUser = await _userManager.FindByEmailAsync(usernameOrEmail);
+            if (findUser == null)
+            {
+                findUser = await _userManager.FindByNameAsync(usernameOrEmail);
+            }
+
+            await SendResetPasswordEmail(findUser.Email, "Password Reset");
+        }
+
+        public async Task<EmailConfirmationResponse> SendResetPasswordEmail(string email, string subject)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            string encodedToken = Uri.EscapeDataString(token);
+
+            string html = string.Empty;
+
+            string url = $"https://localhost:7145//Account/PasswordReset?userId={user.Id}&token={encodedToken}";
+
+            using (StreamReader reader = new StreamReader("wwwroot/confirm/resetpassword.html"))
+            {
+                html = reader.ReadToEnd();
+            }
+            html = html.Replace("{{confirmlink}}", url).Replace("{##username##}", user.UserName);
+
+            _emailConfirmationService.Send(user.Email, "Password Reset", html);
+            return new EmailConfirmationResponse()
+            {
+                Success = false,
+                Messages = new List<string> { "Please check email Address" }
+            };
+        }
+
+        public async Task ConfirmForgetPassword(string token, string userId, string newPassword)
+        {
+            var findUser = await _userManager.FindByIdAsync(userId);
+
+            await _userManager.ResetPasswordAsync(findUser, token, newPassword);
+        }
+
+        public async Task<IEnumerable<RoleDto>> GetAllRolesByUserIdAsync(string userId)
+        {
+            IEnumerable<string> Roles = await _userManager.GetRolesAsync(await _userManager.FindByIdAsync(userId));
+
+            List<IdentityRole> IdentityRoles = new List<IdentityRole>();
+
+            foreach (var role in Roles)
+            {
+                var findRole = await _roleManager.FindByNameAsync(role);
+
+                IdentityRoles.Add(findRole);
+            }
+            return _mapper.Map<IEnumerable<RoleDto>>(IdentityRoles);
+        }
+
+        public async Task<IEnumerable<RoleDto>> GetAllRoles()
+        {
+            return _mapper.Map<IEnumerable<RoleDto>>(await _roleManager.Roles.ToListAsync());
         }
 
         public async Task CreateRolesAsync()
@@ -56,6 +125,12 @@ namespace Service.Services
                 }
             }
         }
+
+        public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
+        {
+            return _mapper.Map<IEnumerable<UserDto>>(await _userManager.Users.ToListAsync());
+        }
+
 
         public async Task<LoginResponse> LoginAsync(LoginDto model)
         {
@@ -162,6 +237,26 @@ namespace Service.Services
             JwtSecurityTokenHandler securityTokenHandler = new JwtSecurityTokenHandler();
             var token = securityTokenHandler.CreateToken(tokenDescriptor);
             return securityTokenHandler.WriteToken(token);
+        }
+
+        public Task CreateRole(string roleName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteRole(string roleName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddRoleToUser(string roleName, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteRoleToUser(string roleName, string userId)
+        {
+            throw new NotImplementedException();
         }
 
 
