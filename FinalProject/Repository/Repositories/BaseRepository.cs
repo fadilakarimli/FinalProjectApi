@@ -78,7 +78,16 @@ namespace Repository.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(predicate);
         }
-      
+
+
+        public async Task<bool> CheckDataWithExpression(Expression<Func<T, bool>> predicate)
+        {
+            var entity = await _dbSet.FirstOrDefaultAsync(predicate);
+            if (entity == null) return false;
+
+            return true;
+        }
+
 
     }
 }

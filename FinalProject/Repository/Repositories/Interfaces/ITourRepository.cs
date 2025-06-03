@@ -11,6 +11,11 @@ namespace Repository.Repositories.Interfaces
     {
         Task<IEnumerable<Tour>> GetAllTourWithActivityAsync();
         Task<Tour> GetByIdWithIncludesAsync(int id);
+        Task<IEnumerable<Tour>> SortAsync(string sortOrder);
+
+        Task<IEnumerable<Tour>> GetPaginatedDatasAsync(int page, int take);
+
+        Task<int> GetCountAsync();
 
     }
 }

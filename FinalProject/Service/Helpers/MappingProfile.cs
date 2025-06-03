@@ -21,6 +21,7 @@ using Service.DTOs.Experience;
 using Service.DTOs.Instagram;
 using Service.DTOs.NewLetter;
 using Service.DTOs.Plan;
+using Service.DTOs.Setting;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
 using Service.DTOs.SpecialOffer;
@@ -211,6 +212,10 @@ namespace Service.Helpers
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<AboutBlog, AboutBlogDto>();
 
+            //setting
+            CreateMap<SettingCreateDto, Setting>();
+            CreateMap<SettingEditDto, Setting>();
+            CreateMap<Setting, SettingDto>();
 
 
 

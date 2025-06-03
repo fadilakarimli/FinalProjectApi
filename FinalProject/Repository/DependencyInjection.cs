@@ -42,6 +42,8 @@ namespace Repository
             services.AddScoped<IAboutTeamMemberRepository, AboutTeamMemberRepository>();
             services.AddScoped<IAboutAppRepository, AboutAppRepository>();
             services.AddScoped<IAboutBlogRepository, AboutBlogRepository>();
+            services.AddScoped<ISettingRepository, SettingRepository>();
+
             return services;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.TrandingDestination;
+using Service.Services;
 using Service.Services.Interfaces;
 
 namespace FinalProject.Controllers.Admin
@@ -80,6 +81,13 @@ namespace FinalProject.Controllers.Admin
             {
                 return StatusCode(404, ex.Message);
             }
+        }
+
+        [HttpGet("paginated")]
+        public async Task<IActionResult> GetPaginated(int page = 1, int take = 5)
+        {
+            var result = await _service.GetPaginatedAsync(page, take);
+            return Ok(result);
         }
     }
 }

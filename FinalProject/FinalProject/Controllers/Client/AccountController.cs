@@ -35,5 +35,20 @@ namespace FinalProject.Controllers.Client
             return Ok(response);
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        //{
+        //    var result = await _accountService.ConfirmEmailAsync(userId, token);
+        //    if (result.Succeeded)
+        //    {
+        //        return Redirect("/login");
+        //    }
+        //    else
+        //    {
+        //        return BadRequest("Təsdiqləmə alınmadı.");
+        //    }
+        //}
+
+
     }
 }

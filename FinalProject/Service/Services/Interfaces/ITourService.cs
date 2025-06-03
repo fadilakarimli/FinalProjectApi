@@ -1,5 +1,6 @@
 ﻿using Service.DTOs.Slider;
 using Service.DTOs.Tour;
+using Service.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace Service.Services.Interfaces
         Task CreateAsync(TourCreateDto model);
         Task EditAsync(int id, TourEditDto model);
         Task DeleteAsync(int id);
+        Task<Paginate<TourDto>> GetPaginatedAsync(int page, int pageSize);
+        //Task<IEnumerable<TourDto>> SearchAsync(string name);
+        //Task<IEnumerable<TourDto>> SortAsync(string sortOrder);
+        //Task<Paginate<TourDto>> GetPaginatedDatasAsync(int page);
     }
 }

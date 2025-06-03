@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Service.DTOs.Account;
 using Service.Helpers.Responses;
 using System;
@@ -16,5 +17,6 @@ namespace Service.Services.Interfaces
         Task<LoginResponse> LoginAsync(LoginDto model);
         Task<string> VerifyEmail(string VerifyEmail, string token);
         string CreateToken(AppUser user, IList<string> roles);
+        //Task<IdentityResult> ConfirmEmailAsync(string userId, string token);    
     }
 }

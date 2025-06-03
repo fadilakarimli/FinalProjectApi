@@ -43,6 +43,8 @@ namespace Service
             services.AddScoped<IAboutTeamMemberService, AboutTeamMemberService>();
             services.AddScoped<IAboutAppService, AboutAppService>();
             services.AddScoped<IAboutBlogService, AboutBlogService>();
+            services.AddScoped<ISettingService, SettingService>();
+
             return services;
         }
     }   

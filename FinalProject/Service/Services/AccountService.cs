@@ -135,7 +135,8 @@ namespace Service.Services
             await _userManager.UpdateSecurityStampAsync(appUser);
             var roles = await _userManager.GetRolesAsync(appUser);
 
-            return CreateToken(appUser, roles);
+            // ✅ Email təsdiqləndikdən sonra serverdən təsdiq mesajı göndəririk
+            return "Email verified successfully!";
         }
         public string CreateToken(AppUser user, IList<string> roles)
         {
@@ -162,5 +163,19 @@ namespace Service.Services
             var token = securityTokenHandler.CreateToken(tokenDescriptor);
             return securityTokenHandler.WriteToken(token);
         }
+
+
+        //public async Task<IdentityResult> ConfirmEmailAsync(string userId, string token)
+        //{
+        //    if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+        //        return IdentityResult.Failed(new IdentityError { Description = "İstifadəçi ID və ya token boşdur." });
+
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null)
+        //        return IdentityResult.Failed(new IdentityError { Description = "İstifadəçi tapılmadı." });
+
+        //    var result = await _userManager.ConfirmEmailAsync(user, token);
+        //    return result;
+        //}
     }
 }

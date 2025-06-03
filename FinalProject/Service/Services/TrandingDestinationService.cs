@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Repository.Repositories.Interfaces;
+using Service.DTOs.Tour;
 using Service.DTOs.TrandingDestination;
+using Service.Helpers;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -75,6 +77,17 @@ namespace Service.Services
             if (entity == null) throw new Exception("Tranding Destination tapılmadı");
 
             return _mapper.Map<TrandingDestinationDto>(entity);
+        }
+
+        public async Task<Paginate<TrandingDestinationDto>> GetPaginatedAsync(int page, int take)
+        {
+            var trandingDest = await _repository.GetPaginatedDatasAsync(page, take);
+            var totalCount = await _repository.GetCountAsync();
+            var trandingDestDtos = _mapper.Map<IEnumerable<TrandingDestinationDto>>(trandingDest);
+
+            var pageCount = (int)System.Math.Ceiling((decimal)totalCount / take);
+
+            return new Paginate<TrandingDestinationDto>(trandingDestDtos, pageCount, page);
         }
     }
 }

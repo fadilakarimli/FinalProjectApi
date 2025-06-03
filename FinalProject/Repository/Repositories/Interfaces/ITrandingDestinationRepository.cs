@@ -9,5 +9,10 @@ namespace Repository.Repositories.Interfaces
 {
     public interface ITrandingDestinationRepository : IBaseRepository<TrandingDestination>
     {
+        Task<IEnumerable<TrandingDestination>> SortAsync(string sortOrder);
+
+        Task<IEnumerable<TrandingDestination>> GetPaginatedDatasAsync(int page, int take);
+
+        Task<int> GetCountAsync();
     }
 }

@@ -63,6 +63,13 @@ namespace FinalProject.Controllers.Admin
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("paginated")]
+        public async Task<IActionResult> GetPaginated(int page = 1, int take = 5)
+        {
+            var result = await _tourService.GetPaginatedAsync(page, take);
+            return Ok(result);
+        }
+
 
 
     }

@@ -4,6 +4,7 @@ using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Slider;
 using Service.DTOs.Tour;
+using Service.Helpers;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,12 @@ namespace Service.Services
         private readonly INewsLetterService _newsletterService;
         private readonly ICloudinaryManager _cloudinaryManager;
         private readonly IPlanRepository _planRepository;
+        private readonly ISettingRepository _settingRepository;
+
 
         public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService,
-            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository, IPlanRepository planRepository)
+                           INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository, IPlanRepository planRepository
+                         , ISettingRepository settingRepository)
         {
             _mapper = mapper;
             _repo = repo;
@@ -35,6 +39,7 @@ namespace Service.Services
             _cloudinaryManager = cloudinaryManager;
             _experienceRepository = experienceRepository;
             _planRepository = planRepository;
+            _settingRepository = settingRepository;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
@@ -156,6 +161,17 @@ namespace Service.Services
             if (tour == null) return null;
 
             return _mapper.Map<TourDto>(tour);
+        }
+
+        public async Task<Paginate<TourDto>> GetPaginatedAsync(int page, int take)
+        {
+            var tours = await _repo.GetPaginatedDatasAsync(page, take);
+            var totalCount = await _repo.GetCountAsync();
+            var tourDtos = _mapper.Map<IEnumerable<TourDto>>(tours);
+
+            var pageCount = (int)System.Math.Ceiling((decimal)totalCount / take);
+
+            return new Paginate<TourDto>(tourDtos, pageCount, page);
         }
 
     }

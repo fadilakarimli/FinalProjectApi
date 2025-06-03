@@ -42,6 +42,9 @@ namespace Repository.Data
         public DbSet<AboutTeamMember> AboutTeamMembers { get; set; }
         public DbSet<AboutApp> AboutApps { get; set; }
         public DbSet<AboutBlog> AboutBlogs { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+
+
 
     }
 }

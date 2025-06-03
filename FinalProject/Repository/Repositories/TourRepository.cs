@@ -35,5 +35,32 @@
         .Include(t => t.Experiences)
         .FirstOrDefaultAsync(t => t.Id == id);
         }
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Tours.CountAsync();
+        }
+
+        public async Task<IEnumerable<Tour>> GetPaginatedDatasAsync(int page, int take)
+        {
+            return await _context.Tours.Skip((page * take) - take).Take(take).ToListAsync();
+        }
+
+
+        public async Task<IEnumerable<Tour>> SortAsync(string sortOrder)
+        {
+            var educations = await _context.Tours.ToListAsync();
+
+            if (sortOrder == "asc")
+            {
+                educations = educations.OrderBy(e => e.Name).ToList();
+            }
+            else if (sortOrder == "desc")
+            {
+                educations = educations.OrderByDescending(e => e.Name).ToList();
+            }
+
+            return educations;
+        }
+
     }
 }
