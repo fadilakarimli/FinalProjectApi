@@ -25,6 +25,7 @@ namespace FinalProject.Controllers.Client
         public async Task<IActionResult> Login([FromBody] LoginDto request)
         {
             return Ok(await _accountService.LoginAsync(request));
+
         }
 
         [HttpGet]
@@ -32,23 +33,10 @@ namespace FinalProject.Controllers.Client
         {
             if (verifyEmail == null || token == null) return BadRequest("Something went wrong");
             var response = await _accountService.VerifyEmail(verifyEmail, token);
-            return Ok(response);
+
+            return Redirect("https://localhost:7014/Account/Login");
+          
         }
-
-        //[HttpGet]
-        //public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        //{
-        //    var result = await _accountService.ConfirmEmailAsync(userId, token);
-        //    if (result.Succeeded)
-        //    {
-        //        return Redirect("/login");
-        //    }
-        //    else
-        //    {
-        //        return BadRequest("Təsdiqləmə alınmadı.");
-        //    }
-        //}
-
 
     }
 }

@@ -145,6 +145,16 @@ namespace Service.Services
             if (!result)
                 return new LoginResponse { Success = false, Error = "Login failed", Token = null };
 
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+            {
+                return new LoginResponse
+                {
+                    Success = false,
+                    Error = "Login failed: Email not confirmed.",
+                    Token = null
+                };
+            }
+
             var userRoles = await _userManager.GetRolesAsync(user);
             string token = GenerateJwtToken(user.UserName, userRoles.ToList());
 
