@@ -35,22 +35,5 @@ namespace FinalProject.Controllers.Admin
         {
             return Ok(await _accountService.GetAllRoles());
         }
-
-
-        [HttpGet("{usernameOrEmail}")]
-        public async Task<IActionResult> ForgetPassword([FromRoute] string usernameOrEmail)
-        {
-            await _accountService.ForgetPassword(usernameOrEmail);
-
-            return Ok();
-        }
-        [HttpPost]
-        public async Task<IActionResult> ConfirmForgetPassword([FromBody] PasswordResetDto request)
-        {
-            await _accountService.ConfirmForgetPassword(request.token, request.userId, request.NewPassword);
-
-            return Ok();
-        }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.Account;
+using Service.Helpers.Responses;
 using Service.Services.Interfaces;
 
 namespace FinalProject.Controllers.Client
@@ -27,6 +28,30 @@ namespace FinalProject.Controllers.Client
             return Ok(await _accountService.LoginAsync(request));
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgetPassword([FromBody] string email)
+        {
+            if (email == null) return BadRequest("Email not found. Make sure you typed correctly");
+            var scheme = HttpContext.Request.Scheme;
+            var host = HttpContext.Request.Host.Value;
+            ResponseObject responseObj = await _accountService.ForgetPassword(email, scheme, host);
+            if (responseObj.StatusCode == (int)StatusCodes.Status400BadRequest) return BadRequest(responseObj.ResponseMessage);
+            else if (responseObj.StatusCode == (int)StatusCodes.Status404NotFound) return NotFound(responseObj.ResponseMessage);
+
+            return Ok(responseObj);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword([FromBody] UserResetPasswordDto userResetPasswordDto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            ResponseObject responseObj = await _accountService.ResetPassword(userResetPasswordDto);
+            if (responseObj.StatusCode == (int)StatusCodes.Status400BadRequest) return BadRequest(responseObj.ResponseMessage);
+            else if (responseObj.StatusCode == (int)StatusCodes.Status404NotFound) return NotFound(responseObj.ResponseMessage);
+
+            return Ok(responseObj);
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> VerifyEmail(string verifyEmail, string token)

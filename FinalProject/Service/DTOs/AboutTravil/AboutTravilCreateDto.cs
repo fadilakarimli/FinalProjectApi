@@ -10,7 +10,7 @@ namespace Service.DTOs.AboutTravil
     public class AboutTravilCreateDto
     {
         public IFormFile Image { get; set; }
-        public string SmallImage { get; set; }
+        public IFormFile SmallImage { get; set; }
         public string Title { get; set; }
         public string Desc { get; set; }
         public string Subtitle { get; set; }

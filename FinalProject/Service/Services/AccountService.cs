@@ -3,6 +3,7 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -33,13 +34,19 @@ namespace Service.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly SymmetricSecurityKey _securityKey;
         private readonly IConfiguration _configuration;
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _context; 
+        private readonly IDistributedCache _distributedCache;
+        private readonly UrlHelperService _urlHelper;
+        private readonly ISendEmailService _sendEmail;
+
+
 
 
         public AccountService(UserManager<AppUser> userManager, IMapper mapper, RoleManager<IdentityRole> roleManager,
                                                                 IOptions<JWTSetting> options, IHttpContextAccessor httpContextAccessor
                                                                 ,IEmailConfirmationService emailConfirmationService, IConfiguration configuration
-                                                                 ,AppDbContext context)
+                                                                 , AppDbContext context, IDistributedCache distributedCache
+                                                                 , UrlHelperService urlHelper, ISendEmailService sendEmail)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -49,44 +56,15 @@ namespace Service.Services
             _emailConfirmationService = emailConfirmationService;
             _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]));
             _configuration = configuration;
+            _distributedCache = distributedCache;
             _context = context;
+            _urlHelper = urlHelper;
+            _sendEmail = sendEmail;
         }
 
-        public async Task ForgetPassword(string usernameOrEmail)
-        {
-            var findUser = await _userManager.FindByEmailAsync(usernameOrEmail);
-            if (findUser == null)
-            {
-                findUser = await _userManager.FindByNameAsync(usernameOrEmail);
-            }
 
-            await SendResetPasswordEmail(findUser.Email, "Password Reset");
-        }
 
-        public async Task<EmailConfirmationResponse> SendResetPasswordEmail(string email, string subject)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
 
-            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            string encodedToken = Uri.EscapeDataString(token);
-
-            string html = string.Empty;
-
-            string url = $"https://localhost:7145//Account/PasswordReset?userId={user.Id}&token={encodedToken}";
-
-            using (StreamReader reader = new StreamReader("wwwroot/confirm/resetpassword.html"))
-            {
-                html = reader.ReadToEnd();
-            }
-            html = html.Replace("{{confirmlink}}", url).Replace("{##username##}", user.UserName);
-
-            _emailConfirmationService.Send(user.Email, "Password Reset", html);
-            return new EmailConfirmationResponse()
-            {
-                Success = false,
-                Messages = new List<string> { "Please check email Address" }
-            };
-        }
 
         public async Task ConfirmForgetPassword(string token, string userId, string newPassword)
         {
@@ -269,6 +247,54 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
+        public async Task<ResponseObject> ForgetPassword(string email, string requestScheme, string requestHost)
+        {
+            AppUser appUser = await _userManager.FindByEmailAsync(email);
+            if (appUser == null ) return new ResponseObject
+            {
+                ResponseMessage = "User does not exist.",
+                StatusCode = (int)StatusCodes.Status400BadRequest
+            };
+            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+            var urlHelper = _urlHelper.GetUrlHelper();
+            string link = $"http://localhost:5250/Login/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
+            _sendEmail.Send("fadilafk@code.edu.az", "Travil", appUser.Email, link, "Reset Password");
+            IList<string> roles = await _userManager.GetRolesAsync(appUser);
+            return new ResponseObject
+            {
+                ResponseMessage = token,
+                StatusCode = (int)StatusCodes.Status200OK
+            };
+        }
+
+        public async Task<ResponseObject> ResetPassword(UserResetPasswordDto userResetPasswordDto)
+        {
+            AppUser appUser = await _userManager.FindByEmailAsync(userResetPasswordDto.Email);
+            if (appUser == null) return new ResponseObject
+            {
+                ResponseMessage = "User not found",
+                StatusCode = (int)StatusCodes.Status404NotFound
+            };
+            var isSucceeded = await _userManager.VerifyUserTokenAsync(appUser, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", userResetPasswordDto.Token);
+            if (!isSucceeded) return new ResponseObject
+            {
+                StatusCode = (int)StatusCodes.Status400BadRequest,
+                ResponseMessage = "TokenIsNotValid"
+            };
+            IdentityResult resoult = await _userManager.ResetPasswordAsync(appUser, userResetPasswordDto.Token, userResetPasswordDto.Password);
+            if (!resoult.Succeeded) return new ResponseObject
+            {
+                ResponseMessage = string.Join(", ", resoult.Errors.Select(error => error.Description)),
+                StatusCode = (int)StatusCodes.Status400BadRequest
+            };
+            await _userManager.UpdateSecurityStampAsync(appUser);
+            await _distributedCache.RemoveAsync(appUser.Email);
+            return new ResponseObject
+            {
+                StatusCode = (int)StatusCodes.Status200OK,
+                ResponseMessage = "Password successfully reseted"
+            };
+        }
 
         //public async Task<IdentityResult> ConfirmEmailAsync(string userId, string token)
         //{

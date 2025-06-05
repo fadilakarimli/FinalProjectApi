@@ -17,8 +17,8 @@ namespace Service.Services.Interfaces
         Task<LoginResponse> LoginAsync(LoginDto model);
         Task<string> VerifyEmail(string VerifyEmail, string token);
         string CreateToken(AppUser user, IList<string> roles);
-        Task ForgetPassword(string usernameOrEmail);
-        Task ConfirmForgetPassword(string token, string userId, string newPassword);
+        Task<ResponseObject> ForgetPassword(string email, string requestScheme, string requestHost);
+        Task<ResponseObject> ResetPassword(UserResetPasswordDto userResetPasswordDto);
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
         Task<IEnumerable<RoleDto>> GetAllRolesByUserIdAsync(string userId);
         Task<IEnumerable<RoleDto>> GetAllRoles();

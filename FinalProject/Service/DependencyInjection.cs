@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Repository.Repositories.Interfaces;
+using Service.Helpers;
 using Service.Services;
 using Service.Services.Interfaces;
 
@@ -45,6 +46,10 @@ namespace Service
             services.AddScoped<IAboutBlogService, AboutBlogService>();
             services.AddScoped<ISettingService, SettingService>();
 
+            //
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
+            services.AddScoped<UrlHelperService>();
             return services;
         }
     }   

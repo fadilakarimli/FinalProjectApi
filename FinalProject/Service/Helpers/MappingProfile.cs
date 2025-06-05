@@ -192,7 +192,8 @@ namespace Service.Helpers
             //abouttravil
             CreateMap<AboutTravilCreateDto, AboutTravil>();
             CreateMap<AboutTravilEditDto, AboutTravil>()
-                .ForMember(dest => dest.Image, opt => opt.Ignore());
+                .ForMember(dest => dest.Image, opt => opt.Ignore())
+                .ForMember(dest => dest.SmallImage, opt => opt.Ignore());
             CreateMap<AboutTravil, AboutTravilDto>();
             //aboutteammember
             CreateMap<AboutTeamMemberCreateDto, AboutTeamMember>();
