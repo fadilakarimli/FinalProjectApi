@@ -136,19 +136,28 @@ namespace Service.Helpers
             //tour
             CreateMap<TourCreateDto, Tour>()
             .ForMember(dest => dest.Image, opt => opt.Ignore());
+
             CreateMap<TourEditDto, Tour>()
-                .ForMember(dest => dest.Image, opt => opt.Ignore());
+                .ForMember(dest => dest.Image, opt => opt.Ignore())
+                .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.Capacity));
+
             CreateMap<Tour, TourEditDto>();
+
             CreateMap<Tour, TourDto>()
                 .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-                .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-                    src.TourActivities.Select(ta => ta.Activity.Name).ToList()))
+               .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+              src.TourActivities
+                .Where(ta => ta.Activity != null && ta.Activity.Name != null)
+             .Select(ta => ta.Activity.Name)
+             .ToList()))
+ 
                 .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
                     src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
                 .ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
                     src.Experiences.Select(e => e.Name).ToList()))
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
-                .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans));  // Plans mapping
+                .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans))
+                .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.Capacity));
             // Plan 
             CreateMap<Plan, PlanDto>();
             CreateMap<PlanCreateDto, Plan>();

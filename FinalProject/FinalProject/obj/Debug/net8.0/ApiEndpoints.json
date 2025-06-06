@@ -2517,8 +2517,13 @@
         "IsRequired": false
       },
       {
-        "Name": "CityId",
+        "Name": "Capacity",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CityIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -2539,11 +2544,6 @@
       {
         "Name": "ExperienceIds",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Plans",
-        "Type": "System.Collections.Generic.List\u00601[[Service.DTOs.Plan.PlanCreateDto, Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": false
       }
     ],
@@ -2610,6 +2610,11 @@
       },
       {
         "Name": "CityId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Capacity",
         "Type": "System.Int32",
         "IsRequired": false
       },

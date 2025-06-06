@@ -16,10 +16,8 @@ namespace Service.DTOs.Tour
         public decimal Price { get; set; }
         public decimal? OldPrice { get; set; }
         public int CityId { get; set; }
-
+        public int Capacity { get; set; }
         public IFormFile? ImageFile { get; set; }
-
-        // 🔥 Bunları əlavə et:
         public List<int> ActivityIds { get; set; }
         public List<int> AmenityIds { get; set; }
         public List<int> ExperienceIds { get; set; }

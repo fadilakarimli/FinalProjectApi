@@ -70,28 +70,14 @@ namespace Service.Services
                 tour.Experiences = experiences.ToList();
             }
 
-            if (model.Plans != null && model.Plans.Any())
+            // CityIds yoxdursa və Tour modelində yalnız CityId varsa
+            if (model.CityIds != null && model.CityIds.Any())
             {
-                var plans = model.Plans
-                    .Select(p => _mapper.Map<Plan>(p))
-                    .ToList();
-
-                foreach (var plan in plans)
-                {
-                    plan.Tour = tour;  // Ən vacib: planlara touru bağla
-                }
-
-                tour.Plans = plans;
+                tour.CityId = model.CityIds.First();
             }
-
 
             await _repo.CreateAsync(tour);
         }
-
-
-
-
-
 
 
         public async Task DeleteAsync(int id)
@@ -146,9 +132,6 @@ namespace Service.Services
 
             await _repo.EditAsync(existTour);
         }
-
-
-
         public async Task<IEnumerable<TourDto>> GetAllAsync()
         {
             var tours = await _repo.GetAllTourWithActivityAsync();

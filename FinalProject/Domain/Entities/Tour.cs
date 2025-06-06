@@ -16,6 +16,7 @@ namespace Domain.Entities
         public int CountryCount { get; set; } 
         public decimal Price { get; set; }
         public decimal? OldPrice { get; set; }
+        public int Capacity { get; set; }
         public int CityId { get; set; }
         public City City { get; set; }
         public ICollection<TourActivity> TourActivities { get; set; }
