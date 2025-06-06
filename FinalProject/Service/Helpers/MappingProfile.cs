@@ -144,20 +144,31 @@ namespace Service.Helpers
             CreateMap<Tour, TourEditDto>();
 
             CreateMap<Tour, TourDto>()
-                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
-               .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
-              src.TourActivities
-                .Where(ta => ta.Activity != null && ta.Activity.Name != null)
-             .Select(ta => ta.Activity.Name)
-             .ToList()))
- 
-                .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
-                    src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
-                .ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
-                    src.Experiences.Select(e => e.Name).ToList()))
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
-                .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans))
-                .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.Capacity));
+                  .ForMember(dest => dest.CreatedDate, opt =>
+        opt.MapFrom(src => src.CreatedDate.ToString("dd.MM.yyyy HH:mm")))
+    .ForMember(dest => dest.StartDate, opt =>
+        opt.MapFrom(src => src.StartDate.ToString("dd.MM.yyyy")))
+    .ForMember(dest => dest.EndDate, opt =>
+        opt.MapFrom(src => src.EndDate.ToString("dd.MM.yyyy")))
+       .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
+           src.TourActivities
+              .Where(ta => ta.Activity != null && ta.Activity.Name != null)
+              .Select(ta => ta.Activity.Name)
+              .ToList()))
+       .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src =>
+           src.TourAmenities.Select(ta => ta.Amenity.Name).ToList()))
+       .ForMember(dest => dest.ExperienceNames, opt => opt.MapFrom(src =>
+           src.Experiences.Select(e => e.Name).ToList()))
+       .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Image))
+       .ForMember(dest => dest.Plans, opt => opt.MapFrom(src => src.Plans))
+       .ForMember(dest => dest.Capacity, opt => opt.MapFrom(src => src.Capacity))
+
+       // Yeni əlavə: City Id-lərini və adlarını map etmək
+       .ForMember(dest => dest.CityIds, opt => opt.MapFrom(src =>
+           src.TourCities.Select(tc => tc.CityId).ToList()))
+       .ForMember(dest => dest.CityNames, opt => opt.MapFrom(src =>
+           src.TourCities.Where(tc => tc.City != null).Select(tc => tc.City.Name).ToList()));
+
             // Plan 
             CreateMap<Plan, PlanDto>();
             CreateMap<PlanCreateDto, Plan>();

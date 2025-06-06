@@ -21,6 +21,8 @@ namespace Service.DTOs.Tour
         public IFormFile ImageFile { get; set; }
         public List<int> ActivityIds { get; set; }
         public List<int> AmenityIds { get; set; }
-        public List<int> ExperienceIds { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        //public List<int> ExperienceIds { get; set; }
     }
 }

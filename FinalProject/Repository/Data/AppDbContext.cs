@@ -43,6 +43,7 @@ namespace Repository.Data
         public DbSet<AboutApp> AboutApps { get; set; }
         public DbSet<AboutBlog> AboutBlogs { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<TourCity> TourCities { get; set; }
 
 
 

@@ -17,8 +17,11 @@ namespace Domain.Entities
         public decimal Price { get; set; }
         public decimal? OldPrice { get; set; }
         public int Capacity { get; set; }
-        public int CityId { get; set; }
-        public City City { get; set; }
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public ICollection<TourCity> TourCities { get; set; } = new List<TourCity>();
         public ICollection<TourActivity> TourActivities { get; set; }
         public ICollection<TourAmenity> TourAmenities { get; set; }
         public ICollection<Experience> Experiences { get; set; }

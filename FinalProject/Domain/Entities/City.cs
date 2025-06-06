@@ -12,6 +12,6 @@ namespace Domain.Entities
         public string Name { get; set; }
         public int CountryId { get; set; }
         public Country Country { get; set; }
-        public ICollection<Tour> Tours { get; set; }
+        public ICollection<TourCity> TourCities { get; set; } = new List<TourCity>();
     }
 }

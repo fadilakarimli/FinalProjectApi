@@ -53,6 +53,16 @@ namespace Service.Services
             if (fileUrl != null)
                 tour.Image = fileUrl;
 
+            // TourCities üçün cityId-lərdən TourCity-lər yarat
+            if (model.CityIds != null && model.CityIds.Any())
+            {
+                tour.TourCities = model.CityIds.Select(cityId => new TourCity
+                {
+                    CityId = cityId
+                }).ToList();
+            }
+
+            // Əlavə əlaqələr, məsələn, TourActivities və TourAmenities
             tour.TourActivities = model.ActivityIds?.Select(id => new TourActivity
             {
                 ActivityId = id
@@ -63,18 +73,12 @@ namespace Service.Services
                 AmenityId = id
             }).ToList() ?? new List<TourAmenity>();
 
-            if (model.ExperienceIds != null && model.ExperienceIds.Any())
-            {
-                var experiences = await _experienceRepository
-                    .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
-                tour.Experiences = experiences.ToList();
-            }
-
-            // CityIds yoxdursa və Tour modelində yalnız CityId varsa
-            if (model.CityIds != null && model.CityIds.Any())
-            {
-                tour.CityId = model.CityIds.First();
-            }
+            //if (model.ExperienceIds != null && model.ExperienceIds.Any())
+            //{
+            //    var experiences = await _experienceRepository
+            //        .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
+            //    tour.Experiences = experiences.ToList();
+            //}
 
             await _repo.CreateAsync(tour);
         }
@@ -104,6 +108,7 @@ namespace Service.Services
 
             _mapper.Map(model, existTour);
 
+            // TourActivities
             existTour.TourActivities.Clear();
             existTour.TourActivities = model.ActivityIds.Select(id => new TourActivity
             {
@@ -111,6 +116,7 @@ namespace Service.Services
                 TourId = existTour.Id
             }).ToList();
 
+            // TourAmenities
             existTour.TourAmenities.Clear();
             existTour.TourAmenities = model.AmenityIds.Select(id => new TourAmenity
             {
@@ -118,11 +124,11 @@ namespace Service.Services
                 TourId = existTour.Id
             }).ToList();
 
+            // Experiences
             if (model.ExperienceIds != null && model.ExperienceIds.Any())
             {
                 var experiences = await _experienceRepository
                     .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
-
                 existTour.Experiences = experiences.ToList();
             }
             else
@@ -130,13 +136,55 @@ namespace Service.Services
                 existTour.Experiences.Clear();
             }
 
+            // *** Burada TourCities update etməliyik ***
+
+            // 1. Əvvəlki əlaqələri silirik
+            existTour.TourCities.Clear();
+
+            // 2. Yeni əlaqələri əlavə edirik
+            if (model.CityIds != null && model.CityIds.Any())
+            {
+                existTour.TourCities = model.CityIds.Select(cityId => new TourCity
+                {
+                    TourId = existTour.Id,
+                    CityId = cityId
+                }).ToList();
+            }
+
             await _repo.EditAsync(existTour);
         }
+
+
         public async Task<IEnumerable<TourDto>> GetAllAsync()
         {
             var tours = await _repo.GetAllTourWithActivityAsync();
-            return _mapper.Map<List<TourDto>>(tours);
+
+            var tourDtos = new List<TourDto>();
+
+            foreach (var tour in tours)
+            {
+                var dto = _mapper.Map<TourDto>(tour);
+
+                if (tour.TourCities != null && tour.TourCities.Any())
+                {
+                    var cityNames = tour.TourCities.Select(tc => tc.City.Name).ToList();
+                    dto.CityIds = tour.TourCities.Select(tc => tc.CityId).ToList();
+                    dto.CityNames = tour.TourCities.Select(tc => tc.City.Name).ToList();
+
+                }
+                else
+                {
+                    dto.CityNames = new List<string>();
+                    dto.CityIds = new List<int>();
+
+                }
+
+                tourDtos.Add(dto);
+            }
+
+            return tourDtos;
         }
+
         public async Task<TourDto> GetByIdAsync(int id)
         {
             var tour = await _repo.GetByIdWithIncludesAsync(id); 
@@ -157,5 +205,10 @@ namespace Service.Services
             return new Paginate<TourDto>(tourDtos, pageCount, page);
         }
 
+        public async Task<IEnumerable<TourDto>> SearchAsync(string city, string activity, DateTime? date, int? guestCount)
+        {
+            var tours = await _repo.SearchAsync(city, activity, date, guestCount);
+            return _mapper.Map<IEnumerable<TourDto>>(tours);
+        }
     }
 }

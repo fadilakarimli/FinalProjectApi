@@ -15,11 +15,13 @@ namespace Service.DTOs.Tour
         public string Desc { get; set; }
         public decimal Price { get; set; }
         public decimal? OldPrice { get; set; }
-        public int CityId { get; set; }
+        public List<int> CityIds { get; set; }
         public int Capacity { get; set; }
         public IFormFile? ImageFile { get; set; }
         public List<int> ActivityIds { get; set; }
         public List<int> AmenityIds { get; set; }
         public List<int> ExperienceIds { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

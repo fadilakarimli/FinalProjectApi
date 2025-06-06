@@ -14,25 +14,33 @@
         {
             public TourRepository(AppDbContext context) : base(context) { }
 
-            public async Task<IEnumerable<Tour>> GetAllTourWithActivityAsync()
-            {
+        public async Task<IEnumerable<Tour>> GetAllTourWithActivityAsync()
+        {
             return await _context.Tours
-                  .Include(t => t.City)
-                  .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
-                  .Include(t => t.TourAmenities).ThenInclude(ta => ta.Amenity)
-                  .Include(t => t.Experiences)
-                  .Include(t => t.Plans) 
-                  .ToListAsync();
+        .Include(t => t.TourCities)
+            .ThenInclude(tc => tc.City)
+        .Include(t => t.TourActivities)
+            .ThenInclude(ta => ta.Activity)
+        .Include(t => t.TourAmenities)
+            .ThenInclude(ta => ta.Amenity)
+        .Include(t => t.Experiences)
+        .Include(t => t.Plans)
+        .ToListAsync();
 
-            }
+        }
 
         public async Task<Tour> GetByIdWithIncludesAsync(int id)
         {
+
             return await _context.Tours
-                .Include(t => t.Plans)
-                .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity) 
-                .Include(t => t.TourAmenities).ThenInclude(ta => ta.Amenity) 
+                .Include(t => t.TourCities)
+                    .ThenInclude(tc => tc.City)
+                .Include(t => t.TourActivities)
+                    .ThenInclude(ta => ta.Activity)
+                .Include(t => t.TourAmenities)
+                    .ThenInclude(ta => ta.Amenity)
                 .Include(t => t.Experiences)
+                .Include(t => t.Plans)
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
 
@@ -45,6 +53,7 @@
         {
             return await _context.Tours.Skip((page * take) - take).Take(take).ToListAsync();
         }
+
 
 
         public async Task<IEnumerable<Tour>> SortAsync(string sortOrder)
@@ -61,6 +70,38 @@
             }
 
             return educations;
+        }
+        public async Task<IEnumerable<Tour>> SearchAsync(string city, string activity, DateTime? date, int? guestCount)
+        {
+            var query = _context.Tours
+                .Include(t => t.TourCities).ThenInclude(tc => tc.City)
+                .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
+                .AsQueryable();
+
+            // Şəhərə görə filtrlə
+            if (!string.IsNullOrWhiteSpace(city))
+            {
+                query = query.Where(t => t.TourCities.Any(tc => tc.City.Name.ToLower().Contains(city.ToLower())));
+            }
+
+            // Aktivliyə görə filtrlə
+            if (!string.IsNullOrWhiteSpace(activity))
+            {
+                query = query.Where(t => t.TourActivities.Any(ta => ta.Activity.Name.ToLower().Contains(activity.ToLower())));
+            }
+
+            if (date.HasValue)
+            {
+                query = query.Where(t => t.CreatedDate.Date == date.Value.Date);
+            }
+
+            // Qonaq sayına görə filtrlə
+            if (guestCount.HasValue)
+            {
+                query = query.Where(t => t.Capacity >= guestCount.Value);
+            }
+
+            return await query.ToListAsync();
         }
 
     }
