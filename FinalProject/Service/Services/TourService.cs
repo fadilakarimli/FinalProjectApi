@@ -53,6 +53,9 @@ namespace Service.Services
             if (fileUrl != null)
                 tour.Image = fileUrl;
 
+            tour.StartDate = model.StartDate;
+            tour.EndDate = model.EndDate;
+
             // TourCities üçün cityId-lərdən TourCity-lər yarat
             if (model.CityIds != null && model.CityIds.Any())
             {

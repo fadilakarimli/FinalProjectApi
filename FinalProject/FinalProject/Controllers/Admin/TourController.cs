@@ -71,11 +71,12 @@ namespace FinalProject.Controllers.Admin
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> Search([FromQuery] string city, [FromQuery] string activity, [FromQuery] DateTime? date, [FromQuery] int? guestCount)
+        public async Task<IActionResult> Search( [FromQuery] string city,  [FromQuery] string activity,[FromQuery] DateTime? departureDate, [FromQuery] int? guestCount)
         {
-            var result = await _tourService.SearchAsync(city, activity, date, guestCount);
-            return Ok(result);
+            var tours = await _tourService.SearchAsync(city, activity, departureDate, guestCount);
+            return Ok(tours);
         }
+
 
 
 
