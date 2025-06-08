@@ -145,11 +145,11 @@ namespace Service.Helpers
 
             CreateMap<Tour, TourDto>()
                   .ForMember(dest => dest.CreatedDate, opt =>
-        opt.MapFrom(src => src.CreatedDate.ToString("dd.MM.yyyy HH:mm")))
+        opt.MapFrom(src => src.CreatedDate.ToString("MM.dd.yyyy")))
     .ForMember(dest => dest.StartDate, opt =>
-        opt.MapFrom(src => src.StartDate.ToString("dd.MM.yyyy")))
+        opt.MapFrom(src => src.StartDate.ToString("MM.dd.yyyy")))
     .ForMember(dest => dest.EndDate, opt =>
-        opt.MapFrom(src => src.EndDate.ToString("dd.MM.yyyy")))
+        opt.MapFrom(src => src.EndDate.ToString("MM.dd.yyyy")))
        .ForMember(dest => dest.ActivityNames, opt => opt.MapFrom(src =>
            src.TourActivities
               .Where(ta => ta.Activity != null && ta.Activity.Name != null)

@@ -32,6 +32,9 @@ namespace FinalProject.Controllers.Client
         [HttpPost]
         public async Task<IActionResult> ForgetPassword([FromBody] string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest("Email not found. Make sure you typed correctly");
+
             if (email == null) return BadRequest("Email not found. Make sure you typed correctly");
             var scheme = HttpContext.Request.Scheme;
             var host = HttpContext.Request.Host.Value;

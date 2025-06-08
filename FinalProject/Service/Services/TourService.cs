@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Slider;
@@ -208,9 +209,12 @@ namespace Service.Services
             return new Paginate<TourDto>(tourDtos, pageCount, page);
         }
 
-        public async Task<IEnumerable<TourDto>> SearchAsync(string city, string activity, DateTime? date, int? guestCount)
+        public async Task<IEnumerable<TourDto>> SearchAsync(TourSearchDto request)
         {
-            var tours = await _repo.SearchAsync(city, activity, date, guestCount);
+
+
+
+            var tours = await _repo.SearchAsync(request.Cities,request.Activities,request.Date,request.GuestCount);
             return _mapper.Map<IEnumerable<TourDto>>(tours);
         }
     }

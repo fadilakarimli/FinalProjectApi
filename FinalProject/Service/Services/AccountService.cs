@@ -246,26 +246,38 @@ namespace Service.Services
         {
             throw new NotImplementedException();
         }
-
         public async Task<ResponseObject> ForgetPassword(string email, string requestScheme, string requestHost)
         {
             AppUser appUser = await _userManager.FindByEmailAsync(email);
-            if (appUser == null ) return new ResponseObject
+            if (appUser == null)
             {
-                ResponseMessage = "User does not exist.",
-                StatusCode = (int)StatusCodes.Status400BadRequest
-            };
+                return new ResponseObject
+                {
+                    ResponseMessage = "User does not exist.",
+                    StatusCode = (int)StatusCodes.Status400BadRequest
+                };
+            }
+
             string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
-            var urlHelper = _urlHelper.GetUrlHelper();
-            string link = $"http://localhost:5250/Login/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
-            _sendEmail.Send("fadilafk@code.edu.az", "Travil", appUser.Email, link, "Reset Password");
+
+            // Dinamik link düzəldirik (localhost-u əvəzlədik)
+            string link = $"https://localhost:7145/Account/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
+            // Email şablonunu oxuyub linki əvəz edirik
+            var template = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "confirm", "resetpassword.html"));
+            template = template.Replace("{{confirmlink}}", link);
+
+            // Email göndəririk
+            _sendEmail.Send("fadilafk@code.edu.az", "Travil", appUser.Email, template, "Reset Password");
+
             IList<string> roles = await _userManager.GetRolesAsync(appUser);
+
             return new ResponseObject
             {
                 ResponseMessage = token,
                 StatusCode = (int)StatusCodes.Status200OK
             };
         }
+
 
         public async Task<ResponseObject> ResetPassword(UserResetPasswordDto userResetPasswordDto)
         {

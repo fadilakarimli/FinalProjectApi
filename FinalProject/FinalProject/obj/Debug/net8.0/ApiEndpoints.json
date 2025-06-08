@@ -2706,30 +2706,15 @@
   {
     "ContainingType": "FinalProject.Controllers.Admin.TourController",
     "Method": "Search",
-    "RelativePath": "api/admin/Tour/Search/search",
-    "HttpMethod": "GET",
+    "RelativePath": "api/admin/Tour/Search",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "city",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "activity",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "departureDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "guestCount",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "Service.DTOs.Tour.TourSearchDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
