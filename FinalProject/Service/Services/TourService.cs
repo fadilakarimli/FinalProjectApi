@@ -211,9 +211,6 @@ namespace Service.Services
 
         public async Task<IEnumerable<TourDto>> SearchAsync(TourSearchDto request)
         {
-
-
-
             var tours = await _repo.SearchAsync(request.Cities,request.Activities,request.Date,request.GuestCount);
             return _mapper.Map<IEnumerable<TourDto>>(tours);
         }

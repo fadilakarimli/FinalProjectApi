@@ -78,16 +78,18 @@
                 .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
                 .AsQueryable();
 
-            // Şəhərə görə filtrlə
+            // 🔄 City ID-lərə görə filtrlə
             if (!string.IsNullOrWhiteSpace(city))
             {
-                query = query.Where(t => t.TourCities.Any(tc => tc.City.Name.ToLower().Contains(city.ToLower())));
+                var cityIds = city.Split(',').Select(id => int.TryParse(id, out var val) ? val : -1).ToList();
+                query = query.Where(t => t.TourCities.Any(tc => cityIds.Contains(tc.City.Id)));
             }
 
-            // Aktivliyə görə filtrlə
+            // 🔄 Activity ID-lərə görə filtrlə
             if (!string.IsNullOrWhiteSpace(activity))
             {
-                query = query.Where(t => t.TourActivities.Any(ta => ta.Activity.Name.ToLower().Contains(activity.ToLower())));
+                var activityIds = activity.Split(',').Select(id => int.TryParse(id, out var val) ? val : -1).ToList();
+                query = query.Where(t => t.TourActivities.Any(ta => activityIds.Contains(ta.Activity.Id)));
             }
 
             if (date.HasValue)
@@ -95,7 +97,6 @@
                 query = query.Where(t => t.CreatedDate.Date == date.Value.Date);
             }
 
-            // Qonaq sayına görə filtrlə
             if (guestCount.HasValue)
             {
                 query = query.Where(t => t.Capacity >= guestCount.Value);
@@ -103,6 +104,7 @@
 
             return await query.ToListAsync();
         }
+
 
     }
 }
