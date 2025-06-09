@@ -261,7 +261,7 @@ namespace Service.Services
             string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
 
             // Dinamik link düzəldirik (localhost-u əvəzlədik)
-            string link = $"https://localhost:7145/Account/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
+            string link = $"https://localhost:7014/Account/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
             // Email şablonunu oxuyub linki əvəz edirik
             var template = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "confirm", "resetpassword.html"));
             template = template.Replace("{{confirmlink}}", link);
