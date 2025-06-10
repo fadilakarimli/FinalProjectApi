@@ -27,7 +27,7 @@ namespace Repository.Repositories
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
-
+        
         public async Task DeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
@@ -87,6 +87,25 @@ namespace Repository.Repositories
 
             return true;
         }
+
+
+        public async Task<IEnumerable<T>> GetAllWithIncludesAndExpressionAsync( Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _dbSet;
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            return await query.ToListAsync();
+        }
+
 
 
     }

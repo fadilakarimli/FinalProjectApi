@@ -214,5 +214,28 @@ namespace Service.Services
             var tours = await _repo.SearchAsync(request.Cities,request.Activities,request.Date,request.GuestCount);
             return _mapper.Map<IEnumerable<TourDto>>(tours);
         }
+
+
+        public async Task<IEnumerable<TourDto>> SearchByNameAsync(string search)
+        {
+            IEnumerable<Tour> tours;
+
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                tours = await _repo.GetAllWithIcludesAsync(t => t.TourCities);
+            }
+            else
+            {
+                tours = await _repo.GetAllWithIncludesAndExpressionAsync(
+                    t => t.Name.Contains(search) ||
+                         t.TourCities.Any(tc => tc.City.Name.Contains(search)),
+                    t => t.TourCities
+                );
+            }
+
+            return _mapper.Map<IEnumerable<TourDto>>(tours);
+        }
+
+
     }
 }

@@ -71,6 +71,8 @@
 
             return educations;
         }
+
+
         public async Task<IEnumerable<Tour>> SearchAsync(string city, string activity, DateTime? date, int? guestCount)
         {
             var query = _context.Tours

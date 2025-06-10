@@ -18,6 +18,7 @@ namespace Service.Services.Interfaces
         Task DeleteAsync(int id);
         Task<Paginate<TourDto>> GetPaginatedAsync(int page, int pageSize);
         Task<IEnumerable<TourDto>> SearchAsync(TourSearchDto request);
+        Task<IEnumerable<TourDto>> SearchByNameAsync(string search);
 
         //Task<IEnumerable<TourDto>> SortAsync(string sortOrder);
         //Task<Paginate<TourDto>> GetPaginatedDatasAsync(int page);
