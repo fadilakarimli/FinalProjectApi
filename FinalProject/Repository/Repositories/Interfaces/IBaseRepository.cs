@@ -10,6 +10,7 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
+        Task<int> SaveChanges();
         Task CreateAsync(T entity);
         Task DeleteAsync(T entity);
         Task EditAsync(T entity);

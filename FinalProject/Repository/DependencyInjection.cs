@@ -43,6 +43,7 @@ namespace Repository
             services.AddScoped<IAboutAppRepository, AboutAppRepository>();
             services.AddScoped<IAboutBlogRepository, AboutBlogRepository>();
             services.AddScoped<ISettingRepository, SettingRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
 
             return services;
         }

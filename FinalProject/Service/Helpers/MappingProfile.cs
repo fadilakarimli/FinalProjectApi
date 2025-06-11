@@ -15,6 +15,7 @@ using Service.DTOs.Blog;
 using Service.DTOs.Brand;
 using Service.DTOs.ChooseUsAbout;
 using Service.DTOs.City;
+using Service.DTOs.Contact;
 using Service.DTOs.Country;
 using Service.DTOs.DestinationBanner;
 using Service.DTOs.DestinationFeature;
@@ -71,6 +72,11 @@ namespace Service.Helpers
             CreateMap<Blog, BlogDto>().ReverseMap();
             CreateMap<BlogEditDto, Blog>()
            .ForMember(dest => dest.Image, opt => opt.Ignore());
+
+            //contact 
+
+            CreateMap<Contact, ContactDto>();
+            CreateMap<ContactCreateDto, Contact>();
 
             //newletter
             CreateMap<NewLetter, NewLetterDto>();

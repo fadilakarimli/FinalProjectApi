@@ -22,6 +22,11 @@ namespace Repository.Repositories
 
         }
 
+        public async Task<int> SaveChanges()
+        {
+            return await _context.SaveChangesAsync();
+        }
+
         public async Task CreateAsync(T entity)
         {
             await _dbSet.AddAsync(entity);

@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Smtp"));
 
 var conString = builder.Configuration.GetConnectionString("DefaultDatabase") ??
      throw new InvalidOperationException("Connection string 'DefaultDatabase'" +
