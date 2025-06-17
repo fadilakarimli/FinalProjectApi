@@ -3088,6 +3088,22 @@
   },
   {
     "ContainingType": "FinalProject.Controllers.Client.TourController",
+    "Method": "Filter",
+    "RelativePath": "api/Tour/Filter/filter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "Service.DTOs.Tour.TourFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Client.TourController",
     "Method": "SearchByName",
     "RelativePath": "api/Tour/SearchByName",
     "HttpMethod": "GET",

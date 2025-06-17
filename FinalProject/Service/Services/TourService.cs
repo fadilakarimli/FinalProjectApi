@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Slider;
@@ -235,6 +236,59 @@ namespace Service.Services
 
             return _mapper.Map<IEnumerable<TourDto>>(tours);
         }
+        public async Task<IEnumerable<TourDto>> FilterAsync(TourFilterDto filterDto)
+        {
+            var query = (await _repo.GetAllForFilterAsync()).AsQueryable();
+
+            if (filterDto.CityNames != null && filterDto.CityNames.Any())
+            {
+                var cityNamesLower = filterDto.CityNames.Select(c => c.ToLower()).ToList();
+                query = query.Where(t => t.TourCities.Any(tc =>
+                    tc.City != null && cityNamesLower.Contains(tc.City.Name.ToLower())));
+            }
+
+            if (filterDto.ActivityNames != null && filterDto.ActivityNames.Any())
+            {
+                var activityNamesLower = filterDto.ActivityNames.Select(a => a.ToLower()).ToList();
+                query = query.Where(t => t.TourActivities.Any(ta =>
+                    ta.Activity != null && activityNamesLower.Contains(ta.Activity.Name.ToLower())));
+            }
+
+            if (filterDto.AmenityNames != null && filterDto.AmenityNames.Any())
+            {
+                var amenityNamesLower = filterDto.AmenityNames.Select(a => a.ToLower()).ToList();
+                query = query.Where(t => t.TourAmenities.Any(ta =>
+                    ta.Amenity != null && amenityNamesLower.Contains(ta.Amenity.Name.ToLower())));
+            }
+
+            if (filterDto.DepartureDate != null)
+            {
+                var dateOnly = filterDto.DepartureDate.Value.Date;
+                query = query.Where(t => t.StartDate.Date == dateOnly);
+            }
+
+            if (filterDto.GuestCount.HasValue)
+            {
+                query = query.Where(t => t.Capacity >= filterDto.GuestCount.Value);
+            }
+
+            if (filterDto.MinPrice.HasValue)
+            {
+                query = query.Where(t => t.Price >= filterDto.MinPrice.Value);
+            }
+
+            if (filterDto.MaxPrice.HasValue)
+            {
+                query = query.Where(t => t.Price <= filterDto.MaxPrice.Value);
+            }
+
+            var result = _mapper.Map<List<TourDto>>(query.ToList());
+            return result;
+        }
+
+
+
+
 
 
     }

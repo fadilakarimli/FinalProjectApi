@@ -72,7 +72,6 @@ namespace Service.Services
 
         public async Task ReplyAsync(int contactId, string replyMessage)
         {
-            // Contact-u alaq
             var contact = await _contactRepository.GetByIdAsync(contactId);
             if (contact == null) throw new NotFoundException("Contact not found.");
 

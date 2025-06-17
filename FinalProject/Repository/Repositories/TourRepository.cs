@@ -5,7 +5,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+using System.Linq.Expressions;
+using System.Text;
     using System.Threading.Tasks;
 
     namespace Repository.Repositories
@@ -107,6 +108,31 @@
             return await query.ToListAsync();
         }
 
+        public IQueryable<Tour> GetAllWithIncludesQueryable(params Expression<Func<Tour, object>>[] includes)
+        {
+            IQueryable<Tour> query = _context.Tours.AsQueryable();
+
+            if (includes != null && includes.Any())
+            {
+                foreach (var includeExpression in includes)
+                {
+                    query = query.Include(includeExpression);
+                }
+            }
+
+            return query;
+        }
+
+        public async Task<IEnumerable<Tour>> GetAllForFilterAsync()
+        {
+            return await _context.Tours
+                .Include(t => t.TourCities).ThenInclude(tc => tc.City)
+                .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
+                .Include(t => t.TourAmenities).ThenInclude(ta => ta.Amenity)
+                .Include(t => t.Experiences)
+                .Include(t => t.Plans)
+                .ToListAsync();
+        }
 
     }
 }
