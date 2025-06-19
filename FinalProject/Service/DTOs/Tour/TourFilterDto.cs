@@ -8,13 +8,12 @@ namespace Service.DTOs.Tour
 {
     public class TourFilterDto
     {
-        public List<string>? CityNames { get; set; }
-        public List<string>? ActivityNames { get; set; }
+        public List<int>? CityIds { get; set; }
+        public List<int>? ActivityIds { get; set; }
+        public List<int>? AmenityIds { get; set; }
         public DateTime? DepartureDate { get; set; }
         public int? GuestCount { get; set; }
-        public List<string>? AmenityNames { get; set; }
         public decimal? MinPrice { get; set; }
         public decimal? MaxPrice { get; set; }
-
     }
 }

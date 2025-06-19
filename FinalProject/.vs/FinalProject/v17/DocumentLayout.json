@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\tourservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourfilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourfilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CE55BAF3-4FEE-474D-8E18-7E598F069233}|Repository\\Repository.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\repository\\repositories\\tourrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE55BAF3-4FEE-474D-8E18-7E598F069233}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\tourrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\tourfilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\tour\\tourfilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\client\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -140,7 +140,7 @@
               "RelativeDocumentMoniker": "Service\\Services\\TourService.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TourService.cs",
               "RelativeToolTip": "Service\\Services\\TourService.cs",
-              "ViewState": "AgIAAAMBAAAAAAAAAAAQwB0BAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAB8BAAAAAAAAAAAAAB8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-12T09:52:57.766Z",
               "EditorCaption": ""
@@ -155,25 +155,24 @@
               "RelativeToolTip": "FinalProject\\Controllers\\Client\\TourController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T02:57:40.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T02:57:40.344Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "TourFilterDto.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourFilterDto.cs",
               "RelativeDocumentMoniker": "Service\\DTOs\\Tour\\TourFilterDto.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Tour\\TourFilterDto.cs",
               "RelativeToolTip": "Service\\DTOs\\Tour\\TourFilterDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-12T10:01:14.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Service\\Helpers\\MappingProfile.cs",
@@ -181,12 +180,11 @@
               "RelativeToolTip": "Service\\Helpers\\MappingProfile.cs",
               "ViewState": "AgIAAIwAAAAAAAAAAAAuwLUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T06:02:02.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T06:02:02.583Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TourRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\TourRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\TourRepository.cs",
@@ -194,12 +192,11 @@
               "RelativeToolTip": "Repository\\Repositories\\TourRepository.cs",
               "ViewState": "AgIAAGkAAAAAAAAAAAAAwHsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T09:29:42.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T09:29:42.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ITourRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Repository\\Repositories\\Interfaces\\ITourRepository.cs",
               "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\ITourRepository.cs",
@@ -207,8 +204,7 @@
               "RelativeToolTip": "Repository\\Repositories\\Interfaces\\ITourRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAYwBMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T10:08:26.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T10:08:26.937Z"
             },
             {
               "$type": "Document",
@@ -220,8 +216,7 @@
               "RelativeToolTip": "FinalProject\\Controllers\\Admin\\TourController.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAkwEoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T10:17:46.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T10:17:46.745Z"
             },
             {
               "$type": "Document",
@@ -233,8 +228,7 @@
               "RelativeToolTip": "Service\\Services\\Interfaces\\ITourService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T09:31:02.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T09:31:02.755Z"
             },
             {
               "$type": "Document",

@@ -240,25 +240,22 @@ namespace Service.Services
         {
             var query = (await _repo.GetAllForFilterAsync()).AsQueryable();
 
-            if (filterDto.CityNames != null && filterDto.CityNames.Any())
+            if (filterDto.CityIds != null && filterDto.CityIds.Any())
             {
-                var cityNamesLower = filterDto.CityNames.Select(c => c.ToLower()).ToList();
                 query = query.Where(t => t.TourCities.Any(tc =>
-                    tc.City != null && cityNamesLower.Contains(tc.City.Name.ToLower())));
+                    tc.City != null && filterDto.CityIds.Contains(tc.City.Id)));
             }
 
-            if (filterDto.ActivityNames != null && filterDto.ActivityNames.Any())
+            if (filterDto.ActivityIds != null && filterDto.ActivityIds.Any())
             {
-                var activityNamesLower = filterDto.ActivityNames.Select(a => a.ToLower()).ToList();
                 query = query.Where(t => t.TourActivities.Any(ta =>
-                    ta.Activity != null && activityNamesLower.Contains(ta.Activity.Name.ToLower())));
+                    ta.Activity != null && filterDto.ActivityIds.Contains(ta.Activity.Id)));
             }
 
-            if (filterDto.AmenityNames != null && filterDto.AmenityNames.Any())
+            if (filterDto.AmenityIds != null && filterDto.AmenityIds.Any())
             {
-                var amenityNamesLower = filterDto.AmenityNames.Select(a => a.ToLower()).ToList();
                 query = query.Where(t => t.TourAmenities.Any(ta =>
-                    ta.Amenity != null && amenityNamesLower.Contains(ta.Amenity.Name.ToLower())));
+                    ta.Amenity != null && filterDto.AmenityIds.Contains(ta.Amenity.Id)));
             }
 
             if (filterDto.DepartureDate != null)
@@ -285,11 +282,6 @@ namespace Service.Services
             var result = _mapper.Map<List<TourDto>>(query.ToList());
             return result;
         }
-
-
-
-
-
 
     }
 }
