@@ -12,6 +12,7 @@ using Service.DTOs.Account;
 using Service.DTOs.Activity;
 using Service.DTOs.Amenity;
 using Service.DTOs.Blog;
+using Service.DTOs.Booking;
 using Service.DTOs.Brand;
 using Service.DTOs.ChooseUsAbout;
 using Service.DTOs.City;
@@ -39,6 +40,10 @@ namespace Service.Helpers
     {
         public MappingProfile()
         {
+
+            //booking
+            CreateMap<Booking, BookingDto>();
+            CreateMap<BookingCreateDto, Booking>();
             //Slider
             CreateMap<Slider, SliderDto>();
             CreateMap<SliderCreateDto, Slider>();

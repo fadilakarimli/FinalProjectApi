@@ -3071,6 +3071,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FinalProject.Controllers.Client.BookingController",
+    "Method": "CreateBooking",
+    "RelativePath": "api/Booking/CreateBooking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Service.DTOs.Booking.BookingCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FinalProject.Controllers.Client.ContactController",
     "Method": "CreateMessage",
     "RelativePath": "api/Contact/CreateMessage",

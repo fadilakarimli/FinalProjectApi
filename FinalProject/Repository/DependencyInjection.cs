@@ -44,6 +44,7 @@ namespace Repository
             services.AddScoped<IAboutBlogRepository, AboutBlogRepository>();
             services.AddScoped<ISettingRepository, SettingRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
 
             return services;
         }

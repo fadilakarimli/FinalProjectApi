@@ -46,6 +46,7 @@ namespace Service
             services.AddScoped<IAboutBlogService, AboutBlogService>();
             services.AddScoped<ISettingService, SettingService>();
             services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IBookingService, BookingService>();
 
             //
             services.AddDistributedMemoryCache();
