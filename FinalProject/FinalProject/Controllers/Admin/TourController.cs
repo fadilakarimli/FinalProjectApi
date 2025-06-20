@@ -76,12 +76,5 @@ namespace FinalProject.Controllers.Admin
             var tours = await _tourService.SearchAsync(request);
             return Ok(tours);
         }
-      
-
-
-
-
-
-
     }
 }

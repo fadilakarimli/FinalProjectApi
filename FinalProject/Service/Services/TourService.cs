@@ -27,11 +27,13 @@ namespace Service.Services
         private readonly ICloudinaryManager _cloudinaryManager;
         private readonly IPlanRepository _planRepository;
         private readonly ISettingRepository _settingRepository;
+        private readonly INewsletterRepository _newsletterRepository;
+
 
 
         public TourService(ITourRepository repo, IMapper mapper, IFileService fileService, IEmailService emailService,
                            INewsLetterService newsletterService, ICloudinaryManager cloudinaryManager, IExperienceRepository experienceRepository, IPlanRepository planRepository
-                         , ISettingRepository settingRepository)
+                         , ISettingRepository settingRepository, INewsletterRepository newsletterRepository)
         {
             _mapper = mapper;
             _repo = repo;
@@ -42,6 +44,7 @@ namespace Service.Services
             _experienceRepository = experienceRepository;
             _planRepository = planRepository;
             _settingRepository = settingRepository;
+            _newsletterRepository = newsletterRepository;
         }
         public async Task CreateAsync(TourCreateDto model)
         {
@@ -78,6 +81,7 @@ namespace Service.Services
                 AmenityId = id
             }).ToList() ?? new List<TourAmenity>();
 
+            // Əgər Experience-lər əlavə ediləcəksə, buranı aç:
             //if (model.ExperienceIds != null && model.ExperienceIds.Any())
             //{
             //    var experiences = await _experienceRepository
@@ -86,7 +90,44 @@ namespace Service.Services
             //}
 
             await _repo.CreateAsync(tour);
+
+            var allSubscribers = await _newsletterRepository.GetAllAsync();
+
+            string subject = "Yeni tur əlavə olundu!";
+
+            string body = $@"
+    <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+        <div style='max-width: 600px; margin: auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>
+            <div style='background-color: #007bff; color: white; padding: 20px; text-align: center;'>
+                <h2>Yeni tur əlavə olundu!</h2>
+            </div>
+            <div style='padding: 20px;'>
+                <p>Salam dəyərli abunəçi,</p>
+                <p><strong>{tour.Name}</strong> adlı yeni tur əlavə olundu!</p>
+                <p><strong>Başlama tarixi:</strong> {tour.StartDate:dd.MM.yyyy}</p>
+                <p><strong>Bitmə tarixi:</strong> {tour.EndDate:dd.MM.yyyy}</p>
+                //<p>Daha ətraflı məlumat üçün saytımıza keçid edin:</p>
+                <p style='text-align: center;'>
+                    //<a href='https://localhost:7014/home/tour/{tour.Id}' 
+                    //   style='background-color: #28a745; color: white; padding: 10px 20px; 
+                    //          text-decoration: none; border-radius: 5px; display: inline-block;'>
+                    //    Tura bax
+                    //</a>
+                </p>
+            </div>
+            <div style='background-color: #f8f9fa; text-align: center; padding: 10px; font-size: 12px; color: #888;'>
+                Bu email sistem tərəfindən avtomatik göndərilmişdir. Cavab yazmayın.
+            </div>
+        </div>
+    </div>";
+
+
+            foreach (var subscriber in allSubscribers)
+            {
+                _emailService.SendEmail(subscriber.Email, subject, body);
+            }
         }
+            
 
 
         public async Task DeleteAsync(int id)
@@ -267,7 +308,7 @@ namespace Service.Services
             if (filterDto.GuestCount.HasValue)
             {
                 query = query.Where(t => t.Capacity >= filterDto.GuestCount.Value);
-            }
+            }   
 
             if (filterDto.MinPrice.HasValue)
             {
