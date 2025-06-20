@@ -9,6 +9,5 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IDestinationFeatureRepository : IBaseRepository<DestinationFeature>
     {
-     
     }
 }

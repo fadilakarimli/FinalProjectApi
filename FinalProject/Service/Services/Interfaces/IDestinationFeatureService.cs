@@ -16,5 +16,6 @@ namespace Service.Services.Interfaces
         Task<DestinationFeatureDto> GetByIdAsync(int id);
         Task EditAsync(int id, DestinationFeatureEditDto dto);
         Task DeleteAsync(int id);
+
     }
 }

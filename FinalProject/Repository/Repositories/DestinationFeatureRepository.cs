@@ -11,8 +11,7 @@ namespace Repository.Repositories
 {
     public class DestinationFeatureRepository : BaseRepository<DestinationFeature>, IDestinationFeatureRepository
     {
-        public DestinationFeatureRepository(AppDbContext context) : base(context)
-        {
-        }
+        public DestinationFeatureRepository(AppDbContext context) : base(context) { }
+
     }
 }
