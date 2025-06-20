@@ -24,6 +24,7 @@ using Service.DTOs.Experience;
 using Service.DTOs.Instagram;
 using Service.DTOs.NewLetter;
 using Service.DTOs.Plan;
+using Service.DTOs.Review;
 using Service.DTOs.Setting;
 using Service.DTOs.Slider;
 using Service.DTOs.SliderInfo;
@@ -44,6 +45,10 @@ namespace Service.Helpers
             //booking
             CreateMap<Booking, BookingDto>();
             CreateMap<BookingCreateDto, Booking>();
+
+            //review
+            CreateMap<ReviewCreateDto, Review>();
+            CreateMap<Review, ReviewListDto>();
             //Slider
             CreateMap<Slider, SliderDto>();
             CreateMap<SliderCreateDto, Slider>();

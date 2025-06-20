@@ -46,6 +46,7 @@ namespace Repository.Data
         public DbSet<TourCity> TourCities { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
 
 

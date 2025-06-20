@@ -45,6 +45,7 @@ namespace Repository
             services.AddScoped<ISettingRepository, SettingRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
 
             return services;
         }

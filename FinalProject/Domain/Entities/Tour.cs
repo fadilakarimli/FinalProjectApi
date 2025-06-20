@@ -26,6 +26,7 @@ namespace Domain.Entities
         public ICollection<TourAmenity> TourAmenities { get; set; }
         public ICollection<Experience> Experiences { get; set; }
         public ICollection<Plan> Plans { get; set; }
+        public ICollection<Review> Reviews { get; set; }
 
     }
 }
