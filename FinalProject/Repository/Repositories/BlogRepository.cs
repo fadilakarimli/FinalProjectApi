@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Repositories.Interfaces;
 using System;
@@ -13,6 +14,15 @@ namespace Repository.Repositories
     {
         public BlogRepository(AppDbContext context) : base(context)
         {
+
         }
+
+        public async Task<List<Blog>> SearchAsync(string query)
+        {
+            return await _context.Blogs
+                .Where(b => b.Title.Contains(query) || b.Content.Contains(query))
+                .ToListAsync();
+        }
+
     }
 }

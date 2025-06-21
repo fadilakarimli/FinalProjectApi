@@ -9,5 +9,7 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IBlogRepository : IBaseRepository<Blog>
     {
+        Task<List<Blog>> SearchAsync(string query);
     }
 }
+    

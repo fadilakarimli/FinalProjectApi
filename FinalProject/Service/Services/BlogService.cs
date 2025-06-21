@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Blog;
@@ -73,5 +74,13 @@ namespace Service.Services
             if (blog == null) return null;
             return _mapper.Map<BlogDto>(blog);
         }
+
+        public async Task<List<BlogDto>> SearchBlogsAsync(string query)
+        {
+            var blogs = await _blogRepo.SearchAsync(query);
+            return _mapper.Map<List<BlogDto>>(blogs);
+        }
+
+
     }
 }

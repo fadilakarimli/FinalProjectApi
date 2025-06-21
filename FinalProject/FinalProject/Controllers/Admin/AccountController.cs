@@ -46,5 +46,20 @@ namespace FinalProject.Controllers.Admin
             return Ok("Rol təyin edildi.");
         }
 
+
+        [HttpPost("RemoveRole")]
+        public async Task<IActionResult> RemoveRole([FromBody] AssignRoleDto model)
+        {
+            if (model == null || string.IsNullOrEmpty(model.UserId) || string.IsNullOrEmpty(model.RoleName))
+                return BadRequest("Invalid data.");
+
+            var result = await _accountService.RemoveRoleAsync(model.UserId, model.RoleName);
+
+            if (result)
+                return Ok(new { Success = true, Message = "Rol uğurla silindi!" });
+            else
+                return BadRequest(new { Success = false, Message = "Xəta baş verdi." });
+        }
+
     }
 }

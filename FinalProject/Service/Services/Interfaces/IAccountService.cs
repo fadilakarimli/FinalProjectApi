@@ -28,6 +28,7 @@ namespace Service.Services.Interfaces
         Task DeleteRoleToUser(string roleName, string userId);
 
         Task<bool> AssignRoleAsync(AssignRoleDto dto);
+        Task<bool> RemoveRoleAsync(string userId, string roleName);
 
     }
 }

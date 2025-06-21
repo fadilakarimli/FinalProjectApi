@@ -126,6 +126,20 @@ namespace Service.Services
             return userDtos;
         }
 
+        public async Task<bool> RemoveRoleAsync(string userId, string roleName)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return false;
+
+            if (!await _roleManager.RoleExistsAsync(roleName))
+                return false; // Roll yoxdur, silinməsi lazım deyil
+
+            var isInRole = await _userManager.IsInRoleAsync(user, roleName);
+            if (!isInRole) return true; // Əgər istifadəçi artıq o roldan çıxarılıbsa, uğur sayılır
+
+            var result = await _userManager.RemoveFromRoleAsync(user, roleName);
+            return result.Succeeded;
+        }
 
 
         public async Task<LoginResponse> LoginAsync(LoginDto model)

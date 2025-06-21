@@ -15,5 +15,6 @@ namespace Service.Services.Interfaces
         Task<BlogDto> GetByIdAsync(int id);
         Task EditAsync(int id, BlogEditDto model);
         Task DeleteAsync(int id);
+        Task<List<BlogDto>> SearchBlogsAsync(string query);
     }
 }
