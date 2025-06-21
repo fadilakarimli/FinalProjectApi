@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 using Repository.Exceptions;
 using Repository.Repositories.Interfaces;
 using Service.DTOs.Booking;
@@ -25,6 +26,18 @@ namespace Service.Services
             _mapper = mapper;
         }
 
+        public async Task<bool> UpdateStatusAsync(int bookingId, BookingStatus newStatus)
+        {
+            var booking = await _bookingRepo.GetByIdAsync(bookingId);
+            if (booking == null)
+                return false;
+
+            booking.Status = newStatus;
+            await _bookingRepo.UpdateAsync(booking);
+            return true;
+        }
+
+
         public async Task<BookingDto> CreateAsync(BookingCreateDto dto)
         {
             var tour = await _tourRepo.GetByIdAsync(dto.TourId);
@@ -45,6 +58,18 @@ namespace Service.Services
 
             return _mapper.Map<BookingDto>(booking);
         }
+
+        public async Task<IEnumerable<BookingDto>> GetAllAsync()
+        {
+            var bookings = await _bookingRepo.GetAllAsync();
+
+            // AutoMapper ilə entity-ləri DTO-lara çeviririk
+            var bookingDtos = _mapper.Map<IEnumerable<BookingDto>>(bookings);
+
+            return bookingDtos;
+        }
+
+
     }
 
 }

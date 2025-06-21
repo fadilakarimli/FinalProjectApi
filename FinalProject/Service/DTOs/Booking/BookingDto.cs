@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,12 @@ namespace Service.DTOs.Booking
     {
         public int Id { get; set; }
         public int TourId { get; set; }
+        public string TourName { get; set; }
         public int AdultsCount { get; set; }
         public int ChildrenCount { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime BookingDate { get; set; }
+
+        public BookingStatus Status { get; set; }
     }
 }

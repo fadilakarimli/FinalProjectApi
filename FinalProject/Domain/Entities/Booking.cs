@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace Domain.Entities
         public int AdultsCount { get; set; }
         public int ChildrenCount { get; set; }
         public decimal TotalPrice { get; set; }
+
+        public BookingStatus Status { get; set; }
 
     }
 }

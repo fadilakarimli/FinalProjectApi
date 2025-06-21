@@ -9,5 +9,7 @@ namespace Repository.Repositories.Interfaces
 {
     public interface IBookingRepository : IBaseRepository<Booking>
     {
+        Task<IEnumerable<Booking>> GetAllAsync();
+        Task UpdateAsync(Booking booking);
     }
 }

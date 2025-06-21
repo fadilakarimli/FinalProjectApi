@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.Booking;
 using Service.Services.Interfaces;
@@ -19,5 +21,26 @@ namespace FinalProject.Controllers.Client
             var result = await _bookingService.CreateAsync(dto);
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var bookings = await _bookingService.GetAllAsync();
+            return Ok(bookings);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, BookingStatusUpdateDto dto)
+        {
+            var updated = await _bookingService.UpdateStatusAsync(id, dto.Status);
+            if (!updated)
+                return NotFound();
+
+            return NoContent();
+        }
+
+
+
+
     }
 }
