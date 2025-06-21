@@ -13,5 +13,7 @@ namespace Service.Services.Interfaces
         Task<IEnumerable<ReviewListDto>> GetByTourIdAsync(int tourId);
         Task<IEnumerable<ReviewListDto>> GetAllAsync();
         Task DeleteAsync(int id);
+        Task<ReviewListDto> GetByIdAsync(int id);
+
     }
 }

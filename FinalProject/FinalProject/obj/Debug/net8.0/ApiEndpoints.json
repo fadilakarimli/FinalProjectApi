@@ -849,6 +849,22 @@
   },
   {
     "ContainingType": "FinalProject.Controllers.Admin.AccountController",
+    "Method": "AssignRole",
+    "RelativePath": "api/admin/Account/AssignRole/AssignRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Service.DTOs.Account.AssignRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Admin.AccountController",
     "Method": "CreateRoles",
     "RelativePath": "api/admin/Account/CreateRoles",
     "HttpMethod": "POST",
@@ -3153,6 +3169,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Client.ReviewController",
+    "Method": "GetById",
+    "RelativePath": "api/Review/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FinalProject.Controllers.Client.ReviewController",

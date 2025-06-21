@@ -35,5 +35,16 @@ namespace FinalProject.Controllers.Admin
         {
             return Ok(await _accountService.GetAllRoles());
         }
+
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRole([FromBody] AssignRoleDto dto)
+        {
+            var result = await _accountService.AssignRoleAsync(dto);
+            if (!result)
+                return BadRequest("Rol təyinatı alınmadı.");
+
+            return Ok("Rol təyin edildi.");
+        }
+
     }
 }

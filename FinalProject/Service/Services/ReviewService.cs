@@ -50,5 +50,14 @@ namespace Service.Services
             }
         }
 
+        public async Task<ReviewListDto> GetByIdAsync(int id)
+        {
+            var review = await _reviewRepository.GetByIdAsync(id);
+            if (review == null) return null;
+
+            return _mapper.Map<ReviewListDto>(review);
+        }
+
+
     }
 }

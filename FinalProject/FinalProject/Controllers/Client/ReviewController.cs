@@ -54,5 +54,15 @@ namespace FinalProject.Controllers.Client
             }
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var tour = await _reviewService.GetByIdAsync(id);
+            if (tour == null)
+                return NotFound(new { message = "Review tapılmadı" });
+            return Ok(tour);
+        }
+
+
     }
 }

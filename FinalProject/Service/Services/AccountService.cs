@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +24,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace Service.Services
 {
@@ -106,38 +110,105 @@ namespace Service.Services
 
         public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
         {
-            return _mapper.Map<IEnumerable<UserDto>>(await _userManager.Users.ToListAsync());
+            var users = await _userManager.Users.ToListAsync();
+            var userDtos = new List<UserDto>();
+
+            foreach (var user in users)
+            {
+                var userDto = _mapper.Map<UserDto>(user); // AutoMapper ilə əsas mapping
+                var roles = await _userManager.GetRolesAsync(user); // Rolları ayrıca al
+
+                userDto.Roles = roles.ToList(); // Rol siyahısını əlavə et
+
+                userDtos.Add(userDto);
+            }
+
+            return userDtos;
         }
+
 
 
         public async Task<LoginResponse> LoginAsync(LoginDto model)
         {
+            var httpContext = _httpContextAccessor.HttpContext;
+
             AppUser user = await _userManager.FindByNameAsync(model.UserNameOrEmail);
-            if (user is null)
+            if (user == null)
                 user = await _userManager.FindByEmailAsync(model.UserNameOrEmail);
 
-            if (user is null)
-                return new LoginResponse { Success = false, Error = "Login failed", Token = null };
+            if (user == null)
+            {
+                return new LoginResponse
+                {
+                    Success = false,
+                    Error = "İstifadəçi tapılmadı.",
+                    Token = null
+                };
+            }
 
-            var result = await _userManager.CheckPasswordAsync(user, model.Password);
-            if (!result)
-                return new LoginResponse { Success = false, Error = "Login failed", Token = null };
+            var isPasswordCorrect = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (!isPasswordCorrect)
+            {
+                return new LoginResponse
+                {
+                    Success = false,
+                    Error = "Şifrə yanlışdır.",
+                    Token = null
+                };
+            }
 
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
                 return new LoginResponse
                 {
                     Success = false,
-                    Error = "Login failed: Email not confirmed.",
+                    Error = "Email təsdiqlənməyib.",
                     Token = null
                 };
             }
 
-            var userRoles = await _userManager.GetRolesAsync(user);
-            string token = GenerateJwtToken(user.UserName, userRoles.ToList());
+            var roles = await _userManager.GetRolesAsync(user);
 
-            return new LoginResponse { Success = true, Error = null, Token = token };
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim("FullName", user.FullName ?? "")
+    };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+            };
+
+            await httpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties
+            );
+
+            // Token yaradılır burada!
+            string token = GenerateJwtToken(user.UserName, roles.ToList());
+
+            return new LoginResponse
+            {
+                Success = true,
+                Error = null,
+                Token = token,
+                UserName = user.UserName,
+                Roles = roles.ToList()  // roles burada var
+            };
         }
+
+
 
         private string GenerateJwtToken(string username, List<string> roles)
         {
@@ -173,7 +244,7 @@ namespace Service.Services
             var result = await _userManager.CreateAsync(user, model.UserPassword);
             if (!result.Succeeded)
                 return new RegisterResponse { Success = false, Message = result.Errors.Select(m => m.Description).ToArray() };
-            await _userManager.AddToRoleAsync(user, Roles.Member.ToString());
+            await _userManager.AddToRoleAsync(user, Roles.SuperAdmin.ToString());
             //Email confirm
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var request = _httpContextAccessor.HttpContext.Request;
@@ -277,7 +348,24 @@ namespace Service.Services
                 StatusCode = (int)StatusCodes.Status200OK
             };
         }
+        public async Task<bool> AssignRoleAsync(AssignRoleDto dto)
+        {
+            var user = await _userManager.FindByIdAsync(dto.UserId);
+            if (user == null) return false;
 
+            // Rol yoxdursa, əlavə et (opsional)
+            if (!await _roleManager.RoleExistsAsync(dto.RoleName))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(dto.RoleName));
+            }
+
+            // Əgər user artıq roldadırsa, yenidən əlavə etməyə ehtiyac yoxdur
+            var alreadyInRole = await _userManager.IsInRoleAsync(user, dto.RoleName);
+            if (alreadyInRole) return true;
+
+            var result = await _userManager.AddToRoleAsync(user, dto.RoleName);
+            return result.Succeeded;
+        }
 
         public async Task<ResponseObject> ResetPassword(UserResetPasswordDto userResetPasswordDto)
         {
