@@ -11,5 +11,6 @@ namespace Service.DTOs.Booking
         public int TourId { get; set; }
         public int AdultsCount { get; set; }
         public int ChildrenCount { get; set; }
+        public string UserEmail { get; set; }
     }
 }

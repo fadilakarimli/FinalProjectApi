@@ -44,7 +44,8 @@ namespace Service.Helpers
 
             //booking
             CreateMap<Booking, BookingDto>()
-           .ForMember(dest => dest.TourName, opt => opt.MapFrom(src => src.Tour.Name));
+           .ForMember(dest => dest.TourName, opt => opt.MapFrom(src => src.Tour.Name))
+               .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.UserEmail));
             CreateMap<BookingCreateDto, Booking>();
 
             //review

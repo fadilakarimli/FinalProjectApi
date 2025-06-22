@@ -3146,6 +3146,22 @@
   },
   {
     "ContainingType": "FinalProject.Controllers.Client.BookingController",
+    "Method": "GetById",
+    "RelativePath": "api/Booking/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Client.BookingController",
     "Method": "UpdateStatus",
     "RelativePath": "api/Booking/UpdateStatus",
     "HttpMethod": "POST",

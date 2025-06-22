@@ -20,5 +20,8 @@ namespace Domain.Entities
 
         public BookingStatus Status { get; set; }
 
+
+        public string UserEmail { get; set; }
+
     }
 }

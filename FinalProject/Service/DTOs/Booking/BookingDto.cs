@@ -16,7 +16,8 @@ namespace Service.DTOs.Booking
         public int ChildrenCount { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime BookingDate { get; set; }
+        public string UserEmail { get; set; }
 
-        public BookingStatus Status { get; set; }
+        public BookingStatus Status { get; set; }   
     }
 }

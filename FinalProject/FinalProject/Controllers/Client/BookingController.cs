@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Exceptions;
 using Service.DTOs.Booking;
 using Service.Services.Interfaces;
 
@@ -38,6 +39,22 @@ namespace FinalProject.Controllers.Client
 
             return NoContent();
         }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var booking = await _bookingService.GetByIdAsync(id);
+                return Ok(booking);
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
 
 
 

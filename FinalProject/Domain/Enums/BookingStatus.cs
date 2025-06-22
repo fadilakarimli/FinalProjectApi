@@ -9,7 +9,7 @@ namespace Domain.Enums
     public enum BookingStatus
     {
         Pending,
-        Accepted,
+        Accepted,   
         Cancelled
     }
 }

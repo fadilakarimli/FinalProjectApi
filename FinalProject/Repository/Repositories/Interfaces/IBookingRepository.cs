@@ -11,5 +11,6 @@ namespace Repository.Repositories.Interfaces
     {
         Task<IEnumerable<Booking>> GetAllAsync();
         Task UpdateAsync(Booking booking);
+        Task<Booking> GetByIdAsync(int id);
     }
 }

@@ -30,6 +30,13 @@ namespace Repository.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Booking> GetByIdAsync(int id)
+        {
+            return await _context.Bookings
+                .Include(b => b.Tour)
+                .FirstOrDefaultAsync(b => b.Id == id);
+        }
+
 
 
     }

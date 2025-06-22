@@ -34,8 +34,58 @@ namespace Service.Services
 
             booking.Status = newStatus;
             await _bookingRepo.UpdateAsync(booking);
+
+            // Status accepted olarsa, mail göndər
+            if (newStatus == BookingStatus.Accepted && !string.IsNullOrWhiteSpace(booking.UserEmail))
+            {
+                try
+                {
+                    // Tour null ola bilər, yoxla və yüklə
+                    if (booking.Tour == null)
+                        booking.Tour = await _tourRepo.GetByIdAsync(booking.TourId);
+
+                    var smtpHost = "smtp.gmail.com";
+                    var smtpPort = 587;
+                    var smtpUser = "fadilafk@code.edu.az";
+                    var smtpPass = "fqen ovmf kvou rvos"; // App password
+
+                    var mail = new System.Net.Mail.MailMessage();
+                    mail.From = new System.Net.Mail.MailAddress(smtpUser);
+                    mail.To.Add(booking.UserEmail);
+                    mail.Subject = "Rezervasiyanız təsdiqləndi ✅";
+                    mail.Body = $@"
+                Hörmətli istifadəçi,
+
+                Sizin rezervasiyanız təsdiqləndi.
+
+                Tur: {booking.Tour?.Name}
+                Tarix: {booking.BookingDate:dd.MM.yyyy}
+                Yetişkin sayı: {booking.AdultsCount}
+                Uşaq sayı: {booking.ChildrenCount}
+                Ümumi məbləğ: {booking.TotalPrice} USD
+
+                Təşəkkür edirik, Travel.az komandasından.
+            ";
+                    mail.IsBodyHtml = false;
+
+                    using var smtp = new System.Net.Mail.SmtpClient(smtpHost, smtpPort)
+                    {
+                        Credentials = new System.Net.NetworkCredential(smtpUser, smtpPass),
+                        EnableSsl = true
+                    };
+
+                    await smtp.SendMailAsync(mail);
+                }
+                catch (Exception ex)
+                {
+                    // Mail göndərərkən xətanı logla
+                    Console.WriteLine("❌ Email göndərilərkən xəta: " + ex.Message);
+                }
+            }
+
             return true;
         }
+
 
 
         public async Task<BookingDto> CreateAsync(BookingCreateDto dto)
@@ -51,7 +101,8 @@ namespace Service.Services
                 AdultsCount = dto.AdultsCount,
                 ChildrenCount = dto.ChildrenCount,
                 BookingDate = DateTime.UtcNow,
-                TotalPrice = total
+                TotalPrice = total,
+                UserEmail = dto.UserEmail // ✅ burda yazılır
             };
 
             await _bookingRepo.CreateAsync(booking);
@@ -67,6 +118,18 @@ namespace Service.Services
             var bookingDtos = _mapper.Map<IEnumerable<BookingDto>>(bookings);
 
             return bookingDtos;
+        }
+
+        public async Task<BookingDto> GetByIdAsync(int id)
+        {
+            var booking = await _bookingRepo.GetByIdAsync(id);
+            if (booking == null) throw new NotFoundException("Booking not found");
+
+            // Tour adı DTO-ya əlavə olunur (əgər Tour lazy-loaded deyilsə, include etməlisən)
+            if (booking.Tour == null)
+                booking.Tour = await _tourRepo.GetByIdAsync(booking.TourId);
+
+            return _mapper.Map<BookingDto>(booking);
         }
 
 

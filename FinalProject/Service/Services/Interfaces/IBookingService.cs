@@ -13,5 +13,6 @@ namespace Service.Services.Interfaces
         Task<BookingDto> CreateAsync(BookingCreateDto dto);
         Task<IEnumerable<BookingDto>> GetAllAsync();
         Task<bool> UpdateStatusAsync(int bookingId, BookingStatus newStatus);
+        Task<BookingDto> GetByIdAsync(int id);
     }
 }
