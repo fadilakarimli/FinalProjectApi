@@ -47,14 +47,18 @@ namespace Service.Services
             if (model.Image != null)
             {
                 string newImageUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
+
                 if (!string.IsNullOrEmpty(insta.Image))
                 {
                     await _cloudinaryManager.FileDeleteAsync(insta.Image);
                 }
+
                 insta.Image = newImageUrl;
             }
+
             await _instagramRepository.EditAsync(insta);
         }
+
 
         public async Task<IEnumerable<InstagramDto>> GetAllAsync()
         {
