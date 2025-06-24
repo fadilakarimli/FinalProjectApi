@@ -51,5 +51,15 @@ namespace Service.Services
             if (experience is null) throw new Exception("Experience not found");
             return _mapper.Map<ExperienceDto>(experience);
         }
+
+        public async Task<IEnumerable<ExperienceDto>> GetByTourIdAsync(int tourId)
+        {
+            var experiences = await _experienceRepository.GetAllWithIcludesAsync(x => x.Tour);
+
+            var filtered = experiences.Where(e => e.Tour.Id == tourId);
+
+            return _mapper.Map<IEnumerable<ExperienceDto>>(filtered);
+        }
+
     }
 }

@@ -18,17 +18,16 @@ namespace Service.Services
         public async Task AddEmailAsync(string email)
         {
             if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
-                throw new ArgumentException("Email düzgün formatda deyil.");
+                throw new ArgumentException("email is not true format.");
 
             await _newletterRepo.AddEmailAsync(email);
         }
 
-
         public async Task DeleteAsync(int id)
         {
-            var newsletter = await _newletterRepo.GetByIdAsync(id);
+            var newsletter = await _newletterRepo.GetWithExpressionAsync(x=>x.Id == id);
             if (newsletter == null)
-                throw new Exception("Belə bir e-poçt tapılmadı.");
+                throw new Exception("Notfound email.");
             await _newletterRepo.DeleteAsync(newsletter);
         }
         public async Task<IEnumerable<NewLetterDto>> GetAllAsync()

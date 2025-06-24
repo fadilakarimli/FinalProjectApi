@@ -49,5 +49,13 @@ namespace FinalProject.Controllers.Admin
             await _experienceService.DeleteAsync(id);
             return NoContent();
         }
+
+        [HttpGet("GetByTourId/{tourId}")]
+        public async Task<IActionResult> GetByTourId(int tourId)
+        {
+            var experiences = await _experienceService.GetByTourIdAsync(tourId);
+            return Ok(experiences);
+        }
+
     }
 }

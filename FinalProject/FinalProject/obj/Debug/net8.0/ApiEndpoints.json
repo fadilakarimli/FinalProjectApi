@@ -1919,6 +1919,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FinalProject.Controllers.Admin.ExperienceController",
+    "Method": "GetByTourId",
+    "RelativePath": "api/admin/Experience/GetByTourId/GetByTourId/{tourId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tourId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FinalProject.Controllers.Admin.InstagramController",
     "Method": "Create",
     "RelativePath": "api/admin/Instagram/Create",
@@ -2016,7 +2032,7 @@
   {
     "ContainingType": "FinalProject.Controllers.Admin.NewsLetterController",
     "Method": "Delete",
-    "RelativePath": "api/admin/NewsLetter/Delete/{id}",
+    "RelativePath": "api/admin/NewsLetter/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -2024,7 +2040,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -23,9 +23,8 @@ namespace Service.Services
         }
         public async Task DeleteAsync(int id)
         {
-            var activity = await _activityRepo.GetByIdAsync(id);
+            var activity = await _activityRepo.GetWithExpressionAsync(x => x.Id == id);
             if (activity == null) throw new Exception("Activity not found");
-
             await _activityRepo.DeleteAsync(activity);
         }
 

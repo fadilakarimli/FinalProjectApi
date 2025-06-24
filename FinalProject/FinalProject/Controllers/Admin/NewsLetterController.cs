@@ -15,12 +15,12 @@ namespace FinalProject.Controllers.Admin
         [HttpPost]
         public async Task<IActionResult> AddEmail([FromBody] string email)
         {
-            if (string.IsNullOrWhiteSpace(email)) return BadRequest("Email boş ola bilməz.");
+            if (string.IsNullOrWhiteSpace(email)) return BadRequest("Email not be empty.");
 
             try
             {
                 await _newsLetterService.AddEmailAsync(email);
-                return Ok("Email uğurla əlavə olundu.");
+                return Ok("Email added success");
             }
             catch (ArgumentException ex)
             {
@@ -35,13 +35,13 @@ namespace FinalProject.Controllers.Admin
             return Ok(result);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery]int id)
         {
             try
             {
                 await _newsLetterService.DeleteAsync(id);
-                return Ok("Email uğurla silindi.");
+                return Ok("Email delete success.");
             }
             catch (Exception ex)
             {

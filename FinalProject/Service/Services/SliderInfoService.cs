@@ -51,7 +51,7 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await _sliderInfoRepo.GetByIdAsync(id);
+            var entity = await _sliderInfoRepo.GetWithExpressionAsync(x => x.Id == id);
             if (entity == null) throw new Exception("SliderInfo tapılmadı");
             await _sliderInfoRepo.DeleteAsync(entity);
         }

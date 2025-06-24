@@ -1,4 +1,5 @@
-﻿using Service.DTOs.Experience;
+﻿using Domain.Entities;
+using Service.DTOs.Experience;
 using Service.DTOs.Instagram;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace Service.Services.Interfaces
         Task<ExperienceDto> GetByIdAsync(int id);
         Task EditAsync(int id, ExperienceEditDto model);
         Task DeleteAsync(int id);
+        Task<IEnumerable<ExperienceDto>> GetByTourIdAsync(int tourId);
+
     }
 }
