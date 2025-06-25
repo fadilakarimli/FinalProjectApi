@@ -34,7 +34,7 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            var teamMember = await _repository.GetByIdAsync(id);
+            var teamMember = await _repository.GetWithExpressionAsync(x => x.Id == id);
             if (teamMember == null)
                 throw new Exception("AboutTeamMember tapılmadı");
 

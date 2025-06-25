@@ -176,6 +176,14 @@
               "target": "Package",
               "version": "[8.0.16, )"
             },
+            "PdfSharpCore": {
+              "target": "Package",
+              "version": "[1.3.67, )"
+            },
+            "PuppeteerSharp": {
+              "target": "Package",
+              "version": "[20.1.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -396,6 +404,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "PdfSharpCore": {
+              "target": "Package",
+              "version": "[1.3.67, )"
             }
           },
           "imports": [

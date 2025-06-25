@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\confirm\\resetpassword.html"
     },
     {
+      "Id": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\tickets\\ticket_0.pdf",
+      "PackagePath": "staticwebassets\\tickets\\ticket_0.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\wwwroot\\tickets\\ticket_1.pdf",
+      "PackagePath": "staticwebassets\\tickets\\ticket_1.pdf"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FinalProject.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
