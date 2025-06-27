@@ -64,7 +64,7 @@ namespace Service.Services
                 Uşaq sayı: {booking.ChildrenCount}
                 Ümumi məbləğ: {booking.TotalPrice} USD
 
-                Təşəkkür edirik, Travel.az komandasından.
+                Təşəkkür edirik, Travil.az komandasından.
             ";
                     mail.IsBodyHtml = false;
 

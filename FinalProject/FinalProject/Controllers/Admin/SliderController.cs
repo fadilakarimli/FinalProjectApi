@@ -56,6 +56,12 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit([FromRoute] int id, [FromForm] SliderEditDto model)
         {
+            if (model.Image == null)
+                ModelState.Remove(nameof(model.Image));
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
                 await _sliderService.EditAsync(id, model);
@@ -66,6 +72,7 @@ namespace FinalProject.Controllers.Admin
                 return BadRequest(ex.Message);
             }
         }
+    
 
 
 

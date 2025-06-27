@@ -59,16 +59,25 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] TrandingDestinationEditDto model)
         {
+            if (model.Image == null)
+            {
+                ModelState.Remove(nameof(model.Image));
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
                 await _service.EditAsync(id, model);
-                return Ok(); 
+                return Ok();
             }
             catch (Exception ex)
             {
                 return StatusCode(404, ex.Message);
             }
         }
+
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery]int id)
         {

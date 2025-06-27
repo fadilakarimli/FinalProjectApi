@@ -9,6 +9,6 @@ namespace Service.DTOs.Instagram
 {
     public class InstagramEditDto
     {
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

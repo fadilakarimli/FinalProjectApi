@@ -42,6 +42,10 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] AboutTravilEditDto request)
         {
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.Image));
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.SmallImage));
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             await _aboutTravilService.EditAsync(id, request);

@@ -39,6 +39,11 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] AboutAgencyEditDto request)
         {
+            if (request.Image == null)
+            {
+                ModelState.Remove(nameof(request.Image));
+            }
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             await _aboutAgencyService.EditAsync(id, request);

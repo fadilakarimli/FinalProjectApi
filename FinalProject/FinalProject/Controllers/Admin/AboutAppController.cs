@@ -38,6 +38,18 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] AboutAppEditDto request)
         {
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.Image));
+
+            if (request.AppleImage == null)
+                ModelState.Remove(nameof(request.AppleImage));
+
+            if (request.PlayStoreImage == null)
+                ModelState.Remove(nameof(request.PlayStoreImage));
+
+            if (request.BackgroundImage == null)
+                ModelState.Remove(nameof(request.BackgroundImage));
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             await _aboutAppService.EditAsync(id, request);

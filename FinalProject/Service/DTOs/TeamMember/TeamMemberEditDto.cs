@@ -11,6 +11,6 @@ namespace Service.DTOs.TeamMember
     {
         public string FullName { get; set; }
         public string Position { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

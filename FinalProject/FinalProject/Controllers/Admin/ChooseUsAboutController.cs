@@ -39,6 +39,11 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] ChooseUsAboutEditDto request)
         {
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.Image));
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             await _chooseUsAboutService.EditAsync(id, request);

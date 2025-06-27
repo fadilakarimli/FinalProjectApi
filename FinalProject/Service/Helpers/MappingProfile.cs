@@ -86,9 +86,6 @@ namespace Service.Helpers
            .ForMember(dest => dest.Image, opt => opt.Ignore());
             //tour filter
 
-
-
-
             //contact 
             CreateMap<Contact, ContactDto>();
             CreateMap<ContactCreateDto, Contact>();

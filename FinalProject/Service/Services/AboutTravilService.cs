@@ -26,9 +26,10 @@ namespace Service.Services
         public async Task CreateAsync(AboutTravilCreateDto model)
         {
             string fileUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
+            string smallImageUrl = await _cloudinaryManager.FileCreateAsync(model.SmallImage);
             var aboutTravil = _mapper.Map<AboutTravil>(model);
             aboutTravil.Image = fileUrl;
-
+            aboutTravil.SmallImage = smallImageUrl;
             await _aboutTravilRepo.CreateAsync(aboutTravil);
         }
 

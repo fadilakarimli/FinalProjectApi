@@ -47,6 +47,14 @@ namespace FinalProject.Controllers.Admin
         {
             try
             {
+                if (request.Image == null)
+                {
+                    ModelState.Remove(nameof(request.Image));
+                }
+
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
                 await _instagramService.EditAsync(id, request);
                 return Ok();
             }

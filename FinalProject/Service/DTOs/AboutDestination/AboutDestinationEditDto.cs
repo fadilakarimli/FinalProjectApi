@@ -10,6 +10,6 @@ namespace Service.DTOs.AboutDestination
     public class AboutDestinationEditDto
     {
         public string Name { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile ?Image { get; set; }
     }
 }

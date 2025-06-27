@@ -12,6 +12,6 @@ namespace Service.DTOs.DestinationFeature
         public string Title { get; set; }
         public int TourCount { get; set; }
         public decimal PriceFrom { get; set; }
-        public IFormFile IconImage { get; set; }
+        public IFormFile? IconImage { get; set; }
     }
 }

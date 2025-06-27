@@ -11,8 +11,8 @@ namespace Service.DTOs.SpecialOffer
     {
         public string TitleSmall { get; set; }
         public string TitleMain { get; set; }
-        public IFormFile BackgroundImageUrl { get; set; }
-        public IFormFile DiscountImageUrl { get; set; }
-        public IFormFile BagImageUrl { get; set; }
+        public IFormFile ?BackgroundImageUrl { get; set; }
+        public IFormFile? DiscountImageUrl { get; set; }
+        public IFormFile ?BagImageUrl { get; set; }
     }
 }

@@ -63,6 +63,7 @@ namespace Service.Services
                 var imageUrl = await _cloudinaryManager.FileCreateAsync(model.Image);
                 member.Image = imageUrl;
             }
+            _mapper.Map(model, member);
 
             await _teamMemberRepo.EditAsync(member);
         }

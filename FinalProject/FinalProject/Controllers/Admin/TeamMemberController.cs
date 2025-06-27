@@ -53,6 +53,11 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit([FromRoute] int id, [FromForm] TeamMemberEditDto request)
         {
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.Image));
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             try
             {
                 await _teamMemberService.EditAsync(id, request);

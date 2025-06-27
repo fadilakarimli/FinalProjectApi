@@ -6,12 +6,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
 using Repository.Data;
+using Serilog;
 using Service;
 using Service.Helpers;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 
@@ -58,6 +61,14 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 });
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    // .WriteTo.Seq("http://localhost:5341") 
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Smtp"));
 
 builder.Services.Configure<JWTSetting>(builder.Configuration.GetSection("JwtSettings"));
@@ -88,6 +99,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddRepositoryLayer();
 builder.Services.AddServiceLayer();
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
@@ -97,6 +109,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

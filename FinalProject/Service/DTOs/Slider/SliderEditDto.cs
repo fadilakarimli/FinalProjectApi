@@ -9,6 +9,6 @@ namespace Service.DTOs.Slider
 {
     public class SliderEditDto
     {
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

@@ -106,13 +106,13 @@ namespace Service.Services
                 <p><strong>{tour.Name}</strong> adlı yeni tur əlavə olundu!</p>
                 <p><strong>Başlama tarixi:</strong> {tour.StartDate:dd.MM.yyyy}</p>
                 <p><strong>Bitmə tarixi:</strong> {tour.EndDate:dd.MM.yyyy}</p>
-                //<p>Daha ətraflı məlumat üçün saytımıza keçid edin:</p>
+                <p>Daha ətraflı məlumat üçün saytımıza keçid edin:</p>
                 <p style='text-align: center;'>
-                    //<a href='https://localhost:7014/home/tour/{tour.Id}' 
-                    //   style='background-color: #28a745; color: white; padding: 10px 20px; 
-                    //          text-decoration: none; border-radius: 5px; display: inline-block;'>
-                    //    Tura bax
-                    //</a>
+                    <a href='https://localhost:7014/tour/{tour.Id}' 
+                       style='background-color: #28a745; color: white; padding: 10px 20px; 
+                              text-decoration: none; border-radius: 5px; display: inline-block;'>
+                        Tura bax
+                    </a>
                 </p>
             </div>
             <div style='background-color: #f8f9fa; text-align: center; padding: 10px; font-size: 12px; color: #888;'>

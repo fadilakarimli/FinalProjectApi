@@ -258,7 +258,7 @@ namespace Service.Services
             var result = await _userManager.CreateAsync(user, model.UserPassword);
             if (!result.Succeeded)
                 return new RegisterResponse { Success = false, Message = result.Errors.Select(m => m.Description).ToArray() };
-            await _userManager.AddToRoleAsync(user, Roles.SuperAdmin.ToString());
+            await _userManager.AddToRoleAsync(user, Roles.Member.ToString());
             //Email confirm
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var request = _httpContextAccessor.HttpContext.Request;
