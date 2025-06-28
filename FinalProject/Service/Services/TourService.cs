@@ -143,7 +143,7 @@ namespace Service.Services
         {
             var existTour = await _repo.GetByIdWithIncludesAsync(id);
 
-            if (existTour is null) throw new Exception("Tour tapılmadı");
+            if (existTour == null) throw new Exception("Tour tapılmadı");
 
             if (model.ImageFile != null)
             {
@@ -151,6 +151,11 @@ namespace Service.Services
                 string newImageUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
                 existTour.Image = newImageUrl;
             }
+            // else bloqu silinir, ExistingImageUrl olmadığı üçün şəkil dəyişməz qalacaq
+            // else
+            // {
+            //     existTour.Image = model.ExistingImageUrl;
+            // }
 
             _mapper.Map(model, existTour);
 
@@ -170,24 +175,11 @@ namespace Service.Services
                 TourId = existTour.Id
             }).ToList();
 
-            // Experiences
-            if (model.ExperienceIds != null && model.ExperienceIds.Any())
-            {
-                var experiences = await _experienceRepository
-                    .GetAllWithExpressionAsync(e => model.ExperienceIds.Contains(e.Id));
-                existTour.Experiences = experiences.ToList();
-            }
-            else
-            {
-                existTour.Experiences.Clear();
-            }
+            // Experiences ilə bağlı hissə silindi
 
-            // *** Burada TourCities update etməliyik ***
-
-            // 1. Əvvəlki əlaqələri silirik
+            // TourCities update
             existTour.TourCities.Clear();
 
-            // 2. Yeni əlaqələri əlavə edirik
             if (model.CityIds != null && model.CityIds.Any())
             {
                 existTour.TourCities = model.CityIds.Select(cityId => new TourCity
@@ -199,6 +191,7 @@ namespace Service.Services
 
             await _repo.EditAsync(existTour);
         }
+
 
 
         public async Task<IEnumerable<TourDto>> GetAllAsync()
@@ -213,16 +206,27 @@ namespace Service.Services
 
                 if (tour.TourCities != null && tour.TourCities.Any())
                 {
-                    var cityNames = tour.TourCities.Select(tc => tc.City.Name).ToList();
                     dto.CityIds = tour.TourCities.Select(tc => tc.CityId).ToList();
                     dto.CityNames = tour.TourCities.Select(tc => tc.City.Name).ToList();
 
+                    dto.CountryIds = tour.TourCities
+                        .Where(tc => tc.City != null)
+                        .Select(tc => tc.City.CountryId)
+                        .Distinct()
+                        .ToList();
+
+                    dto.CountryNames = tour.TourCities
+                        .Where(tc => tc.City != null && tc.City.Country != null)
+                        .Select(tc => tc.City.Country.Name)
+                        .Distinct()
+                        .ToList();
                 }
                 else
                 {
-                    dto.CityNames = new List<string>();
                     dto.CityIds = new List<int>();
-
+                    dto.CityNames = new List<string>();
+                    dto.CountryIds = new List<int>();
+                    dto.CountryNames = new List<string>();
                 }
 
                 tourDtos.Add(dto);
@@ -230,6 +234,8 @@ namespace Service.Services
 
             return tourDtos;
         }
+
+
 
         public async Task<TourDto> GetByIdAsync(int id)
         {

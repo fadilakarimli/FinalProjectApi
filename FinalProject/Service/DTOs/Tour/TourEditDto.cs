@@ -18,9 +18,11 @@ namespace Service.DTOs.Tour
         public List<int> CityIds { get; set; }
         public int Capacity { get; set; }
         public IFormFile? ImageFile { get; set; }
+        //public string? ExistingImageUrl { get; set; }
         public List<int> ActivityIds { get; set; }
+        public List<int> CountryIds { get; set; } = new();
         public List<int> AmenityIds { get; set; }
-        public List<int> ExperienceIds { get; set; }
+        //public List<int> ExperienceIds { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

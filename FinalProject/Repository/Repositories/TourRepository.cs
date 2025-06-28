@@ -18,17 +18,18 @@ using System.Text;
         public async Task<IEnumerable<Tour>> GetAllTourWithActivityAsync()
         {
             return await _context.Tours
-        .Include(t => t.TourCities)
-            .ThenInclude(tc => tc.City)
-        .Include(t => t.TourActivities)
-            .ThenInclude(ta => ta.Activity)
-        .Include(t => t.TourAmenities)
-            .ThenInclude(ta => ta.Amenity)
-        .Include(t => t.Experiences)
-        .Include(t => t.Plans)
-        .ToListAsync();
-
+                .Include(t => t.TourCities)
+                    .ThenInclude(tc => tc.City)
+                        .ThenInclude(c => c.Country)  // Əlavə olundu
+                .Include(t => t.TourActivities)
+                    .ThenInclude(ta => ta.Activity)
+                .Include(t => t.TourAmenities)
+                    .ThenInclude(ta => ta.Amenity)
+                .Include(t => t.Experiences)
+                .Include(t => t.Plans)
+                .ToListAsync();
         }
+
 
         public async Task<Tour> GetByIdWithIncludesAsync(int id)
         {
@@ -126,13 +127,18 @@ using System.Text;
         public async Task<IEnumerable<Tour>> GetAllForFilterAsync()
         {
             return await _context.Tours
-                .Include(t => t.TourCities).ThenInclude(tc => tc.City)
-                .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
-                .Include(t => t.TourAmenities).ThenInclude(ta => ta.Amenity)
+                .Include(t => t.TourCities)
+                    .ThenInclude(tc => tc.City)
+                        .ThenInclude(c => c.Country)
+                .Include(t => t.TourActivities)
+                    .ThenInclude(ta => ta.Activity)
+                .Include(t => t.TourAmenities)
+                    .ThenInclude(ta => ta.Amenity)
                 .Include(t => t.Experiences)
                 .Include(t => t.Plans)
                 .ToListAsync();
         }
+
 
     }
 }
