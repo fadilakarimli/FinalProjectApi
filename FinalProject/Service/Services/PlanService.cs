@@ -22,6 +22,13 @@ namespace Service.Services
         }
         public async Task CreateAsync(PlanCreateDto model)
         {
+            // Eyni TourId və Day ilə plan varmı?
+            var existingPlans = await _repository.GetAllAsync();
+            bool isDuplicate = existingPlans.Any(p => p.TourId == model.TourId && p.Day == model.Day);
+
+            if (isDuplicate)
+                throw new Exception("Bu gün artıq bu tura əlavə olunub.");
+
             var plan = _mapper.Map<Plan>(model);
             await _repository.CreateAsync(plan);
         }
@@ -32,15 +39,29 @@ namespace Service.Services
             if (plan == null) throw new Exception("Plan tapılmadı");
             await _repository.DeleteAsync(plan);
         }
-
         public async Task EditAsync(int id, PlanEditDto dto)
         {
             var plan = await _repository.GetByIdAsync(id);
             if (plan == null) throw new Exception("Plan tapılmadı");
 
+            var existingPlans = await _repository.GetAllAsync();
+
+            Console.WriteLine($"Edit attempt: TourId={dto.TourId}, Day={dto.Day}, PlanId={id}");
+            foreach (var p in existingPlans)
+            {
+                Console.WriteLine($"Existing plan: Id={p.Id}, TourId={p.TourId}, Day={p.Day}");
+            }
+
+            bool isDuplicate = existingPlans.Any(p => p.TourId == dto.TourId && p.Day == dto.Day && p.Id != id);
+
+            if (isDuplicate)
+                throw new Exception("Bu gün artıq bu tura əlavə olunub.");
+
             _mapper.Map(dto, plan);
             await _repository.EditAsync(plan);
         }
+
+
         public async Task<IEnumerable<PlanDto>> GetAllAsync()
         {
             var plans = await _repository.GetAllAsync();

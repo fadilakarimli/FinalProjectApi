@@ -269,7 +269,7 @@ namespace Service.Helpers
             CreateMap<AboutApp, AboutAppDto>();
             //aboutblog
             CreateMap<AboutBlogCreateDto, AboutBlog>();
-            CreateMap<AboutBannerEditDto, AboutBlog>()
+            CreateMap<AboutBlogEditDto, AboutBlog>()
                 .ForMember(dest => dest.Image, opt => opt.Ignore());
             CreateMap<AboutBlog, AboutBlogDto>();
 

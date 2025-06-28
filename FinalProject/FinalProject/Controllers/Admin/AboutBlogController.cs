@@ -39,7 +39,8 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int id, [FromForm] AboutBlogEditDto request)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (request.Image == null)
+                ModelState.Remove(nameof(request.Image));
 
             await _aboutBlogService.EditAsync(id, request);
             return Ok();

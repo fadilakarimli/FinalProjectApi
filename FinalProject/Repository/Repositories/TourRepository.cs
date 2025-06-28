@@ -53,7 +53,20 @@ using System.Text;
 
         public async Task<IEnumerable<Tour>> GetPaginatedDatasAsync(int page, int take)
         {
-            return await _context.Tours.Skip((page * take) - take).Take(take).ToListAsync();
+            return await _context.Tours
+                .Include(t => t.TourCities)
+                    .ThenInclude(tc => tc.City)
+                        .ThenInclude(c => c.Country)
+                .Include(t => t.TourActivities)
+                    .ThenInclude(ta => ta.Activity)
+                .Include(t => t.TourAmenities)
+                    .ThenInclude(ta => ta.Amenity)
+                .Include(t => t.Experiences)
+                .Include(t => t.Plans)
+                .OrderByDescending(t => t.CreatedDate)  // Son yaranan əvvəl
+                .Skip((page - 1) * take)
+                .Take(take)
+                .ToListAsync();
         }
 
 

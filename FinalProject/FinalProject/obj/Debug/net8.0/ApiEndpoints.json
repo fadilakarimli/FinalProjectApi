@@ -1107,16 +1107,6 @@
         "IsRequired": false
       },
       {
-        "Name": "Author",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "CommentCount",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "Image",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -1166,16 +1156,6 @@
       {
         "Name": "Content",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Author",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "CommentCount",
-        "Type": "System.Int32",
         "IsRequired": false
       },
       {

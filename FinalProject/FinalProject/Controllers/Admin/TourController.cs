@@ -66,9 +66,20 @@ namespace FinalProject.Controllers.Admin
         [HttpGet("paginated")]
         public async Task<IActionResult> GetPaginated(int page = 1, int take = 5)
         {
+            if (page < 1) page = 1;
+
             var result = await _tourService.GetPaginatedAsync(page, take);
-            return Ok(result);
+
+            return Ok(new
+            {
+                Items = result.Datas,
+                PageCount = result.PageCount,
+                TotalPages = result.PageCount,
+                CurrentPage = result.CurrentPage
+            });
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> Search([FromBody] TourSearchDto request)

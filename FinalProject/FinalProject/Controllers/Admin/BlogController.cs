@@ -53,6 +53,8 @@ namespace FinalProject.Controllers.Admin
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit([FromRoute] int id, [FromForm] BlogEditDto model)
         {
+            if (model.Image == null)
+                ModelState.Remove(nameof(model.Image));
             try
             {
                 await _blogService.EditAsync(id, model);
