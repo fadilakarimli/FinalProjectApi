@@ -196,7 +196,7 @@ namespace Service.Helpers
       src.TourCities
          .Where(tc => tc.City != null)
          .Select(tc => tc.City.CountryId)
-         .Distinct()
+         .Distinct()    
          .ToList()))
 
   .ForMember(dest => dest.CountryNames, opt => opt.MapFrom(src =>

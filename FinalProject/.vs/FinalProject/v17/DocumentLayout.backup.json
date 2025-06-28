@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\tourservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\tourservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\helpers\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\tour\\toureditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -58,8 +58,7 @@
               "RelativeToolTip": "Domain\\Entities\\Tour.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAiwBAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:01:01.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:01:01.725Z"
             },
             {
               "$type": "Document",
@@ -71,18 +70,17 @@
               "RelativeToolTip": "Domain\\Entities\\Country.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T07:01:57.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T07:01:57.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Service\\Helpers\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs*",
-              "RelativeToolTip": "Service\\Helpers\\MappingProfile.cs*",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAcwMIAAAA/AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Helpers\\MappingProfile.cs",
+              "RelativeToolTip": "Service\\Helpers\\MappingProfile.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAcwMkAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T06:59:22.099Z",
               "EditorCaption": ""
@@ -97,8 +95,7 @@
               "RelativeToolTip": "Repository\\Repositories\\TourRepository.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAYwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T06:57:44.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T06:57:44.595Z"
             },
             {
               "$type": "Document",
@@ -110,18 +107,17 @@
               "RelativeToolTip": "FinalProject\\Controllers\\Admin\\TourController.cs",
               "ViewState": "AgIAACsAAAAAAAAAAADwvzgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T20:11:43.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T20:11:43.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TourService.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TourService.cs",
               "RelativeDocumentMoniker": "Service\\Services\\TourService.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\TourService.cs",
               "RelativeToolTip": "Service\\Services\\TourService.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAQwJwAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwJIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-27T20:11:24.638Z",
               "EditorCaption": ""
@@ -136,8 +132,7 @@
               "RelativeToolTip": "Service\\DTOs\\Tour\\TourEditDto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T20:10:58.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T20:10:58.462Z"
             },
             {
               "$type": "Document",
@@ -149,8 +144,7 @@
               "RelativeToolTip": "Service\\DTOs\\Tour\\TourCreateDto.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T20:10:15.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T20:10:15.624Z"
             },
             {
               "$type": "Document",
@@ -162,8 +156,7 @@
               "RelativeToolTip": "Service\\DTOs\\Tour\\TourDto.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAA4wBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T20:10:14.289Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T20:10:14.289Z"
             }
           ]
         }
