@@ -22,7 +22,6 @@ namespace Service.Services
         }
         public async Task CreateAsync(PlanCreateDto model)
         {
-            // Eyni TourId və Day ilə plan varmı?
             var existingPlans = await _repository.GetAllAsync();
             bool isDuplicate = existingPlans.Any(p => p.TourId == model.TourId && p.Day == model.Day);
 

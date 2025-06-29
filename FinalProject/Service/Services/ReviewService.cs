@@ -37,8 +37,8 @@ namespace Service.Services
 
         public async Task<IEnumerable<ReviewListDto>> GetAllAsync()
         {
-            var reviews = await _reviewRepository.GetAllAsync(); // repository-də bütün review-ları al
-            return _mapper.Map<IEnumerable<ReviewListDto>>(reviews); // DTO-lara çevir
+            var reviews = await _reviewRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<ReviewListDto>>(reviews); 
         }
 
         public async Task DeleteAsync(int id)

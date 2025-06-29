@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.Account;
 using Service.Helpers.Responses;
 using Service.Services.Interfaces;
+using System.Security.Claims;
 
 namespace FinalProject.Controllers.Client
 {
@@ -64,6 +66,55 @@ namespace FinalProject.Controllers.Client
 
             return Redirect("https://localhost:7014/Account/Login");
           
+        }
+
+
+        [HttpGet("profile")]
+        [Authorize] 
+        public async Task<IActionResult> GetProfile()
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized("İstifadəçi ID-si tapılmadı.");
+
+                var profile = await _accountService.GetProfile(userId);
+
+                if (profile == null)
+                    return NotFound("İstifadəçi profili tapılmadı.");
+
+                return Ok(profile);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Xəta baş verdi: " + ex.Message);
+            }
+        }
+
+        [HttpPut("profile")]
+        [Authorize] 
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized("İstifadəçi ID-si tapılmadı.");
+
+                var result = await _accountService.UpdateProfile(userId, model);
+
+                return StatusCode(result.StatusCode, new { message = result.ResponseMessage });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Xəta baş verdi: " + ex.Message);
+            }
         }
 
     }

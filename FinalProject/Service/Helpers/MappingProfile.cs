@@ -134,6 +134,14 @@ namespace Service.Helpers
             CreateMap<InstagramCreateDto, Instagram>();
             //register
             CreateMap<RegisterDto, AppUser>();
+
+            CreateMap<AppUser, UserProfileDto>()
+                .ForMember(dest => dest.Roles, opt => opt.Ignore()); 
+
+            CreateMap<UpdateProfileDto, AppUser>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+
             //specialoffer
             CreateMap<SpecialOfferModel, SpecialOfferDto>();
 

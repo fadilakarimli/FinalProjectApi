@@ -35,18 +35,15 @@ namespace Service.Services
             booking.Status = newStatus;
             await _bookingRepo.UpdateAsync(booking);
 
-            // Mail göndərmək üçün lazım olan ümumi dəyərlər
             var smtpHost = "smtp.gmail.com";
             var smtpPort = 587;
             var smtpUser = "fadilafk@code.edu.az";
-            var smtpPass = "fqen ovmf kvou rvos"; // App password
+            var smtpPass = "mleq kwrg luex jute"; 
 
-            // Əgər user email boş deyilsə
             if (!string.IsNullOrWhiteSpace(booking.UserEmail))
             {
                 try
                 {
-                    // Tour null ola bilər, yoxla və yüklə
                     if (booking.Tour == null)
                         booking.Tour = await _tourRepo.GetByIdAsync(booking.TourId);
 
@@ -147,7 +144,7 @@ namespace Service.Services
                 ChildrenCount = dto.ChildrenCount,
                 BookingDate = DateTime.UtcNow,
                 TotalPrice = total,
-                UserEmail = dto.UserEmail // ✅ burda yazılır
+                UserEmail = dto.UserEmail 
             };
 
             await _bookingRepo.CreateAsync(booking);
@@ -159,7 +156,6 @@ namespace Service.Services
         {
             var bookings = await _bookingRepo.GetAllAsync();
 
-            // AutoMapper ilə entity-ləri DTO-lara çeviririk
             var bookingDtos = _mapper.Map<IEnumerable<BookingDto>>(bookings);
 
             return bookingDtos;
@@ -170,7 +166,6 @@ namespace Service.Services
             var booking = await _bookingRepo.GetByIdAsync(id);
             if (booking == null) throw new NotFoundException("Booking not found");
 
-            // Tour adı DTO-ya əlavə olunur (əgər Tour lazy-loaded deyilsə, include etməlisən)
             if (booking.Tour == null)
                 booking.Tour = await _tourRepo.GetByIdAsync(booking.TourId);
 

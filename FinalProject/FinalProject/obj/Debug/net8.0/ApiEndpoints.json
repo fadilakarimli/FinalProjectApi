@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "FinalProject.Controllers.Client.AccountController",
+    "Method": "GetProfile",
+    "RelativePath": "api/Account/GetProfile/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Client.AccountController",
     "Method": "Login",
     "RelativePath": "api/Account/Login",
     "HttpMethod": "POST",
@@ -58,6 +68,22 @@
       {
         "Name": "userResetPasswordDto",
         "Type": "Service.DTOs.Account.UserResetPasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinalProject.Controllers.Client.AccountController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Account/UpdateProfile/profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Service.DTOs.Account.UpdateProfileDto",
         "IsRequired": true
       }
     ],

@@ -67,6 +67,102 @@ namespace Service.Services
         }
 
 
+        public async Task<UserProfileDto> GetProfile(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            var userProfile = _mapper.Map<UserProfileDto>(user);
+            userProfile.Roles = roles.ToList();
+
+            return userProfile;
+        }
+
+        public async Task<ResponseObject> UpdateProfile(string userId, UpdateProfileDto model)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return new ResponseObject
+                {
+                    ResponseMessage = "İstifadəçi tapılmadı.",
+                    StatusCode = (int)StatusCodes.Status404NotFound
+                };
+            }
+
+            // Email dəyişiklik yoxlanışı
+            if (!string.IsNullOrEmpty(model.Email) && model.Email != user.Email)
+            {
+                var emailExists = await _userManager.FindByEmailAsync(model.Email);
+                if (emailExists != null && emailExists.Id != userId)
+                {
+                    return new ResponseObject
+                    {
+                        ResponseMessage = "Bu email artıq başqa istifadəçi tərəfindən istifadə olunur.",
+                        StatusCode = (int)StatusCodes.Status400BadRequest
+                    };
+                }
+
+                user.Email = model.Email;
+                user.EmailConfirmed = false; // Yeni email təsdiq olunmalıdır
+            }
+
+            // Username dəyişiklik yoxlanışı
+            if (!string.IsNullOrEmpty(model.UserName) && model.UserName != user.UserName)
+            {
+                var usernameExists = await _userManager.FindByNameAsync(model.UserName);
+                if (usernameExists != null && usernameExists.Id != userId)
+                {
+                    return new ResponseObject
+                    {
+                        ResponseMessage = "Bu istifadəçi adı artıq başqa istifadəçi tərəfindən istifadə olunur.",
+                        StatusCode = (int)StatusCodes.Status400BadRequest
+                    };
+                }
+
+                user.UserName = model.UserName;
+            }
+
+            // Digər məlumatları yenilə
+            if (!string.IsNullOrEmpty(model.FullName))
+                user.FullName = model.FullName;
+
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                return new ResponseObject
+                {
+                    ResponseMessage = string.Join(", ", result.Errors.Select(e => e.Description)),
+                    StatusCode = (int)StatusCodes.Status400BadRequest
+                };
+            }
+
+            // Əgər email dəyişilibsə, təsdiq emaili göndər
+            if (!string.IsNullOrEmpty(model.Email) && model.Email != user.Email)
+            {
+                string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var request = _httpContextAccessor.HttpContext.Request;
+                string baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
+                string url = $"https://localhost:7145/api/Account/VerifyEmail?verifyEmail={HttpUtility.UrlEncode(user.Email)}&token={HttpUtility.UrlEncode(token)}";
+                var template = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "confirm", "emailconfrim.html"));
+                template = template.Replace("{{link}}", url);
+                _emailConfirmationService.Send(user.Email, "Email confirmation", template);
+            }
+
+            return new ResponseObject
+            {
+                ResponseMessage = "Profil uğurla yeniləndi.",
+                StatusCode = (int)StatusCodes.Status200OK
+            };
+        }
+
 
 
 

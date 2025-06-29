@@ -30,5 +30,8 @@ namespace Service.Services.Interfaces
         Task<bool> AssignRoleAsync(AssignRoleDto dto);
         Task<bool> RemoveRoleAsync(string userId, string roleName);
 
+        Task<UserProfileDto> GetProfile(string userId);
+        Task<ResponseObject> UpdateProfile(string userId, UpdateProfileDto model);
+
     }
 }

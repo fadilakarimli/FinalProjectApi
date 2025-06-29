@@ -23,7 +23,7 @@ namespace Service.Services
             smtpClient.Port = 587;
             smtpClient.Host = "smtp.gmail.com";
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("fadilafk@code.edu.az", "fqen ovmf kvou rvos");
+            smtpClient.Credentials = new NetworkCredential("fadilafk@code.edu.az", "mleq kwrg luex jute");
             smtpClient.Send(mailMessage);
         }
 

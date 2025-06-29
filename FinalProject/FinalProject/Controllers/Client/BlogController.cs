@@ -24,7 +24,6 @@ namespace FinalProject.Controllers.Client
             }
             catch (Exception ex)
             {
-                // Log buraya əlavə oluna bilər
                 return StatusCode(500, new { message = "Serverdə xəta baş verdi.", error = ex.Message });
             }
         }
