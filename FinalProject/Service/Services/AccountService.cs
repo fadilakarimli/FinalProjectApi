@@ -211,10 +211,10 @@ namespace Service.Services
 
             foreach (var user in users)
             {
-                var userDto = _mapper.Map<UserDto>(user); // AutoMapper ilə əsas mapping
-                var roles = await _userManager.GetRolesAsync(user); // Rolları ayrıca al
+                var userDto = _mapper.Map<UserDto>(user);
+                var roles = await _userManager.GetRolesAsync(user); 
 
-                userDto.Roles = roles.ToList(); // Rol siyahısını əlavə et
+                userDto.Roles = roles.ToList(); 
 
                 userDtos.Add(userDto);
             }
@@ -228,10 +228,10 @@ namespace Service.Services
             if (user == null) return false;
 
             if (!await _roleManager.RoleExistsAsync(roleName))
-                return false; // Roll yoxdur, silinməsi lazım deyil
+                return false;
 
             var isInRole = await _userManager.IsInRoleAsync(user, roleName);
-            if (!isInRole) return true; // Əgər istifadəçi artıq o roldan çıxarılıbsa, uğur sayılır
+            if (!isInRole) return true; 
 
             var result = await _userManager.RemoveFromRoleAsync(user, roleName);
             return result.Succeeded;
@@ -379,7 +379,6 @@ namespace Service.Services
             await _userManager.UpdateSecurityStampAsync(appUser);
             var roles = await _userManager.GetRolesAsync(appUser);
 
-            // ✅ Email təsdiqləndikdən sonra serverdən təsdiq mesajı göndəririk
             return "Email verified successfully!";
         }
         public string CreateToken(AppUser user, IList<string> roles)
@@ -408,25 +407,6 @@ namespace Service.Services
             return securityTokenHandler.WriteToken(token);
         }
 
-        public Task CreateRole(string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteRole(string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddRoleToUser(string roleName, string userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteRoleToUser(string roleName, string userId)
-        {
-            throw new NotImplementedException();
-        }
         public async Task<ResponseObject> ForgetPassword(string email, string requestScheme, string requestHost)
         {
             AppUser appUser = await _userManager.FindByEmailAsync(email);
@@ -441,13 +421,10 @@ namespace Service.Services
 
             string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
 
-            // Dinamik link düzəldirik (localhost-u əvəzlədik)
             string link = $"https://localhost:7014/Account/ResetPassword?email={HttpUtility.UrlEncode(appUser.Email)}&token={HttpUtility.UrlEncode(token)}";
-            // Email şablonunu oxuyub linki əvəz edirik
             var template = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "confirm", "resetpassword.html"));
             template = template.Replace("{{confirmlink}}", link);
 
-            // Email göndəririk
             _sendEmail.Send("fadilafk@code.edu.az", "Travil", appUser.Email, template, "Reset Password");
 
             IList<string> roles = await _userManager.GetRolesAsync(appUser);
@@ -463,13 +440,11 @@ namespace Service.Services
             var user = await _userManager.FindByIdAsync(dto.UserId);
             if (user == null) return false;
 
-            // Rol yoxdursa, əlavə et (opsional)
             if (!await _roleManager.RoleExistsAsync(dto.RoleName))
             {
                 await _roleManager.CreateAsync(new IdentityRole(dto.RoleName));
             }
 
-            // Əgər user artıq roldadırsa, yenidən əlavə etməyə ehtiyac yoxdur
             var alreadyInRole = await _userManager.IsInRoleAsync(user, dto.RoleName);
             if (alreadyInRole) return true;
 

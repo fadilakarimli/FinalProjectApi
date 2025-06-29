@@ -22,11 +22,6 @@ namespace Service.Services.Interfaces
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
         Task<IEnumerable<RoleDto>> GetAllRolesByUserIdAsync(string userId);
         Task<IEnumerable<RoleDto>> GetAllRoles();
-        Task CreateRole(string roleName);
-        Task DeleteRole(string roleName);
-        Task AddRoleToUser(string roleName, string userId);
-        Task DeleteRoleToUser(string roleName, string userId);
-
         Task<bool> AssignRoleAsync(AssignRoleDto dto);
         Task<bool> RemoveRoleAsync(string userId, string roleName);
 

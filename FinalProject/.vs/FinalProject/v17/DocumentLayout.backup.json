@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\destinationfeaturecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\destinationfeaturecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\sliderinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\sliderinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\dtos\\account\\updateprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\dtos\\account\\updateprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\service\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E163148D-6CEC-42A4-B20D-D636CEA4592C}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\client\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\client\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|c:\\users\\asus\\desktop\\finalprojectapi\\finalproject\\finalproject\\controllers\\admin\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0B7B420-D12C-4A0B-B2D5-97B389A9664B}|FinalProject\\FinalProject.csproj|solutionrelative:finalproject\\controllers\\admin\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,54 +39,75 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ActivityController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\ActivityController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\ActivityController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\ActivityController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\ActivityController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Program.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Program.cs",
+              "RelativeToolTip": "FinalProject\\Program.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T17:24:44.839Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DestinationFeatureController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\DestinationFeatureController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\DestinationFeatureController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\DestinationFeatureController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\DestinationFeatureController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T17:24:42.164Z",
+              "WhenOpened": "2025-06-29T18:09:44.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SliderInfoController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SliderInfoController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\SliderInfoController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\SliderInfoController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\SliderInfoController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "UpdateProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Account\\UpdateProfileDto.cs",
+              "RelativeDocumentMoniker": "Service\\DTOs\\Account\\UpdateProfileDto.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\DTOs\\Account\\UpdateProfileDto.cs",
+              "RelativeToolTip": "Service\\DTOs\\Account\\UpdateProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T17:24:39.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-29T17:33:55.213Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TourController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TourController.cs",
-              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\TourController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\TourController.cs",
-              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\TourController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IAccountService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T17:24:36.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-29T17:33:26.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\AccountService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\AccountService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\Service\\Services\\AccountService.cs",
+              "RelativeToolTip": "Service\\Services\\AccountService.cs",
+              "ViewState": "AgIAAEABAAAAAAAAAAAUwFoBAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T17:32:44.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Client\\AccountController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Client\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Client\\AccountController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Client\\AccountController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAswF0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T17:32:27.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AccountController.cs",
+              "RelativeDocumentMoniker": "FinalProject\\Controllers\\Admin\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\FinalProjectApi\\FinalProject\\FinalProject\\Controllers\\Admin\\AccountController.cs",
+              "RelativeToolTip": "FinalProject\\Controllers\\Admin\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T17:32:14.68Z"
             }
           ]
         }
