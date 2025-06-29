@@ -20,7 +20,7 @@ using System.Text;
             return await _context.Tours
                 .Include(t => t.TourCities)
                     .ThenInclude(tc => tc.City)
-                        .ThenInclude(c => c.Country)  // Əlavə olundu
+                        .ThenInclude(c => c.Country)  
                 .Include(t => t.TourActivities)
                     .ThenInclude(ta => ta.Activity)
                 .Include(t => t.TourAmenities)
@@ -63,7 +63,7 @@ using System.Text;
                     .ThenInclude(ta => ta.Amenity)
                 .Include(t => t.Experiences)
                 .Include(t => t.Plans)
-                .OrderByDescending(t => t.CreatedDate)  // Son yaranan əvvəl
+                .OrderByDescending(t => t.CreatedDate)  
                 .Skip((page - 1) * take)
                 .Take(take)
                 .ToListAsync();
@@ -95,14 +95,12 @@ using System.Text;
                 .Include(t => t.TourActivities).ThenInclude(ta => ta.Activity)
                 .AsQueryable();
 
-            // 🔄 City ID-lərə görə filtrlə
             if (!string.IsNullOrWhiteSpace(city))
             {
                 var cityIds = city.Split(',').Select(id => int.TryParse(id, out var val) ? val : -1).ToList();
                 query = query.Where(t => t.TourCities.Any(tc => cityIds.Contains(tc.City.Id)));
             }
 
-            // 🔄 Activity ID-lərə görə filtrlə
             if (!string.IsNullOrWhiteSpace(activity))
             {
                 var activityIds = activity.Split(',').Select(id => int.TryParse(id, out var val) ? val : -1).ToList();
@@ -151,6 +149,14 @@ using System.Text;
                 .Include(t => t.Plans)
                 .ToListAsync();
         }
+
+
+        public async Task<bool> IsDateRangeOverlappingAsync(DateTime startDate, DateTime endDate)
+        {
+            return await _context.Tours.AnyAsync(t =>
+                startDate <= t.EndDate && endDate >= t.StartDate);
+        }
+
 
 
     }

@@ -35,8 +35,14 @@ namespace Service.Services
             booking.Status = newStatus;
             await _bookingRepo.UpdateAsync(booking);
 
-            // Status accepted olarsa, mail göndər
-            if (newStatus == BookingStatus.Accepted && !string.IsNullOrWhiteSpace(booking.UserEmail))
+            // Mail göndərmək üçün lazım olan ümumi dəyərlər
+            var smtpHost = "smtp.gmail.com";
+            var smtpPort = 587;
+            var smtpUser = "fadilafk@code.edu.az";
+            var smtpPass = "fqen ovmf kvou rvos"; // App password
+
+            // Əgər user email boş deyilsə
+            if (!string.IsNullOrWhiteSpace(booking.UserEmail))
             {
                 try
                 {
@@ -44,30 +50,69 @@ namespace Service.Services
                     if (booking.Tour == null)
                         booking.Tour = await _tourRepo.GetByIdAsync(booking.TourId);
 
-                    var smtpHost = "smtp.gmail.com";
-                    var smtpPort = 587;
-                    var smtpUser = "fadilafk@code.edu.az";
-                    var smtpPass = "fqen ovmf kvou rvos"; // App password
-
                     var mail = new System.Net.Mail.MailMessage();
                     mail.From = new System.Net.Mail.MailAddress(smtpUser);
                     mail.To.Add(booking.UserEmail);
-                    mail.Subject = "Rezervasiyanız təsdiqləndi ✅";
-                    mail.Body = $@"
-                Hörmətli istifadəçi,
-
-                Sizin rezervasiyanız təsdiqləndi.
-
-                Tur: {booking.Tour?.Name}
-                Tarix: {booking.BookingDate:dd.MM.yyyy}
-                Yetişkin sayı: {booking.AdultsCount}
-                Uşaq sayı: {booking.ChildrenCount}
-                Ümumi məbləğ: {booking.TotalPrice} USD
-
-                Təşəkkür edirik, Travil.az komandasından.
-            ";
                     mail.IsBodyHtml = false;
 
+                    if (newStatus == BookingStatus.Accepted)
+                    {
+                        mail.Subject = "Booking Confirmed ✅ - Travil.az";
+                        mail.Body = $@"
+                            Dear Customer,
+
+                            Great news! Your booking has been confirmed.
+
+                            ═══════════════════════════════
+                            BOOKING CONFIRMATION
+                            ═══════════════════════════════
+                            Tour: {booking.Tour?.Name}
+                            Date: {booking.BookingDate:dd.MM.yyyy}
+                            Adults: {booking.AdultsCount}
+                            Children: {booking.ChildrenCount}
+                            Total Amount: ${booking.TotalPrice} USD
+                            ═══════════════════════════════
+
+                            We're excited to have you join us on this amazing journey!
+
+                            Please keep this confirmation for your records.
+
+                            Best regards,
+                            Travil.az Team
+                            Your Travel Partner
+
+                            ---
+                            Thank you for choosing Travil.az
+                            ";
+                    }
+                    else if (newStatus == BookingStatus.Cancelled)
+                    {
+                        mail.Subject = "Booking Cancellation - Travil.az ❌";
+                        mail.Body = $@"
+                            Dear Customer,
+
+                            We regret to inform you that your booking has been cancelled.
+
+                            ═══════════════════════════════
+                            BOOKING DETAILS
+                            ═══════════════════════════════
+                            Tour: {booking.Tour?.Name}
+                            Date: {booking.BookingDate:dd.MM.yyyy}
+                            ═══════════════════════════════
+
+                            If you have any questions or concerns regarding this cancellation, 
+                            please don't hesitate to contact our customer service team.
+
+                            We apologize for any inconvenience this may cause.
+
+                            Best regards,
+                            Travil.az Team
+                            Your Travel Partner
+
+                            ---
+                            Thank you for choosing Travil.az
+                            ";
+                    }
                     using var smtp = new System.Net.Mail.SmtpClient(smtpHost, smtpPort)
                     {
                         Credentials = new System.Net.NetworkCredential(smtpUser, smtpPass),
@@ -78,13 +123,13 @@ namespace Service.Services
                 }
                 catch (Exception ex)
                 {
-                    // Mail göndərərkən xətanı logla
                     Console.WriteLine("❌ Email göndərilərkən xəta: " + ex.Message);
                 }
             }
 
             return true;
         }
+
 
 
 

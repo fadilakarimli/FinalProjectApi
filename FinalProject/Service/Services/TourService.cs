@@ -48,6 +48,12 @@ namespace Service.Services
         }
         public async Task CreateAsync(TourCreateDto model)
         {
+
+            bool isOverlapping = await _repo.IsDateRangeOverlappingAsync(model.StartDate, model.EndDate);
+
+            if (isOverlapping)
+                throw new Exception("Bu tarix aralığında artıq mövcud bir tur var.");
+
             string fileUrl = null;
 
             if (model.ImageFile != null)
@@ -61,7 +67,6 @@ namespace Service.Services
             tour.StartDate = model.StartDate;
             tour.EndDate = model.EndDate;
 
-            // TourCities üçün cityId-lərdən TourCity-lər yarat
             if (model.CityIds != null && model.CityIds.Any())
             {
                 tour.TourCities = model.CityIds.Select(cityId => new TourCity
@@ -70,7 +75,6 @@ namespace Service.Services
                 }).ToList();
             }
 
-            // Əlavə əlaqələr, məsələn, TourActivities və TourAmenities
             tour.TourActivities = model.ActivityIds?.Select(id => new TourActivity
             {
                 ActivityId = id
@@ -81,7 +85,6 @@ namespace Service.Services
                 AmenityId = id
             }).ToList() ?? new List<TourAmenity>();
 
-            // Əgər Experience-lər əlavə ediləcəksə, buranı aç:
             //if (model.ExperienceIds != null && model.ExperienceIds.Any())
             //{
             //    var experiences = await _experienceRepository
@@ -96,30 +99,30 @@ namespace Service.Services
             string subject = "Yeni tur əlavə olundu!";
 
             string body = $@"
-    <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
-        <div style='max-width: 600px; margin: auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>
-            <div style='background-color: #007bff; color: white; padding: 20px; text-align: center;'>
-                <h2>Yeni tur əlavə olundu!</h2>
-            </div>
-            <div style='padding: 20px;'>
-                <p>Salam dəyərli abunəçi,</p>
-                <p><strong>{tour.Name}</strong> adlı yeni tur əlavə olundu!</p>
-                <p><strong>Başlama tarixi:</strong> {tour.StartDate:dd.MM.yyyy}</p>
-                <p><strong>Bitmə tarixi:</strong> {tour.EndDate:dd.MM.yyyy}</p>
-                <p>Daha ətraflı məlumat üçün saytımıza keçid edin:</p>
-                <p style='text-align: center;'>
-                    <a href='https://localhost:7014/tour/{tour.Id}' 
-                       style='background-color: #28a745; color: white; padding: 10px 20px; 
-                              text-decoration: none; border-radius: 5px; display: inline-block;'>
-                        Tura bax
-                    </a>
-                </p>
-            </div>
-            <div style='background-color: #f8f9fa; text-align: center; padding: 10px; font-size: 12px; color: #888;'>
-                Bu email sistem tərəfindən avtomatik göndərilmişdir. Cavab yazmayın.
-            </div>
-        </div>
-    </div>";
+            <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+                <div style='max-width: 600px; margin: auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>
+                    <div style='background-color: #007bff; color: white; padding: 20px; text-align: center;'>
+                        <h2>Yeni tur əlavə olundu!</h2>
+                    </div>
+                    <div style='padding: 20px;'>
+                        <p>Salam dəyərli abunəçi,</p>
+                        <p><strong>{tour.Name}</strong> adlı yeni tur əlavə olundu!</p>
+                        <p><strong>Başlama tarixi:</strong> {tour.StartDate:dd.MM.yyyy}</p>
+                        <p><strong>Bitmə tarixi:</strong> {tour.EndDate:dd.MM.yyyy}</p>
+                        <p>Daha ətraflı məlumat üçün saytımıza keçid edin:</p>
+                        <p style='text-align: center;'>
+                            <a href='https://localhost:7014/tour/{tour.Id}' 
+                               style='background-color: #28a745; color: white; padding: 10px 20px; 
+                                      text-decoration: none; border-radius: 5px; display: inline-block;'>
+                                Tura bax
+                            </a>
+                        </p>
+                    </div>
+                    <div style='background-color: #f8f9fa; text-align: center; padding: 10px; font-size: 12px; color: #888;'>
+                        Bu email sistem tərəfindən avtomatik göndərilmişdir. Cavab yazmayın.
+                    </div>
+                </div>
+            </div>";
 
 
             foreach (var subscriber in allSubscribers)
@@ -151,7 +154,6 @@ namespace Service.Services
                 string newImageUrl = await _cloudinaryManager.FileCreateAsync(model.ImageFile);
                 existTour.Image = newImageUrl;
             }
-            // else bloqu silinir, ExistingImageUrl olmadığı üçün şəkil dəyişməz qalacaq
             // else
             // {
             //     existTour.Image = model.ExistingImageUrl;
@@ -159,7 +161,6 @@ namespace Service.Services
 
             _mapper.Map(model, existTour);
 
-            // TourActivities
             existTour.TourActivities.Clear();
             existTour.TourActivities = model.ActivityIds.Select(id => new TourActivity
             {
@@ -167,7 +168,6 @@ namespace Service.Services
                 TourId = existTour.Id
             }).ToList();
 
-            // TourAmenities
             existTour.TourAmenities.Clear();
             existTour.TourAmenities = model.AmenityIds.Select(id => new TourAmenity
             {
@@ -175,9 +175,6 @@ namespace Service.Services
                 TourId = existTour.Id
             }).ToList();
 
-            // Experiences ilə bağlı hissə silindi
-
-            // TourCities update
             existTour.TourCities.Clear();
 
             if (model.CityIds != null && model.CityIds.Any())

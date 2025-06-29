@@ -55,7 +55,7 @@ namespace Service.Services
             bool isDuplicate = existingPlans.Any(p => p.TourId == dto.TourId && p.Day == dto.Day && p.Id != id);
 
             if (isDuplicate)
-                throw new Exception("Bu gün artıq bu tura əlavə olunub.");
+                throw new Exception("Bu gun artiq bu tura elave olunub.");
 
             _mapper.Map(dto, plan);
             await _repository.EditAsync(plan);

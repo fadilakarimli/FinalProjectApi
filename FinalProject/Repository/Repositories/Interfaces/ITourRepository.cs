@@ -18,6 +18,8 @@ namespace Repository.Repositories.Interfaces
         Task<IEnumerable<Tour>> SearchAsync(string city, string activity, DateTime? date, int? guestCount);
         IQueryable<Tour> GetAllWithIncludesQueryable(params Expression<Func<Tour, object>>[] includes);
         Task<IEnumerable<Tour>> GetAllForFilterAsync();
+        Task<bool> IsDateRangeOverlappingAsync(DateTime startDate, DateTime endDate);
+
 
 
     }
